@@ -1,0 +1,4 @@
+Nikolov Ivan 100 100 25
+Ivanovski Marko 100 4 100
+Zlatevski Andrej 35 50 70
+Stefanovski Antonio 50 50 50

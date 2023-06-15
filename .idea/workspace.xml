@@ -5,46 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="Prv komit">
-      <change afterPath="$PROJECT_DIR$/src/Aud3/Aliens/AlienPack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/Aliens/AlienPackTester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/Aliens/AlienTemplate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/Aliens/MARSHMALLOW_MAN_ALIEN.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/Aliens/Ogre.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/Aliens/Snake.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/BANK/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/BANK/Bank.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/BANK/BankTester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/BANK/InterestBearingAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/BANK/InterestCheckingAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/BANK/NonInterestCheckingAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/BANK/NotEnoughFundsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/BANK/PlatinumCheckingAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/Calculator/Calculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/Calculator/CalculatorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/Calculator/UnknownOperatorException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/Date.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/DodatniRaboti/AnonymousClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/DodatniRaboti/Functional.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/DodatniRaboti/LambdaTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/PlayingCard/Deck.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/PlayingCard/PlayingCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud3/PlayingCard/PlayingCardType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4/FuncionalnterfaceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4/OcenkiZaKurs/Course.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4/OcenkiZaKurs/GradesTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4/OcenkiZaKurs/Output" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4/OcenkiZaKurs/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4/OcenkiZaKurs/grades" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4/OldestPerson/OLDERSPERSON" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4/OldestPerson/OldestPersonText.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4/OldestPerson/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4/Vezba.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4/WordCount/LineConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4/WordCount/LineCounter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4/WordCount/WordCount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4/WordCount/text" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud4/Binary/Binary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud4/Binary/text.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/Grades/Course.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/Grades/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/Grades/file.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/OldestPerson/OldestPerson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/OldestPerson/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/OldestPerson/Text.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/WordCount/Line.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/WordCount/LineConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/WordCount/Text.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/WordCount/WordCount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aud2/BigComplex.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,13 +71,26 @@
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.GradesTest">
-    <configuration name="FuncionalnterfaceTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Aud4.FuncionalnterfaceTest" />
+  <component name="RunManager" selected="Application.OldestPerson">
+    <configuration name="Aud4Pak.WordCount.WordCount" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Aud4Pak.WordCount.WordCount" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Aud4.*" />
+          <option name="PATTERN" value="Aud4Pak.WordCount.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Binary" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Aud4.Binary.Binary" />
+      <module name="NaprednoIspit" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Aud4.Binary.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -125,6 +111,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OldestPerson" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Aud4Pak.OldestPerson.OldestPerson" />
+      <module name="NaprednoIspit" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Aud4Pak.OldestPerson.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OldestPersonText" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Aud4.OldestPerson.OldestPersonText" />
       <module name="NaprednoIspit" />
@@ -138,39 +137,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Vezba" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Aud4.Vezba" />
-      <module name="NaprednoIspit" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Aud4.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WordCount" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Aud4.WordCount.WordCount" />
-      <module name="NaprednoIspit" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Aud4.WordCount.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GradesTest" />
+        <item itemvalue="Application.OldestPerson" />
         <item itemvalue="Application.OldestPersonText" />
-        <item itemvalue="Application.WordCount" />
-        <item itemvalue="Application.FuncionalnterfaceTest" />
-        <item itemvalue="Application.Vezba" />
+        <item itemvalue="Application.Aud4Pak.WordCount.WordCount" />
+        <item itemvalue="Application.Binary" />
+        <item itemvalue="Application.GradesTest" />
       </list>
     </recent_temporary>
   </component>
@@ -183,7 +156,7 @@
       <option name="presentableId" value="Default" />
       <updated>1686656168829</updated>
       <workItem from="1686656170277" duration="11742000" />
-      <workItem from="1686735148732" duration="17778000" />
+      <workItem from="1686735148732" duration="27484000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -206,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686657751468</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Prv komit">
+      <created>1686760132258</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1686760132258</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
