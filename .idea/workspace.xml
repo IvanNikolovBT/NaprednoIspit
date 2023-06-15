@@ -4,11 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="Prv komit">
-      <change afterPath="$PROJECT_DIR$/src/Aud5/Box.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud5/PriorityQueue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud5/StandardDeviation.java" afterDir="false" />
+    <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="Vtor">
+      <change afterPath="$PROJECT_DIR$/src/Date/LocalDateTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Date/LocalDateTimeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Date/LocalTimeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab1/zad1/RomanConverterTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab1/zad2/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab1/zad2/Bank.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab1/zad2/BankTester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab1/zad2/FlatAmountProvisionTransaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab1/zad2/FlatPercentProvisionTransaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab1/zad2/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab1/zad3/ArrayReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab1/zad3/IntegerArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab1/zad3/IntegerArrayTester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab2/zad1/DoubleMatrix.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab2/zad1/DoubleMatrixTester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab2/zad1/InsufficientElementsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab2/zad1/InvalidColumnNumberException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab2/zad1/InvalidRowNumberException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NaprednoIspit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/NaprednoIspit.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,13 +79,13 @@
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.Box">
-    <configuration name="Aud4Pak.WordCount.WordCount" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Aud4Pak.WordCount.WordCount" />
+  <component name="RunManager" selected="Application.IntegerArrayTester">
+    <configuration name="AuditionTest (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Lab.Zad1CHAT.AuditionTest" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Aud4Pak.WordCount.*" />
+          <option name="PATTERN" value="Lab.Zad1CHAT.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -77,12 +93,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Binary" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Aud4.Binary.Binary" />
+    <configuration name="BankTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Lab1.zad2.BankTester" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Aud4.Binary.*" />
+          <option name="PATTERN" value="Lab1.zad2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -90,12 +106,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Box" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Aud5.Box" />
+    <configuration name="IntegerArrayTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Lab1.zad3.IntegerArrayTester" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Aud5.*" />
+          <option name="PATTERN" value="Lab1.zad3.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -103,12 +119,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OldestPerson" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Aud4Pak.OldestPerson.OldestPerson" />
+    <configuration name="RomanConverterTest (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Lab1.zad1.RomanConverterTest" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Aud4Pak.OldestPerson.*" />
+          <option name="PATTERN" value="Lab1.zad1.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -116,12 +132,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OldestPersonText" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Aud4.OldestPerson.OldestPersonText" />
+    <configuration name="RomanConverterTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Lab1.zad1.RomanConverterTest" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Aud4.OldestPerson.*" />
+          <option name="PATTERN" value="Lab1.zad1.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -131,11 +147,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Box" />
-        <item itemvalue="Application.OldestPerson" />
-        <item itemvalue="Application.OldestPersonText" />
-        <item itemvalue="Application.Aud4Pak.WordCount.WordCount" />
-        <item itemvalue="Application.Binary" />
+        <item itemvalue="Application.IntegerArrayTester" />
+        <item itemvalue="Application.BankTester" />
+        <item itemvalue="Application.RomanConverterTest (1)" />
+        <item itemvalue="Application.RomanConverterTest" />
+        <item itemvalue="Application.AuditionTest (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -148,7 +164,7 @@
       <option name="presentableId" value="Default" />
       <updated>1686656168829</updated>
       <workItem from="1686656170277" duration="11742000" />
-      <workItem from="1686735148732" duration="30815000" />
+      <workItem from="1686735148732" duration="46442000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -185,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686834849357</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Vtor">
+      <created>1686838650878</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1686838650878</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,6 +227,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Prv komit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prv komit" />
+    <MESSAGE value="Vtor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Vtor" />
   </component>
 </project>
