@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="Prv komit">
-      <change afterPath="$PROJECT_DIR$/src/Aud4/Binary/Binary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4/Binary/text.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/Grades/Course.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/Grades/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/Grades/file.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/OldestPerson/OldestPerson.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/OldestPerson/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/OldestPerson/Text.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/WordCount/Line.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/WordCount/LineConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/WordCount/Text.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud4Pak/WordCount/WordCount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud5/Box.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud5/PriorityQueue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud5/StandardDeviation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,6 +51,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -71,7 +63,7 @@
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.OldestPerson">
+  <component name="RunManager" selected="Application.Box">
     <configuration name="Aud4Pak.WordCount.WordCount" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Aud4Pak.WordCount.WordCount" />
       <module name="NaprednoIspit" />
@@ -98,12 +90,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GradesTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Aud4.OcenkiZaKurs.GradesTest" />
+    <configuration name="Box" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Aud5.Box" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Aud4.OcenkiZaKurs.*" />
+          <option name="PATTERN" value="Aud5.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -139,11 +131,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Box" />
         <item itemvalue="Application.OldestPerson" />
         <item itemvalue="Application.OldestPersonText" />
         <item itemvalue="Application.Aud4Pak.WordCount.WordCount" />
         <item itemvalue="Application.Binary" />
-        <item itemvalue="Application.GradesTest" />
       </list>
     </recent_temporary>
   </component>
@@ -156,7 +148,7 @@
       <option name="presentableId" value="Default" />
       <updated>1686656168829</updated>
       <workItem from="1686656170277" duration="11742000" />
-      <workItem from="1686735148732" duration="27484000" />
+      <workItem from="1686735148732" duration="30815000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -186,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686760132258</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Prv komit">
+      <created>1686834849357</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1686834849357</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
