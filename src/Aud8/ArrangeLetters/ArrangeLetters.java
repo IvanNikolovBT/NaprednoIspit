@@ -35,7 +35,7 @@ public class ArrangeLetters {
 //        } else {
 //            return String.format("no capital");
 //        }
-
+        return null;
     }
 
     public static void main(String[] args) {

@@ -4,18 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="KalinaDaJaPrechekam">
-      <change afterPath="$PROJECT_DIR$/src/Aud8/ArrangeLetters/ArrangeLetters.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud8/BenfordsLaw/BenfordLawTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aud8/CakePicker/RandomPicker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FileSystem/FileSystemTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FileSystem2/FileSystemTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Log/LoggerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MinMax/MinAndMax.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MojDDV/MojDDVTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/StackedCanvas/ShapesTest.java" afterDir="false" />
+    <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
+      <change afterPath="$PROJECT_DIR$/src/Aud9/BirthdayParadox/BirthdayParadoxTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud9/CountOccurence/CountOccurencesTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud9/ReverseList/ReverseList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud9/SetAndMapIntro/MapIntro.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud9/SetAndMapIntro/SetAndMapIntro.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud9/SiveOFEratosthenes/EratosthenesSieve.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BookCollection/BooksTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NaprednoIspit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/NaprednoIspit.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Aud8/ArrangeLetters/ArrangeLetters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aud8/ArrangeLetters/ArrangeLetters.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,29 +56,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
-  <component name="RunManager" selected="Application.ArrangeLetters">
-    <configuration name="ArrangeLetters" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Aud8.ArrangeLetters.ArrangeLetters" />
+}]]></component>
+  <component name="RunManager" selected="Application.BirthdayParadoxTest">
+    <configuration name="BirthdayParadoxTest (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Aud9.BirthdayParadox.BirthdayParadoxTest" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Aud8.ArrangeLetters.*" />
+          <option name="PATTERN" value="Aud9.BirthdayParadox.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -87,12 +87,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FileSystemTest (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="FileSystem2.FileSystemTest" />
+    <configuration name="BirthdayParadoxTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Aud9.BirthdayParadox.BirthdayParadoxTest" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="FileSystem2.*" />
+          <option name="PATTERN" value="Aud9.BirthdayParadox.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -100,12 +100,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FileSystemTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="FileSystem2.FileSystemTest" />
+    <configuration name="MapIntro" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Aud9.SetAndMapIntro.MapIntro" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="FileSystem2.*" />
+          <option name="PATTERN" value="Aud9.SetAndMapIntro.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -113,25 +113,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MojDDVTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MojDDV.MojDDVTest" />
+    <configuration name="SetAndMapIntro" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Aud9.SetAndMapIntro.SetAndMapIntro" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="MojDDV.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ShapesTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="StackedCanvas.ShapesTest" />
-      <module name="NaprednoIspit" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="StackedCanvas.*" />
+          <option name="PATTERN" value="Aud9.SetAndMapIntro.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -141,11 +128,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ArrangeLetters" />
-        <item itemvalue="Application.ShapesTest" />
-        <item itemvalue="Application.FileSystemTest (1)" />
-        <item itemvalue="Application.FileSystemTest" />
-        <item itemvalue="Application.MojDDVTest" />
+        <item itemvalue="Application.BirthdayParadoxTest" />
+        <item itemvalue="Application.BirthdayParadoxTest (1)" />
+        <item itemvalue="Application.MapIntro" />
+        <item itemvalue="Application.SetAndMapIntro" />
       </list>
     </recent_temporary>
   </component>
@@ -159,7 +145,8 @@
       <updated>1686656168829</updated>
       <workItem from="1686656170277" duration="11742000" />
       <workItem from="1686735148732" duration="62183000" />
-      <workItem from="1686973852521" duration="13682000" />
+      <workItem from="1686973852521" duration="15224000" />
+      <workItem from="1687020784715" duration="7112000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -210,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686863382679</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="commit">
+      <created>1687019766597</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1687019766597</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,7 +225,8 @@
     <MESSAGE value="Prv komit" />
     <MESSAGE value="Vtor" />
     <MESSAGE value="KalinaDaJaPrechekam" />
-    <option name="LAST_COMMIT_MESSAGE" value="KalinaDaJaPrechekam" />
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
