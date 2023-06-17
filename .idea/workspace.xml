@@ -4,25 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="Vtor">
-      <change afterPath="$PROJECT_DIR$/src/Date/LocalDateTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Date/LocalDateTimeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Date/LocalTimeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab1/zad1/RomanConverterTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab1/zad2/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab1/zad2/Bank.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab1/zad2/BankTester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab1/zad2/FlatAmountProvisionTransaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab1/zad2/FlatPercentProvisionTransaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab1/zad2/Transaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab1/zad3/ArrayReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab1/zad3/IntegerArray.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab1/zad3/IntegerArrayTester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab2/zad1/DoubleMatrix.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab2/zad1/DoubleMatrixTester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab2/zad1/InsufficientElementsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab2/zad1/InvalidColumnNumberException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab2/zad1/InvalidRowNumberException.java" afterDir="false" />
+    <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="KalinaDaJaPrechekam">
+      <change afterPath="$PROJECT_DIR$/src/Aud8/ArrangeLetters/ArrangeLetters.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud8/BenfordsLaw/BenfordLawTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aud8/CakePicker/RandomPicker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FileSystem/FileSystemTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FileSystem2/FileSystemTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Log/LoggerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MinMax/MinAndMax.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MojDDV/MojDDVTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/StackedCanvas/ShapesTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NaprednoIspit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/NaprednoIspit.iml" afterDir="false" />
     </list>
@@ -34,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -55,6 +46,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2R9J3kmvgpACISCxZcLEdWZL2Y9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -63,29 +57,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.IntegerArrayTester">
-    <configuration name="AuditionTest (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab.Zad1CHAT.AuditionTest" />
+}</component>
+  <component name="RunManager" selected="Application.ArrangeLetters">
+    <configuration name="ArrangeLetters" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Aud8.ArrangeLetters.ArrangeLetters" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab.Zad1CHAT.*" />
+          <option name="PATTERN" value="Aud8.ArrangeLetters.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -93,12 +87,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BankTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab1.zad2.BankTester" />
+    <configuration name="FileSystemTest (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FileSystem2.FileSystemTest" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab1.zad2.*" />
+          <option name="PATTERN" value="FileSystem2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -106,12 +100,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IntegerArrayTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab1.zad3.IntegerArrayTester" />
+    <configuration name="FileSystemTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FileSystem2.FileSystemTest" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab1.zad3.*" />
+          <option name="PATTERN" value="FileSystem2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -119,12 +113,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RomanConverterTest (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab1.zad1.RomanConverterTest" />
+    <configuration name="MojDDVTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MojDDV.MojDDVTest" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab1.zad1.*" />
+          <option name="PATTERN" value="MojDDV.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -132,12 +126,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RomanConverterTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab1.zad1.RomanConverterTest" />
+    <configuration name="ShapesTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="StackedCanvas.ShapesTest" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Lab1.zad1.*" />
+          <option name="PATTERN" value="StackedCanvas.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -147,11 +141,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.IntegerArrayTester" />
-        <item itemvalue="Application.BankTester" />
-        <item itemvalue="Application.RomanConverterTest (1)" />
-        <item itemvalue="Application.RomanConverterTest" />
-        <item itemvalue="Application.AuditionTest (2)" />
+        <item itemvalue="Application.ArrangeLetters" />
+        <item itemvalue="Application.ShapesTest" />
+        <item itemvalue="Application.FileSystemTest (1)" />
+        <item itemvalue="Application.FileSystemTest" />
+        <item itemvalue="Application.MojDDVTest" />
       </list>
     </recent_temporary>
   </component>
@@ -164,7 +158,8 @@
       <option name="presentableId" value="Default" />
       <updated>1686656168829</updated>
       <workItem from="1686656170277" duration="11742000" />
-      <workItem from="1686735148732" duration="46442000" />
+      <workItem from="1686735148732" duration="62183000" />
+      <workItem from="1686973852521" duration="13682000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -208,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686838650878</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="KalinaDaJaPrechekam">
+      <created>1686863382679</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1686863382679</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,6 +230,14 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Prv komit" />
     <MESSAGE value="Vtor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Vtor" />
+    <MESSAGE value="KalinaDaJaPrechekam" />
+    <option name="LAST_COMMIT_MESSAGE" value="KalinaDaJaPrechekam" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="java-exception" />
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
