@@ -211,6 +211,7 @@ class TaskManager {
                 }).filter(Objects::nonNull).collect(Collectors.groupingBy(ITask::getCategory,TreeMap::new,Collectors.toList()));
     }
 
+
     public void printTasks(OutputStream os, boolean includePriority, boolean includeCategory) {
 
     }
