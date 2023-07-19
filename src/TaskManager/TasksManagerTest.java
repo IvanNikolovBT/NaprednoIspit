@@ -1,30 +1,16 @@
-package TaskManager;
+//package mk.ukim.finki.primeri;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.*;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.TreeMap;
-import java.util.function.Predicate;
+import java.util.*;
 import java.util.stream.Collectors;
-
+import java.util.stream.Stream;
 
 interface ITask {
-    public String getCategory();
-
-    public String getName();
-
-    public String getDesc();
-
-    public int getPriority();
-
-    public LocalDateTime getDue();
-
+    LocalDateTime getDeadline();
+    int getPriority();
+    String getCategory();
 }
 
 class DeadlineNotValidException extends Exception {
@@ -33,30 +19,22 @@ class DeadlineNotValidException extends Exception {
     }
 }
 
+
 class SimpleTask implements ITask {
+
     String category;
     String name;
-    String desc;
+    String description;
 
-    public SimpleTask(String category, String name, String desc) {
+    public SimpleTask(String category, String name, String description) {
         this.category = category;
         this.name = name;
-        this.desc = desc;
+        this.description = description;
     }
 
     @Override
-    public String getCategory() {
-        return category;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String getDesc() {
-        return desc;
+    public LocalDateTime getDeadline() {
+        return LocalDateTime.MAX;
     }
 
     @Override
@@ -65,17 +43,21 @@ class SimpleTask implements ITask {
     }
 
     @Override
-    public LocalDateTime getDue() {
-        return LocalDateTime.MAX;
+    public String getCategory() {
+        return category;
     }
 
     @Override
     public String toString() {
-        return "Task{name='" + getName() + "', " + "description='" + getDesc() + "'}";
+        final StringBuilder sb = new StringBuilder("Task{");
+        sb.append("name='").append(name).append('\'');
+        sb.append(", description='").append(description).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
 
-abstract class TaskDecorator implements ITask {
+abstract class TaskDecorator implements ITask{
     ITask iTask;
 
     public TaskDecorator(ITask iTask) {
@@ -83,28 +65,18 @@ abstract class TaskDecorator implements ITask {
     }
 }
 
-class PriorityTask extends TaskDecorator {
+class PriorityTaskDecorator extends TaskDecorator {
+
     int priority;
 
-    public PriorityTask(ITask iTask, int priority) {
+    public PriorityTaskDecorator(ITask iTask, int priority) {
         super(iTask);
         this.priority = priority;
     }
 
-
     @Override
-    public String getCategory() {
-        return iTask.getCategory();
-    }
-
-    @Override
-    public String getName() {
-        return iTask.getName();
-    }
-
-    @Override
-    public String getDesc() {
-        return iTask.getDesc();
+    public LocalDateTime getDeadline() {
+        return iTask.getDeadline();
     }
 
     @Override
@@ -113,17 +85,22 @@ class PriorityTask extends TaskDecorator {
     }
 
     @Override
-    public LocalDateTime getDue() {
-        return iTask.getDue();
+    public String getCategory() {
+        return iTask.getCategory();
     }
 
     @Override
     public String toString() {
-        return iTask.toString().substring(0, iTask.toString().length() - 1) + ", priority=" + getPriority() + "}";
+        StringBuilder sb = new StringBuilder();
+        sb.append(iTask.toString(), 0, iTask.toString().length()-1);
+        sb.append(", priority=").append(priority);
+        sb.append('}');
+        return sb.toString();
     }
 }
 
 class TimeTaskDecorator extends TaskDecorator {
+
     LocalDateTime deadline;
 
     public TimeTaskDecorator(ITask iTask, LocalDateTime deadline) {
@@ -132,18 +109,8 @@ class TimeTaskDecorator extends TaskDecorator {
     }
 
     @Override
-    public String getCategory() {
-        return iTask.getCategory();
-    }
-
-    @Override
-    public String getName() {
-        return iTask.getName();
-    }
-
-    @Override
-    public String getDesc() {
-        return iTask.getDesc();
+    public LocalDateTime getDeadline() {
+        return deadline;
     }
 
     @Override
@@ -152,76 +119,124 @@ class TimeTaskDecorator extends TaskDecorator {
     }
 
     @Override
-    public LocalDateTime getDue() {
-        return deadline;
+    public String getCategory() {
+        return iTask.getCategory();
     }
 
     @Override
     public String toString() {
-        return iTask.toString().substring(0, iTask.toString().length() - 1) + ", deadline=" + deadline + '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append(iTask.toString(), 0, iTask.toString().length()-1);
+        sb.append(", deadline=").append(deadline);
+        sb.append('}');
+        return sb.toString();
     }
 }
 
 class TaskFactory {
-    public static ITask createTask(String line) throws DeadlineNotValidException {
-        String[] parts = line.split(",");
+    public static ITask createTask (String line) throws DeadlineNotValidException {
+        String [] parts = line.split(",");
         String category = parts[0];
         String name = parts[1];
-        String desc = parts[2];
-        SimpleTask base = new SimpleTask(category, name, desc);
-        if (parts.length == 4) {
+        String description = parts[2];
+        SimpleTask base = new SimpleTask(category, name, description);
+        if (parts.length==3) {
+            return base;
+        } else if (parts.length==4) {
             try {
                 int priority = Integer.parseInt(parts[3]);
-            } catch (Exception e) {
-                LocalDateTime localDateTime = LocalDateTime.parse(parts[3]);
-                checkDeadline(localDateTime);
-                return new TimeTaskDecorator(base, localDateTime);
+                return new PriorityTaskDecorator(base, priority);
             }
-        } else if (parts.length == 5) {
-            LocalDateTime localDateTime = LocalDateTime.parse(parts[3]);
-            checkDeadline(localDateTime);
+            catch (Exception e) { //parsing failed, it's a date
+                LocalDateTime deadline = LocalDateTime.parse(parts[3]);
+                checkDeadline(deadline);
+                return new TimeTaskDecorator(base, deadline);
+            }
+        } else {
+            LocalDateTime deadline = LocalDateTime.parse(parts[3]);
+            checkDeadline(deadline);
             int priority = Integer.parseInt(parts[4]);
-            return new PriorityTask(new TimeTaskDecorator(base, localDateTime), priority);
-
+            return new PriorityTaskDecorator(new TimeTaskDecorator(base,deadline), priority);
         }
-        return base;
     }
 
-    private static void checkDeadline(LocalDateTime localDateTime) throws DeadlineNotValidException {
-        if (localDateTime.isBefore(LocalDateTime.now())) throw new DeadlineNotValidException(localDateTime);
+    private static void checkDeadline (LocalDateTime deadline) throws DeadlineNotValidException {
+        if (deadline.isBefore(LocalDateTime.now()))
+            throw new DeadlineNotValidException(deadline);
     }
 }
 
 class TaskManager {
-    Map<String, List<ITask>> tasks;
+    Map<String,List<ITask>> tasks;
 
     public TaskManager() {
-        this.tasks = new TreeMap<>();
+        tasks = new TreeMap<>();
     }
 
-    public void readTasks(InputStream inputStream) {
-        tasks=new BufferedReader(new InputStreamReader(inputStream)).lines()
+    public void readTasks (InputStream inputStream) {
+        tasks = new BufferedReader(new InputStreamReader(inputStream))
+                .lines()
                 .map(line -> {
                     try {
                         return TaskFactory.createTask(line);
                     } catch (DeadlineNotValidException e) {
                         System.out.println(e.getMessage());
                     }
-                    return  null;
-                }).filter(Objects::nonNull).collect(Collectors.groupingBy(ITask::getCategory,TreeMap::new,Collectors.toList()));
+                    return null;
+                })
+                .filter(Objects::nonNull)
+                .collect(Collectors.groupingBy(
+                        ITask::getCategory,
+                        TreeMap::new,
+                        Collectors.toList())
+                );
     }
 
+    public void addTask (ITask iTask) {
+        tasks.computeIfAbsent(iTask.getCategory(), k -> new ArrayList<>());
+        tasks.computeIfPresent(iTask.getCategory(), (k,v) -> {
+            v.add(iTask);
+            return v;
+        });
+    }
 
-    public void printTasks(OutputStream os, boolean includePriority, boolean includeCategory) {
+    public void printTasks(OutputStream os, boolean includePriority, boolean byCategory) {
+        PrintWriter pw = new PrintWriter(os);
 
+        Comparator<ITask> priorityComparator = Comparator.comparing(ITask::getPriority).thenComparing(task -> Duration.between(LocalDateTime.now(), task.getDeadline()));
+        Comparator<ITask> simpleComparator = Comparator.comparing(task -> Duration.between(LocalDateTime.now(), task.getDeadline()));
+
+        if (byCategory) {
+            tasks.forEach((category, t) -> {
+                pw.println(category.toUpperCase());
+                t.stream().sorted(includePriority ? priorityComparator : simpleComparator).forEach(pw::println);
+            });
+        }
+        else {
+            tasks.values().stream()
+                    .flatMap(Collection::stream)
+                    .sorted(includePriority ? priorityComparator : simpleComparator)
+                    .forEach(pw::println);
+        }
+
+        pw.flush();
     }
 }
 
 public class TasksManagerTest {
 
     public static void main(String[] args) {
-
+//        ITask timedTask = new TimeTaskDecorator(new SimpleTask("SCHOOL","SP", "lab po SP"), LocalDateTime.now().plusHours(240));
+//        ITask priorityTask = new PriorityTaskDecorator(new SimpleTask("SCHOOL","NP", "lab po NP"),2);
+//        ITask priorityTask2 = new PriorityTaskDecorator(new SimpleTask("SCHOOL","NP", "lab2  po NP"),1);
+//        ITask priorityAndTimedTask = new PriorityTaskDecorator(new TimeTaskDecorator(new SimpleTask("SCHOOL","VP", "lab po VP"), LocalDateTime.now().plusHours(1000)), 3);
+//
         TaskManager manager = new TaskManager();
+//
+//        manager.addTask(timedTask);
+//        manager.addTask(priorityTask);
+//        manager.addTask(priorityTask2);
+//        manager.addTask(priorityAndTimedTask);
 
         System.out.println("Tasks reading");
         manager.readTasks(System.in);
