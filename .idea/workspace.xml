@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
+      <change afterPath="$PROJECT_DIR$/src/CarTest/CarTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ClusterTest/ClusterTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TimesTest/TimesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TimesTest/TimesTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +67,20 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.TimesTest (4)">
+  <component name="RunManager" selected="Application.ClusterTest">
+    <configuration name="ClusterTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ClusterTest.ClusterTest" />
+      <module name="NaprednoIspit" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ClusterTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TimesTest (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TimesTest.TimesTest" />
       <module name="NaprednoIspit" />
@@ -119,26 +133,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TimesTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TimesTest.TimesTest" />
-      <module name="NaprednoIspit" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="TimesTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ClusterTest" />
         <item itemvalue="Application.TimesTest (4)" />
         <item itemvalue="Application.TimesTest (3)" />
         <item itemvalue="Application.TimesTest (2)" />
         <item itemvalue="Application.TimesTest (1)" />
-        <item itemvalue="Application.TimesTest" />
       </list>
     </recent_temporary>
   </component>
@@ -163,7 +164,7 @@
       <workItem from="1689600257996" duration="4498000" />
       <workItem from="1689697106362" duration="3367000" />
       <workItem from="1689766110184" duration="11736000" />
-      <workItem from="1689853841014" duration="2483000" />
+      <workItem from="1689853841014" duration="5775000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -291,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689533847068</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="commit">
+      <created>1689856382076</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1689856382076</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
