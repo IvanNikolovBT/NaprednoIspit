@@ -10,6 +10,7 @@
       <excludeFolder url="file://$MODULE_DIR$/src/Log" />
       <excludeFolder url="file://$MODULE_DIR$/src/Aud8" />
       <excludeFolder url="file://$MODULE_DIR$/src/GenericCollection" />
+      <excludeFolder url="file://$MODULE_DIR$/src/DoubleMatrix" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

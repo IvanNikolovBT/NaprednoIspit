@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/ApplicantEvaluationTest/ApplicantEvaluationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/IntegerListTest/IntegerListTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Coin/LoadedCoinTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DoubleMatrix/DoubleMatrixTester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/OnlineShop/OnlineShopTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/WeatherStationTest/WeatherStationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NaprednoIspit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/NaprednoIspit.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,16 +72,24 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="DoubleMatrix" />
       <recent name="ApplicantEvaluationTest" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ApplicantEvaluationTest">
-    <configuration name="ApplicantEvaluationTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ApplicantEvaluationTest.ApplicantEvaluationTest" />
+  <component name="RunManager" selected="Application.WeatherStationTest (1)">
+    <configuration name="WeatherStationTest (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WeatherStationTest" />
+      <module name="NaprednoIspit" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WeatherStationTest (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WeatherStationTest.WeatherStationTest" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ApplicantEvaluationTest.*" />
+          <option name="PATTERN" value="WeatherStationTest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -86,65 +97,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ClusterTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ClusterTest.ClusterTest" />
+    <configuration name="WeatherStationTest (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WeatherStationTest" />
       <module name="NaprednoIspit" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ClusterTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TimesTest (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TimesTest.TimesTest" />
+    <configuration name="WeatherStationTest (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WeatherStationTest" />
       <module name="NaprednoIspit" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="TimesTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TimesTest (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TimesTest.TimesTest" />
+    <configuration name="WeatherStationTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WeatherStationTest" />
       <module name="NaprednoIspit" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="TimesTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TimesTest (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TimesTest.TimesTest" />
-      <module name="NaprednoIspit" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="TimesTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ApplicantEvaluationTest" />
-        <item itemvalue="Application.ClusterTest" />
-        <item itemvalue="Application.TimesTest (4)" />
-        <item itemvalue="Application.TimesTest (3)" />
-        <item itemvalue="Application.TimesTest (2)" />
+        <item itemvalue="Application.WeatherStationTest (1)" />
+        <item itemvalue="Application.WeatherStationTest" />
+        <item itemvalue="Application.WeatherStationTest (5)" />
+        <item itemvalue="Application.WeatherStationTest (4)" />
+        <item itemvalue="Application.WeatherStationTest (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -169,7 +149,7 @@
       <workItem from="1689600257996" duration="4498000" />
       <workItem from="1689697106362" duration="3367000" />
       <workItem from="1689766110184" duration="11736000" />
-      <workItem from="1689853841014" duration="9482000" />
+      <workItem from="1689853841014" duration="26364000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -311,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689877759832</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="commit">
+      <created>1689883728003</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1689883728003</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
