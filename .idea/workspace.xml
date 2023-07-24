@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/PizzaOrderTest/PizzaOrderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Subtitles/SubtitlesTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Subtitles/SubtitlesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Subtitles/SubtitlesTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,52 +72,6 @@
       <recent name="ApplicantEvaluationTest" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.SubtitlesTest (1)">
-    <configuration name="SubtitlesTest (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="SubtitlesTest" />
-      <module name="NaprednoIspit" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SubtitlesTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="SubtitlesTest" />
-      <module name="NaprednoIspit" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WeatherStationTest (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="WeatherStationTest" />
-      <module name="NaprednoIspit" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WeatherStationTest (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="WeatherStationTest" />
-      <module name="NaprednoIspit" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WeatherStationTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="WeatherStationTest" />
-      <module name="NaprednoIspit" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.SubtitlesTest (1)" />
-        <item itemvalue="Application.SubtitlesTest" />
-        <item itemvalue="Application.WeatherStationTest (1)" />
-        <item itemvalue="Application.WeatherStationTest" />
-        <item itemvalue="Application.WeatherStationTest (5)" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -140,7 +93,8 @@
       <workItem from="1689600257996" duration="4498000" />
       <workItem from="1689697106362" duration="3367000" />
       <workItem from="1689766110184" duration="11736000" />
-      <workItem from="1689853841014" duration="34474000" />
+      <workItem from="1689853841014" duration="34928000" />
+      <workItem from="1690198959809" duration="2451000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -296,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690123428412</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="commit">
+      <created>1690153674851</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1690153674851</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,11 +390,25 @@
           <line>216</line>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Subtitles/SubtitlesTest.java</url>
+          <line>92</line>
+          <properties class="Subtitles.Subtitles" method="shift">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint enabled="true" type="java-exception" />
       </default-breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Subtitles" memberName="titles" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/NaprednoIspit$ApplicantEvaluationTest.ic" NAME="ApplicantEvaluationTest Coverage Results" MODIFIED="1689880004750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

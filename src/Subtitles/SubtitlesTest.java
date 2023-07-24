@@ -1,7 +1,6 @@
-//package Subtitles;
+package Subtitles;
 
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -31,21 +30,26 @@ class Titles {
     public Titles(int number, String text, String time) {
         this.text = text;
         this.number = number;
-        String[] splitter = text.split("--->");
+        String[] splitter = time.split(" --> ");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss,SSS");
         timeFrom = LocalTime.parse(splitter[0], formatter);
         timeTo=LocalTime.parse(splitter[1],formatter);
-//        timeFrom.plus(100, ChronoUnit.MILLIS);
     }
     public void shift(int ms)
     {
-        timeFrom.plus(ms,ChronoUnit.MILLIS);
-        timeTo.plus(ms,ChronoUnit.MILLIS);
+        timeFrom=timeFrom.plus(ms,ChronoUnit.MILLIS);
+        timeTo=timeTo.plus(ms,ChronoUnit.MILLIS);
     }
 
     @Override
     public String toString() {
-        return number+"\n"+timeFrom+" ---> "+timeTo+"\n"+text+"\n";
+        StringBuilder stringBuilder=new StringBuilder();
+        String[]splitter=timeFrom.toString().split("\\.");
+        stringBuilder.append(splitter[0]).append(",").append(splitter[1]);
+        splitter=timeTo.toString().split("\\.");
+        stringBuilder.append(" --> ");
+        stringBuilder.append(splitter[0]).append(",").append(splitter[1]);
+        return number+"\n"+stringBuilder.toString()+"\n"+text+"\n";
     }
 }
 
@@ -61,11 +65,22 @@ class Subtitles {
     while (scanner.hasNextLine())
     {
         String line=scanner.nextLine();
-        int number=Integer.parseInt(scanner.nextLine());
+        int number=Integer.parseInt(line);
         String time=scanner.nextLine();
         String text=scanner.nextLine();
-        Titles titles=new Titles(number,text,line);
+        Titles titles=new Titles(number,text,time);
         this.titles.add(titles);
+        StringBuilder stringBuilder=new StringBuilder();
+        if(!scanner.hasNextLine())
+        break;
+        while(true)
+        {
+            line=scanner.nextLine();
+            if(line.trim().length()==0)
+                break;
+            stringBuilder.append(line);
+            stringBuilder.append("\n");
+        }
     }
     return  titles.size();
     }
