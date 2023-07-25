@@ -1,4 +1,4 @@
-package Subtitles;
+//package Subtitles;
 
 import java.io.InputStream;
 import java.time.LocalTime;
@@ -49,7 +49,7 @@ class Titles {
         splitter=timeTo.toString().split("\\.");
         stringBuilder.append(" --> ");
         stringBuilder.append(splitter[0]).append(",").append(splitter[1]);
-        return number+"\n"+stringBuilder.toString()+"\n"+text+"\n";
+        return number+"\n"+stringBuilder.toString()+"\n"+text;
     }
 }
 
@@ -67,20 +67,19 @@ class Subtitles {
         String line=scanner.nextLine();
         int number=Integer.parseInt(line);
         String time=scanner.nextLine();
-        String text=scanner.nextLine();
-        Titles titles=new Titles(number,text,time);
-        this.titles.add(titles);
-        StringBuilder stringBuilder=new StringBuilder();
-        if(!scanner.hasNextLine())
-        break;
+        StringBuilder text=new StringBuilder();
         while(true)
         {
+            if(!scanner.hasNextLine())
+                break;
             line=scanner.nextLine();
             if(line.trim().length()==0)
                 break;
-            stringBuilder.append(line);
-            stringBuilder.append("\n");
+            text.append(line);
+            text.append("\n");
         }
+        Titles titles=new Titles(number,text.toString(),time);
+        this.titles.add(titles);
     }
     return  titles.size();
     }
