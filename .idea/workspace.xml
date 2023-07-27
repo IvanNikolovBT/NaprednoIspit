@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/Names/NamesTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PhonebookTester/PhoneBookTester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/F1Test/F1Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NaprednoIspit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/NaprednoIspit.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,13 +73,13 @@
       <recent name="ApplicantEvaluationTest" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.NamesTest">
-    <configuration name="NamesTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Names.NamesTest" />
+  <component name="RunManager">
+    <configuration name="F1Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="F1Test.F1Test" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Names.*" />
+          <option name="PATTERN" value="F1Test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -89,17 +87,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StudentRecordsTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="StudentRecordsTest" />
-      <module name="NaprednoIspit" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.NamesTest" />
-        <item itemvalue="Application.StudentRecordsTest" />
+        <item itemvalue="Application.F1Test" />
       </list>
     </recent_temporary>
   </component>
@@ -128,6 +118,7 @@
       <workItem from="1690198959809" duration="2451000" />
       <workItem from="1690205615625" duration="7469000" />
       <workItem from="1690373728922" duration="9611000" />
+      <workItem from="1690451229429" duration="4296000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -290,7 +281,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690153674851</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="commit">
+      <option name="closed" value="true" />
+      <created>1690451245185</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1690451245185</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -444,17 +443,27 @@
           <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Names/NamesTest.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="56" />
+          <url>file://$PROJECT_DIR$/src/F1Test/F1Test.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="59" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Names/NamesTest.java</url>
-          <line>46</line>
+          <url>file://$PROJECT_DIR$/src/F1Test/F1Test.java</url>
+          <line>72</line>
           <properties>
             <option name="lambda-ordinal" value="-1" />
           </properties>
-          <option name="timeStamp" value="57" />
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/F1Test/F1Test.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/F1Test/F1Test.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="63" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Subtitles/SubtitlesTest.java</url>
@@ -464,6 +473,24 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/F1Test/F1Test.java</url>
+          <line>70</line>
+          <properties class="F1Test.F1Race" method="readResults">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/F1Test/F1Test.java</url>
+          <line>26</line>
+          <properties class="F1Test.Driver" method="&lt;init&gt;">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="61" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -476,6 +503,11 @@
         <PinnedItemInfo parentTag="Subtitles" memberName="titles" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <inline-watch fileUrl="file://$PROJECT_DIR$/src/F1Test/F1Test.java" line="37">
+        <watch expression="splitter[1]" language="JAVA" />
+      </inline-watch>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/NaprednoIspit$ApplicantEvaluationTest.ic" NAME="ApplicantEvaluationTest Coverage Results" MODIFIED="1689880004750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
