@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/FootballTableTest/FootballTableTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GenericFracgion/GenericFractionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +30,19 @@
       </GitPushTagMode>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="aff705d5-521b-4177-b87e-5a09eb3c39fc" />
+        <option name="url" value="https://github.com/IvanNikolovBT/NaprednoIspit.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Aud4/OldestPerson/OldestPersonText.java" root0="FORCE_HIGHLIGHTING" />
@@ -147,7 +160,7 @@
       <workItem from="1690205615625" duration="7469000" />
       <workItem from="1690373728922" duration="9611000" />
       <workItem from="1690451229429" duration="5992000" />
-      <workItem from="1690720763786" duration="19660000" />
+      <workItem from="1690720763786" duration="21623000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -342,7 +355,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690810146626</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="commit">
+      <option name="closed" value="true" />
+      <created>1690832611042</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1690832611042</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
