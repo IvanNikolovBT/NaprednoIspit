@@ -156,17 +156,22 @@ class Faculty {
         students.values().stream().sorted(Comparator.comparing(Student::getPassed).thenComparing(Student::getAverageGrade).reversed()).limit(n).forEach(System.out::println);
     }
 
-//    void printCourses() {
-//       courseStats.entrySet().stream().sorted(
-//               Comparator.comparing(i->i.getValue().size())
-//       ).forEach(i-> System.out.printf("%s %s %s%n",i.getKey(),i.getValue().size(),i.getValue().avg()));
-//    }
-void printCourses() {
-    courseStats.entrySet().stream()
-            .sorted(Comparator.comparing(entry -> entry.getValue().size())
-                    .thenComparing(entry -> entry.getKey()))
-            .forEach(entry -> System.out.printf("%s %d %f%n", entry.getKey(), entry.getValue().size(), entry.getValue().avg()));
-}
+    void printCourses() {
+
+       courseStats.entrySet().stream().sorted(
+               Comparator.comparing(i->i.getValue().size())
+       ).forEach(i-> System.out.printf("%s %s %s%n",i.getKey(),i.getValue().size(),i.getValue().avg()));
+    }
+//void printCourses() {
+//    Comparator<Map.Entry<String, CStats>> comparator = Comparator.comparing(entry -> entry.)
+//            .thenComparing(entry -> entry.getKey());
+//
+//    courseStats.entrySet().stream()
+//            .sorted(comparator)
+//            .forEach(entry -> System.out.printf("%s %d %f%n", entry.getKey(), entry.getValue().size(), entry.getValue().avg()));
+//}
+
+
 }
 
 public class FacultyTest {
