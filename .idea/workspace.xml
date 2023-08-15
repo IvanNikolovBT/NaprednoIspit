@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/Anagrams/Anagrams.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MapSortingTest/MapSortingTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/QueueTest/QueueTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CirclesTest/CirclesTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ComplexNumber/ComplexNumberTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +52,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2R9J3kmvgpACISCxZcLEdWZL2Y9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -88,7 +87,20 @@
       <recent name="ApplicantEvaluationTest" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.CirclesTest">
+    <configuration name="CirclesTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="CirclesTest.CirclesTest" />
+      <module name="NaprednoIspit" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CirclesTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="QueueTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="QueueTest.QueueTest" />
       <module name="NaprednoIspit" />
@@ -104,6 +116,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CirclesTest" />
         <item itemvalue="Application.QueueTest" />
       </list>
     </recent_temporary>
@@ -139,7 +152,9 @@
       <workItem from="1691069924021" duration="5275000" />
       <workItem from="1691075258813" duration="2358000" />
       <workItem from="1691677927487" duration="3213000" />
-      <workItem from="1691843600893" duration="11351000" />
+      <workItem from="1691843600893" duration="11849000" />
+      <workItem from="1692013751989" duration="1124000" />
+      <workItem from="1692106051840" duration="3341000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -382,7 +397,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691943358079</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="commit">
+      <option name="closed" value="true" />
+      <created>1691948948043</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1691948948043</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -587,6 +610,16 @@
           <url>file://$PROJECT_DIR$/src/TripleTest/TripleTest.java</url>
           <line>17</line>
           <option name="timeStamp" value="97" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/CirclesTest/CirclesTest.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="99" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/CirclesTest/CirclesTest.java</url>
+          <line>237</line>
+          <option name="timeStamp" value="100" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Subtitles/SubtitlesTest.java</url>
