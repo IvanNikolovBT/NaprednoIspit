@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/CirclesTest/CirclesTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ComplexNumber/ComplexNumberTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Component/ComponentTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ContactsTester/ContactsTester.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -154,7 +154,7 @@
       <workItem from="1691677927487" duration="3213000" />
       <workItem from="1691843600893" duration="11849000" />
       <workItem from="1692013751989" duration="1124000" />
-      <workItem from="1692106051840" duration="3341000" />
+      <workItem from="1692106051840" duration="9415000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -405,7 +405,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691948948043</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="commit">
+      <option name="closed" value="true" />
+      <created>1692109768391</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1692109768391</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
