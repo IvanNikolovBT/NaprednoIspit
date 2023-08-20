@@ -8,7 +8,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-
 public class FootballTableTest {
     public static void main(String[] args) throws IOException {
         FootballTable table = new FootballTable();
@@ -25,12 +24,13 @@ public class FootballTableTest {
     }
 }
 
-class Team implements Comparable<Team> {
-
+class Team {
     String name;
     int wins;
     int draws;
     int losses;
+    int scored;
+    int taken;
 
     public Team(String name) {
         this.name = name;
@@ -38,50 +38,62 @@ class Team implements Comparable<Team> {
         draws = 0;
         losses = 0;
     }
-
+    public  void addTaken(int num)
+    {
+        taken+=num;
+    }
+    public void addScored(int num)
+    {
+        scored+=num;
+    }
     public void addWin() {
         wins++;
-    }
-
-    public void addDraw() {
-        draws++;
     }
 
     public void addLoss() {
         losses++;
     }
 
+    public void addDraw() {
+        draws++;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public int getDraws() {
+        return draws;
+    }
+
+    public int getLosses() {
+        return losses;
+    }
+    public int getPoints()
+    {
+        return wins*3+draws;
+    }
+    public int getPlayed()
+    {
+        return wins+draws+losses;
+    }
+    public int getDif()
+    {
+        return scored-taken;
+    }
+
     @Override
     public String toString() {
-        return String.format("%-15s %5d %5d %5d %5d %5d", name, all(), wins, draws, losses, points());
-    }
-
-    private int points() {
-        return wins * 3 + draws;
-    }
-
-    private int all() {
-        return draws + wins + losses;
-    }
-
-    @Override
-    public int compareTo(Team o) {
-        int v=Integer.compare(points(),o.points());
-        if(v==0)
-        {
-            v=Integer.compare(Math.abs(wins-losses),Math.abs(o.wins-o.losses));
-            if(v==0)
-            {
-                return  -name.compareTo(o.name);
-            }
-            return -v;
-        }
-        return -v;
+        return String.format("%-15s%5d%5d%5d%5d%5d",name,getPlayed(),getWins(),getDraws(),getLosses(),getPoints());
     }
 }
 
 class FootballTable {
-    TreeMap<String, Team> teams;
+    Map<String, Team> teams;
 
     public FootballTable() {
         teams = new TreeMap<>();
@@ -89,71 +101,44 @@ class FootballTable {
 
     public void addGame(String homeTeam, String awayTeam, int homeGoals, int awayGoals) {
         Team home;
+        if (teams.containsKey(homeTeam))
+             home=teams.get(homeTeam);
+        else
+             home=new Team(homeTeam);
         Team away;
+        if (teams.containsKey(awayTeam))
+            away=teams.get(awayTeam);
+        else
+            away=new Team(awayTeam);
+        addInfo(homeGoals, awayGoals, home, away);
+        teams.put(homeTeam,home);
+        teams.put(awayTeam,away);
+    }
 
-        if (homeGoals > awayGoals) {
-            //home win
-            if (teams.containsKey(homeTeam)) {
-                home = teams.get(homeTeam);
-                home.addWin();
-            } else {
-                home = new Team(homeTeam);
-                home.addWin();
-                teams.put(homeTeam, home);
-            }
-            if (teams.containsKey(awayTeam)) {
-                away = teams.get(awayTeam);
-                away.addLoss();
-            } else {
-                away = new Team(awayTeam);
-                away.addLoss();
-                teams.put(awayTeam, away);
-            }
+    private void addInfo(int homeGoals, int awayGoals, Team home,Team away) {
+        if(homeGoals > awayGoals)
+        {
+            home.addWin();
+            away.addLoss();
 
-        } else if (homeGoals < awayGoals) {
-            //away win
-            if (teams.containsKey(homeTeam)) {
-                home = teams.get(homeTeam);
-                home.addLoss();
-            } else {
-                home = new Team(homeTeam);
-                home.addLoss();
-                teams.put(homeTeam, home);
-            }
-            if (teams.containsKey(awayTeam)) {
-                away = teams.get(awayTeam);
-                away.addWin();
-            } else {
-                away = new Team(awayTeam);
-                away.addWin();
-                teams.put(awayTeam, away);
-            }
-        } else {
-            //draw
-            if (teams.containsKey(homeTeam)) {
-                home = teams.get(homeTeam);
-                home.addDraw();
-            } else {
-                home = new Team(homeTeam);
-                home.addDraw();
-                teams.put(homeTeam, home);
-            }
-            if (teams.containsKey(awayTeam)) {
-                away = teams.get(awayTeam);
-                away.addDraw();
-            } else {
-                away = new Team(awayTeam);
-                away.addDraw();
-                teams.put(awayTeam, away);
-            }
+        } else if (homeGoals == awayGoals) {
+            home.addDraw();
+            away.addDraw();
 
         }
+        else {
+            home.addLoss();
+            away.addWin();
+        }
+        home.addScored(homeGoals);
+        home.addTaken(awayGoals);
+        away.addScored(awayGoals);
+        away.addTaken(homeGoals);
     }
 
     public void printTable() {
         AtomicInteger z=new AtomicInteger(1);
-        teams.entrySet().stream().sorted(Map.Entry.<String,Team>comparingByValue()).forEach(i-> System.out.printf("%2d. %s%n",z.getAndIncrement(),i.getValue()));
-
+        teams.values().stream().sorted(Comparator.comparing(Team::getPoints,Comparator.reverseOrder()).thenComparing(Team::getDif,Comparator.reverseOrder()).thenComparing(Team::getName)).forEach(i-> System.out.printf("%2d. %s\n",z.getAndIncrement(),i));
     }
 }
 

@@ -25,36 +25,68 @@ public class NamesTest {
     }
 }
 
-class Names
-{
+class Word {
+    String word;
+    int count;
+    int uniqe;
 
-    Map<String,Integer> count;
-    public Names()
-    {
-
-        count=new TreeMap<>(String::compareToIgnoreCase);
+    public Word(String word) {
+        this.word = word;
+        count = 1;
+        calcualteUnique(word);
     }
+
+    private void calcualteUnique(String word) {
+        Set<Character> uc = new HashSet<>();
+        for (Character c : word.toCharArray())
+            uc.add(Character.toLowerCase(c));
+        uniqe = uc.size();
+    }
+
+    public void increment() {
+        count++;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s (%d) %d", word, count, uniqe);
+    }
+
+    public String getWord() {
+        return word;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+
+}
+
+class Names {
+    Map<String, Word> words;
+
+    public Names() {
+        words = new TreeMap<>();
+    }
+
     public void addName(String name) {
-        count.computeIfPresent(name, (k, v) -> v+1);
-        count.putIfAbsent(name, 1);
+        Word w;
+        if (words.containsKey(name)) {
+            w = words.get(name);
+            w.increment();
+        } else w = new Word(name);
+
+        words.put(name, w);
     }
-    public void printN(int n)
-    {
-        count.entrySet().stream().filter(a->a.getValue()>=n).forEach(i-> System.out.println(String.format("%s (%d) %d",i.getKey(),i.getValue(),countUnique(i.getKey()))));
+
+    public void printN(int n) {
+        words.values().stream().filter(i -> i.count >= n).sorted(Comparator.comparing(Word::getWord)).forEach(System.out::println);
     }
-    public String findName(int len,int x)
-    {
-        List<String>names=count.entrySet().stream().filter(a->a.getKey().length()<len).map(i->i.getKey()).collect(Collectors.toList());
-        x=x%names.size();
-        return names.get(x);
+
+    public String findName(int len, int x) {
+        List<String> list = words.values().stream().filter(i -> i.word.length() < len).map(i -> i.word).collect(Collectors.toList());
+        return list.get(x % list.size());
     }
-    public int countUnique(String name)
-    {
-        Set<Character>letters=new HashSet<>();
-        for(Character c:name.toCharArray())
-        {
-            letters.add(Character.toLowerCase(c));
-        }
-        return letters.size();
-    }
+
 }
