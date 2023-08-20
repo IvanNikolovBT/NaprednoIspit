@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/Faculty/Prva" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TermFrequencyTest/NivnaVerzia.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TermFrequencyTest/Prva" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Faculty/FacultyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Faculty/FacultyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StudentRecords/StudentRecordsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentRecords/StudentRecordsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TermFrequencyTest/TermFrequencyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TermFrequencyTest/TermFrequencyTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,13 +88,13 @@
       <recent name="ApplicantEvaluationTest" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.FacultyTest">
-    <configuration name="CirclesTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="CirclesTest.CirclesTest" />
+  <component name="RunManager" selected="Application.NivnaVerzia">
+    <configuration name="NivnaVerzia (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TermFrequencyTest.NivnaVerzia" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="CirclesTest.*" />
+          <option name="PATTERN" value="TermFrequencyTest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -102,19 +102,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FacultyTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="FacultyTest" />
-      <module name="NaprednoIspit" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FrontPageTest (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="FrontPageTest.FrontPageTest" />
+    <configuration name="NivnaVerzia (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TermFrequencyTest.NivnaVerzia" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="FrontPageTest.*" />
+          <option name="PATTERN" value="TermFrequencyTest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -122,12 +115,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FrontPageTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="FrontPageTest.FrontPageTest" />
+    <configuration name="NivnaVerzia (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TermFrequencyTest.NivnaVerzia" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="FrontPageTest.*" />
+          <option name="PATTERN" value="TermFrequencyTest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -135,26 +128,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StudentRecordsTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="StudentRecords.StudentRecordsTest" />
+    <configuration name="NivnaVerzia" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TermFrequencyTest.NivnaVerzia" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="StudentRecords.*" />
+          <option name="PATTERN" value="TermFrequencyTest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TermFrequencyTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TermFrequencyTest" />
+      <module name="NaprednoIspit" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.FacultyTest" />
-        <item itemvalue="Application.StudentRecordsTest" />
-        <item itemvalue="Application.FrontPageTest (1)" />
-        <item itemvalue="Application.FrontPageTest" />
-        <item itemvalue="Application.CirclesTest" />
+        <item itemvalue="Application.NivnaVerzia" />
+        <item itemvalue="Application.TermFrequencyTest" />
+        <item itemvalue="Application.NivnaVerzia (3)" />
+        <item itemvalue="Application.NivnaVerzia (2)" />
+        <item itemvalue="Application.NivnaVerzia (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -192,7 +192,7 @@
       <workItem from="1691843600893" duration="11849000" />
       <workItem from="1692013751989" duration="1124000" />
       <workItem from="1692106051840" duration="15303000" />
-      <workItem from="1692444323441" duration="17435000" />
+      <workItem from="1692444323441" duration="21698000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -483,7 +483,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692457503280</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="commit">
+      <option name="closed" value="true" />
+      <created>1692529759036</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1692529759036</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -694,6 +702,29 @@
           <line>104</line>
           <option name="timeStamp" value="107" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/TermFrequencyTest/TermFrequencyTest.java</url>
+          <line>106</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="109" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/TermFrequencyTest/TermFrequencyTest.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="116" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/TermFrequencyTest/TermFrequencyTest.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="117" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/TermFrequencyTest/TermFrequencyTest.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="118" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Subtitles/SubtitlesTest.java</url>
           <line>62</line>
@@ -722,15 +753,6 @@
           <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/TermFrequencyTest/TermFrequencyTest.java</url>
-          <line>34</line>
-          <properties class="TermFrequencyTest.TermFrequency" method="&lt;init&gt;">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="88" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/TripleTest/TripleTest.java</url>
           <line>40</line>
           <properties class="TripleTest.Triple" method="&lt;init&gt;">
@@ -750,8 +772,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Faculty/FacultyTest.java</url>
-          <line>222</line>
-          <properties class="Faculty" method="printFirstNStudents">
+          <line>226</line>
+          <properties class="Faculty.Faculty" method="printFirstNStudents">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -760,16 +782,82 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Faculty/FacultyTest.java</url>
           <line>103</line>
-          <properties class="Student" method="detatiled">
+          <properties class="Faculty.Student" method="detatiled">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="108" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/TermFrequencyTest/TermFrequencyTest.java</url>
+          <line>105</line>
+          <properties class="TermFrequency" method="mostOften">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="110" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/TermFrequencyTest/TermFrequencyTest.java</url>
+          <line>101</line>
+          <properties class="TermFrequency" method="countDistinct">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="111" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/TermFrequencyTest/TermFrequencyTest.java</url>
+          <line>97</line>
+          <properties class="TermFrequency" method="countTotal">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="119" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/TermFrequencyTest/NivnaVerzia.java</url>
+          <line>82</line>
+          <properties class="TermFrequencyTest.TermFrequency" method="mostOften">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="120" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/TermFrequencyTest/NivnaVerzia.java</url>
+          <line>78</line>
+          <properties class="TermFrequencyTest.TermFrequency" method="countDistinct">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="121" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/TermFrequencyTest/NivnaVerzia.java</url>
+          <line>70</line>
+          <properties class="TermFrequencyTest.TermFrequency" method="countTotal">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="122" />
+        </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="64" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/TermFrequencyTest/TermFrequencyTest.java</url>
+          <line>52</line>
+          <properties field="words" class="TermFrequency" />
+          <option name="timeStamp" value="123" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/TermFrequencyTest/NivnaVerzia.java</url>
+          <line>31</line>
+          <properties field="frequency" class="TermFrequencyTest.TermFrequency" />
+          <option name="timeStamp" value="125" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>

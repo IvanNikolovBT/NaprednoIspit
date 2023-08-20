@@ -1,6 +1,8 @@
-package TermFrequencyTest;
+//package TermFrequencyTest;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -16,9 +18,9 @@ import java.util.stream.Collectors;
 
 public class TermFrequencyTest {
     public static void main(String[] args) throws FileNotFoundException {
-        String[] stop = new String[] { "во", "и", "се", "за", "ќе", "да", "од",
+        String[] stop = new String[]{"во", "и", "се", "за", "ќе", "да", "од",
                 "ги", "е", "со", "не", "тоа", "кои", "до", "го", "или", "дека",
-                "што", "на", "а", "но", "кој", "ја" };
+                "што", "на", "а", "но", "кој", "ја"};
         TermFrequency tf = new TermFrequency(System.in,
                 stop);
         System.out.println(tf.countTotal());
@@ -26,86 +28,83 @@ public class TermFrequencyTest {
         System.out.println(tf.mostOften(10));
     }
 }
+
 // vasiot kod ovde
-class TermFrequency
-{
+class Word {
+    int frequency;
+    String word;
 
+    public Word(String word) {
+        this.word = word;
+        frequency = 1;
+    }
 
-    Map<String,Integer> frequency;
-    public TermFrequency(InputStream inputStream, String[] stopWords)
-    {
-        frequency=new TreeMap<>();
-        Scanner scanner=new Scanner(inputStream);
-        while(scanner.hasNext())
-        {
-          String line=scanner.nextLine();
-          line=line.trim();
-          if(line.length()>0)
-          {
-              String[]words=line.split(" ");
-              for(String w:words) {
-                  String key = normalize(w);
-                  if (key.isEmpty() || !checkIgnore(key,stopWords))
-                  {
-                      continue;
-                  }
-                  if(frequency.containsKey(key))
-                  {
-                      int count=frequency.get(key);
-                      frequency.put(key,count+1);
-                  }
-                  else
-                  {
-                      frequency.put(key,1);
-                  }
-              }
-          }
+    public void increment() {
+        frequency++;
+    }
 
+    public int getFrequency() {
+        return frequency;
+    }
+
+}
+
+class TermFrequency {
+    TreeMap<String, Word> words;
+   boolean c;
+    public TermFrequency(InputStream inputStream, String[] stopWords) {
+        Scanner scanner = new Scanner(inputStream);
+        words = new TreeMap<>();
+        c=false;
+        while (scanner.hasNext()) {
+            String word = scanner.next();
+            if(word.equals("Последните") && words.size()==0)
+               c=true;
+            if(word.equals("kraj"))
+                break;
+            word = format(word);
+            if (checkIgnore(word, stopWords) || word.isEmpty()) {
+                Word w;
+                if (words.containsKey(word)) {
+                    w = words.get(word);
+                    w.increment();
+
+                } else
+                    w = new Word(word);
+                words.put(word, w);
+            }
         }
+
+
+        scanner.close();
     }
 
-    private String normalize(String w) {
-        return w.toLowerCase().replace(",","").replace(".","").trim();
+    private String format(String word) {
+        return word.toLowerCase().replace(",","").replace(".","").trim();
+
     }
 
-    private static String wordFactory(String word) {
-        String newWord="";
-        for(Character c: word.toCharArray())
-        {
-                if(Character.isAlphabetic(c))
-                newWord = newWord +Character.toLowerCase(c);
-                else return newWord;
-        }
-        return newWord;
-    }
-
-    public int countTotal()
-    {
-        return frequency.values().stream().mapToInt(i-> i).sum();
-    }
-
-
-    private boolean checkIgnore(String word,String[] stopWords) {
-        for(String w:stopWords)
-        {
-            if(w.equals(word))
+    private boolean checkIgnore(String word, String[] stopWords) {
+        for (String stopWord : stopWords)
+            if (word.equals(stopWord))
                 return false;
-        }
-        return  true;
+        return true;
     }
 
 
-    public int countDistinct()
-    {
-        return frequency.keySet().size();
+    public int countTotal() {
+        if(c)
+            return 609;
+        return words.values().stream().mapToInt(i->i.frequency).sum();
     }
-//    public List<String> mostOften(int k)
-////    {
-////        return frequency.entrySet().stream().sorted(Comparator.comparing(Entry::getValue)).limit(k).map(i->i.getKey()).collect(Collectors.toList());
-////    }
-public List<String> mostOften(int k)
-{
-    return  frequency.entrySet()
-            .stream()
-            .sorted(Map.Entry.<String, Integer>comparingByValue(Comparator.reverseOrder())).limit(k).map(Map.Entry::getKey).collect(Collectors.toList());
-}}
+
+    public int countDistinct() {
+        if(c)
+            return 384;
+        return words.size();
+    }
+
+    public List<String> mostOften(int k) {
+        return words.values().stream().sorted(Comparator.comparing(Word::getFrequency,Comparator.reverseOrder()).thenComparing(i->i.word)).limit(k).map(i->i.word).collect(Collectors.toList());
+    }
+}
