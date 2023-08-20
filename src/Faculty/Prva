@@ -1,23 +1,83 @@
 package Faculty;
 
+//package mk.ukim.finki.vtor_kolokvium;
+
 
 import java.util.*;
 
 class OperationNotAllowedException extends Exception {
-    public OperationNotAllowedException(String msg) {
-        super(msg);
+
+    public OperationNotAllowedException(String s) {
+        super(s);
+    }
+}
+
+class Student {
+    String id;
+
+    @Override
+    public String toString() {
+        return String.format("Student: %s Courses passed: %d Average grade: %.2f", id, passed, getAverageGrade());
+    }
+
+    int yearOfStudies;
+    Map<Integer, List<Course>> grades;
+    int passed;
+
+    public Student(String id, int yearOfStudies) {
+        this.id = id;
+        this.yearOfStudies = yearOfStudies;
+        grades = new TreeMap<>();
+        passed = 0;
+    }
+
+    public void addGrades(int term, String courseName, int grade) throws OperationNotAllowedException {
+        if (grades.containsKey(term))
+            checkTerm(term);
+        Course course = new Course(term, courseName, grade);
+        grades.computeIfPresent(term, (k, v) -> {
+            v.add(course);
+            return v;
+        });
+        grades.putIfAbsent(term, new ArrayList<>());
+        passed++;
+    }
+
+    public double getAverageGrade() {
+        return grades.values().stream().flatMap(Collection::stream).mapToDouble(Course::getGrade).sum() / passed;
+    }
+
+    public boolean checkIfGraduated() {
+        return (yearOfStudies == 3 && passed == 18) || (yearOfStudies == 4 && passed == 24);
+    }
+
+    private void checkTerm(int term) throws OperationNotAllowedException {
+        if (grades.get(term).size() == 3)
+            throw new OperationNotAllowedException("Student " + id + " already has 3 grades in term " + term);
+        if (yearOfStudies == 3) {
+            if (term < 0 || term > 6)
+                throw new OperationNotAllowedException("Term" + term + "is not possible for student with ID " + id + ".");
+        }
+        if (yearOfStudies == 4) {
+            if (term < 0 || term > 8)
+                throw new OperationNotAllowedException("Term" + term + "is not possible for student with ID " + id + ".");
+        }
+    }
+
+    public int getPassed() {
+        return passed;
     }
 }
 
 class Course {
     int term;
-    String courseName;
     int grade;
+    String courseName;
 
     public Course(int term, String courseName, int grade) {
         this.term = term;
-        this.courseName = courseName;
         this.grade = grade;
+        this.courseName = courseName;
     }
 
     public int getGrade() {
@@ -25,171 +85,40 @@ class Course {
     }
 }
 
-class Student {
-    String id;
-    int yearsOfStudies;
-    TreeMap<Integer, List<Course>> grades;
-    TreeSet<String> allAttended;
-    int passed;
+class CStats {
+    List<Integer> grades;
 
-    public Student(String id, int yearsOfStudies) {
-        this.id = id;
-        this.yearsOfStudies = yearsOfStudies;
-        grades = new TreeMap<>();
-        passed = 0;
-        allAttended = new TreeSet<>();
-        fillEmptyTerms();
-    }
-
-    private void fillEmptyTerms() {
-        int val;
-        if (yearsOfStudies == 3)
-            val = 6;
-        else val = 8;
-        for (int i = 1; i <= val; i++) {
-            grades.put(i,new ArrayList<>());
-        }
-    }
-
-    public void addGrade(int term, String courseName, int grade) throws OperationNotAllowedException {
-        //kluchot nie semestarot,a value ni e lista od kursoj, mozi maks da ima 3
-
-        checkTerm(term);
-        List<Course> courses;
-        Course course = new Course(term, courseName, grade);
-        if (grades.containsKey(term)) {
-            check3(term);
-            courses = grades.get(term);
-        } else
-            courses = new ArrayList<>();
-        allAttended.add(courseName);
-        courses.add(course);
-        grades.put(term, courses);
-        passed++;
-    }
-
-    public boolean checkGraduated() {
-        if (yearsOfStudies == 3 && passed == 18)
-            return true;
-        return yearsOfStudies == 4 && passed == 24;
-
-    }
-
-
-    private void checkTerm(int term) throws OperationNotAllowedException {
-        if (yearsOfStudies == 3) if (term < 0 || term > 6)
-            throw new OperationNotAllowedException(String.format("Term %d is not possible for student with ID %s", term, id));//n
-        if (yearsOfStudies == 4) if (term < 0 || term > 8)
-            throw new OperationNotAllowedException(String.format("Term %d is not possible for student with ID %s", term, id));//n
-    }
-
-    private void check3(int term) throws OperationNotAllowedException {
-        if (grades.get(term).size() >= 3)
-            throw new OperationNotAllowedException(String.format("Student %s already has 3 grades in term %d", id, term));//n
-    }
-
-    public double getAvg() {
-
-
-        int sum = grades.values().stream().map(i -> i.stream().mapToInt(Course::getGrade).sum()).mapToInt(Integer::intValue).sum();
-        if (sum == 0)
-            return 5;
-        if (yearsOfStudies == 3)
-            return (double) sum / passed;
-        else
-            return (double) sum / passed;
-
-    }
-
-    public String detatiled() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(String.format("Student: %s\n", id));
-        for (Map.Entry<Integer, List<Course>> term : grades.entrySet()) {
-            stringBuilder.append(String.format("Term %d\n", term.getKey()));
-            stringBuilder.append(String.format("Courses: %d\n", term.getValue().size()));
-            stringBuilder.append(String.format("Average grade for term: %.2f\n", avgForTerm(term.getKey())));
-        }
-        endOfReport(stringBuilder);
-        return stringBuilder.toString();
-    }
-
-    private void endOfReport(StringBuilder stringBuilder) {
-        stringBuilder.append(String.format("Average grade: %.2f\n", getAvg()));
-        stringBuilder.append("Courses attended: ");
-        for (String s : allAttended) {
-            stringBuilder.append(s).append(",");
-        }
-        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-    }
-
-    int numberOfTerms() {
-        return grades.size();
-    }
-
-    double avgForTerm(int term) {
-        double val = 0;
-        if(grades.get(term).size()==0)
-            return 5;
-        for (int i = 0; i < grades.get(term).size(); i++)
-            val += grades.get(term).get(i).getGrade();
-        return val / grades.get(term).size();
-    }
-
-    public String forBestN() {
-        return String.format("Student: %s Courses passed: %d Average grade: %.2f", id, passed, getAvg());
-    }
-
-    public int getCount() {
-        return passed;
-    }
-
-    public String getId() {
-        return id;
-    }
-}
-
-class Stat {
-    int count;
-    int grades;
-
-    String courseName;
-
-    public Stat(String courseName) {
-        count = 0;
-        grades = 0;
-        this.courseName = courseName;
+    public CStats() {
+        grades = new ArrayList<>();
     }
 
     public void add(int grade) {
-        count++;
-        grades += grade;
+        grades.add(grade);
+    }
+
+    public int size() {
+        return grades.size();
     }
 
     public double avg() {
-        return (double) grades / count;
+        int sum = grades.stream().mapToInt(Integer::intValue).sum();
+        return (double) sum / grades.size();
     }
 
-    public int count() {
-        return count;
-    }
-
-    public String   getName() {
-        return courseName;
-    }
 }
 
 class Faculty {
 
-    HashMap<String, Student> students;
-    HashMap<String, Student> graduated;
-    HashMap<String, Stat> stats;
-    StringBuilder logBuilder;
+
+    Map<String, Student> students;
+    Map<String, Student> graduated;
+    Map<String, CStats> courseStats;
 
     public Faculty() {
-        students = new HashMap<>();
-        graduated = new HashMap<>();
-        logBuilder = new StringBuilder();
-        stats = new HashMap<>();
+
+        students = new TreeMap<>();
+        graduated = new TreeMap<>();
+        courseStats = new TreeMap<>();
     }
 
     void addStudent(String id, int yearsOfStudies) {
@@ -197,43 +126,52 @@ class Faculty {
     }
 
     void addGradeToStudent(String studentId, int term, String courseName, int grade) throws OperationNotAllowedException {
-        //treba mapa kade sho kluch e id na studentot,a value e studentot.
-        //max mozi 3 predmeti vo semestar, poke ako se iskluchok
-        //so istiot da se spravime so nesoodvetnen semestar
-        Student student = students.get(studentId);
-        student.addGrade(term, courseName, grade);
-        if (student.checkGraduated()) {
-            graduated.put(studentId, students.get(studentId));
-            students.remove(studentId);
-            logBuilder.append(String.format("Student with ID %s graduated with average grade %.2f in %d years.\n", studentId, student.getAvg(), student.yearsOfStudies)); //n
-        }
-        Stat stat;
-        if (stats.containsKey(courseName))
-            stat = stats.get(courseName);
-        else
-            stat = new Stat(courseName);
-        stat.add(grade);
-        stats.put(courseName, stat);
+        Student s = students.get(studentId);
+        s.addGrades(term, courseName, grade);
+        courseStats.computeIfPresent(courseName, (k, v) -> {
+            v.add(grade);
+            return v;
+        });
+        courseStats.putIfAbsent(courseName, new CStats());
+        if (s.checkIfGraduated())
+            whenGraduated(studentId, s);
+
+    }
+
+    private void whenGraduated(String studentId, Student s) {
+        System.out.println("Student with ID " + s.id + " graduated with average grade " + s.getAverageGrade() + " in " + s.yearOfStudies + " years.");
+        graduated.put(studentId, s);
+        students.remove(studentId);
     }
 
     String getFacultyLogs() {
-        return logBuilder.toString();
+        return "";
     }
 
     String getDetailedReportForStudent(String id) {
-        return students.get(id).detatiled();
+        return "";
     }
 
     void printFirstNStudents(int n) {
-        //najdobrite n studenti spored brojot na polozeni predmeti
-        //ako se isti spored prosechna ocenka
-        //sortirani vo opagjachki redosled
-        students.values().stream().sorted(Comparator.comparing(Student::getCount, Comparator.reverseOrder()).thenComparing(Student::getAvg, Comparator.reverseOrder()).thenComparing(Student::getId, Comparator.reverseOrder())).limit(n).forEach(student -> System.out.println(student.forBestN()));
+        students.values().stream().sorted(Comparator.comparing(Student::getPassed).thenComparing(Student::getAverageGrade).reversed()).limit(n).forEach(System.out::println);
     }
 
     void printCourses() {
-        stats.values().stream().sorted(Comparator.comparing(Stat::count).thenComparing(Stat::avg).thenComparing(Stat::getName)).forEach(stat -> System.out.printf("%s %d %.2f\n", stat.courseName, stat.count, stat.avg()));
+
+       courseStats.entrySet().stream().sorted(
+               Comparator.comparing(i->i.getValue().size())
+       ).forEach(i-> System.out.printf("%s %s %s%n",i.getKey(),i.getValue().size(),i.getValue().avg()));
     }
+//void printCourses() {
+//    Comparator<Map.Entry<String, CStats>> comparator = Comparator.comparing(entry -> entry.)
+//            .thenComparing(entry -> entry.getKey());
+//
+//    courseStats.entrySet().stream()
+//            .sorted(comparator)
+//            .forEach(entry -> System.out.printf("%s %d %f%n", entry.getKey(), entry.getValue().size(), entry.getValue().avg()));
+//}
+
+
 }
 
 public class FacultyTest {
@@ -312,7 +250,7 @@ public class FacultyTest {
                 }
             }
             System.out.println("LOGS");
-            System.out.printf(faculty.getFacultyLogs());
+            System.out.println(faculty.getFacultyLogs());
             System.out.println("PRINT STUDENTS (there shouldn't be anything after this line!");
             faculty.printFirstNStudents(2);
         } else if (testCase == 5 || testCase == 6 || testCase == 7) {
@@ -332,9 +270,12 @@ public class FacultyTest {
                     }
                 }
             }
-            if (testCase == 5) faculty.printFirstNStudents(10);
-            else if (testCase == 6) faculty.printFirstNStudents(3);
-            else faculty.printFirstNStudents(20);
+            if (testCase == 5)
+                faculty.printFirstNStudents(10);
+            else if (testCase == 6)
+                faculty.printFirstNStudents(3);
+            else
+                faculty.printFirstNStudents(20);
         } else if (testCase == 8 || testCase == 9) {
             System.out.println("TESTING DETAILED REPORT");
             Faculty faculty = new Faculty();
@@ -349,7 +290,8 @@ public class FacultyTest {
                         e.printStackTrace();
                     }
                     grade++;
-                    if (grade == 10) grade = 5;
+                    if (grade == 10)
+                        grade = 5;
                     ++counterCounter;
                 }
             }
@@ -409,7 +351,7 @@ public class FacultyTest {
                 }
             }
             System.out.println("LOGS");
-            System.out.printf(faculty.getFacultyLogs());
+            System.out.println(faculty.getFacultyLogs());
             System.out.println("DETAILED REPORT FOR STUDENT");
             System.out.println(faculty.getDetailedReportForStudent("student2"));
             try {
@@ -425,6 +367,4 @@ public class FacultyTest {
         }
     }
 }
-
-
 

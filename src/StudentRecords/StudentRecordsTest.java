@@ -1,6 +1,5 @@
 package StudentRecords;
 
-
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -37,7 +36,7 @@ class Student {
         path = splitter[1];
         for (int i = 2; i < splitter.length; i++) {
             if(!splitter[i].equals("...snip..."))
-            grades.add(Integer.parseInt(splitter[i]));
+                grades.add(Integer.parseInt(splitter[i]));
         }
     }
 
@@ -148,10 +147,6 @@ class StudentRecords {
 
     public void writeTable(OutputStream outputStream) {
         PrintWriter printWriter = new PrintWriter(outputStream);
-        //ovde spored nasoka treba
-        //znachi prvo treba imeto na nasokata da se ispechati
-        //spored prosekot vo opagjachki red
-        //treba mapa kaj sho kluchot e nasokata
         for (Map.Entry<String, List<Student>> stringListEntry : students.entrySet()) {
             printWriter.println(stringListEntry.getKey());
             stringListEntry.getValue().stream().sorted(Comparator.comparing(Student::getAvg).reversed().thenComparing(Student::getCode)).forEach(i -> printWriter.println(i.toString()));
@@ -161,12 +156,6 @@ class StudentRecords {
 
     public void writeDistribution(OutputStream outputStream) {
         PrintWriter printWriter = new PrintWriter(outputStream);
-        //brojot na ocenki po nasoka
-        //sortirani spored brojot na desetki(rastechki)
-        //mozi da se klaj kako kluch pak nasokata
-        //ama da se stavi nova klasa vnatre
-        //za da ima dobra print metoda i site podatoci da se postapni
-        //lesno
         paths.values().stream().sorted(Comparator.comparing(Path::get10).reversed()).forEach(printWriter::println);
         printWriter.flush();
     }
