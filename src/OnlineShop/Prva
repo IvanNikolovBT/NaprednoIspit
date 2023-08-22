@@ -1,4 +1,4 @@
-package OnlineShop;
+package OnlineShop;//package mk.ukim.finki.vtor_kolokvium;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -6,7 +6,12 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 enum COMPARATOR_TYPE {
-    NEWEST_FIRST, OLDEST_FIRST, LOWEST_PRICE_FIRST, HIGHEST_PRICE_FIRST, MOST_SOLD_FIRST, LEAST_SOLD_FIRST
+    NEWEST_FIRST,
+    OLDEST_FIRST,
+    LOWEST_PRICE_FIRST,
+    HIGHEST_PRICE_FIRST,
+    MOST_SOLD_FIRST,
+    LEAST_SOLD_FIRST
 }
 
 class ProductNotFoundException extends Exception {
@@ -15,9 +20,35 @@ class ProductNotFoundException extends Exception {
     }
 }
 
-
 class Product {
-    String category;
+    String id;
+    String name;
+    LocalDateTime createdAt;
+    double price;
+    int quantitySold = 0;
+
+    public Product(String id, String name, LocalDateTime createdAt, double price) {
+        this.id = id;
+        this.name = name;
+        this.createdAt = createdAt;
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", createdAt=" + createdAt +
+                ", price=" + price +
+                ", quantitySold=" + quantitySold +
+                '}';
+    }
+
+    public double buy(int quantity) {
+        this.quantitySold += quantity;
+        return quantity * price;
+    }
 
     public String getId() {
         return id;
@@ -35,107 +66,70 @@ class Product {
         return price;
     }
 
-    public int getTimesSold() {
-        return timesSold;
-    }
-
-    String id;
-    String name;
-    LocalDateTime createdAt;
-    double price;
-    int timesSold;
-
-    public String getCategory() {
-        return category;
-    }
-
-    public Product(String category, String id, String name, LocalDateTime createdAt, double price) {
-        this.category = category;
-        this.id = id;
-        this.name = name;
-        this.createdAt = createdAt;
-        this.price = price;
-        timesSold = 0;
-    }
-
-    public void addSold() {
-        timesSold++;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" + "id='" + id + '\'' + ", name='" + name + '\'' + '}';
+    public int getQuantitySold() {
+        return quantitySold;
     }
 }
 
+class ProductComparatorFactory {
+    static Comparator<Product> createComparator(COMPARATOR_TYPE comparatorType) {
+        switch (comparatorType) {
+            case HIGHEST_PRICE_FIRST:
+                return Comparator.comparing(Product::getPrice).reversed();
+            case LOWEST_PRICE_FIRST:
+                return Comparator.comparing(Product::getPrice);
+            case NEWEST_FIRST:
+                return Comparator.comparing(Product::getCreatedAt).reversed();
+            case OLDEST_FIRST:
+                return Comparator.comparing(Product::getCreatedAt);
+            case MOST_SOLD_FIRST:
+                return Comparator.comparing(Product::getQuantitySold).reversed();
+            default:
+                return Comparator.comparing(Product::getQuantitySold);
+        }
+    }
+}
 
 class OnlineShop {
-
     Map<String, List<Product>> productsByCategory;
-    Map<String, Product> products;
+    Map<String, Product> productsById;
 
     OnlineShop() {
-        products = new TreeMap<>();
-        productsByCategory = new TreeMap<>();
+        productsByCategory = new HashMap<>();
+        productsById = new HashMap<>();
     }
 
     void addProduct(String category, String id, String name, LocalDateTime createdAt, double price) {
-        Product p = new Product(category, id, name, createdAt, price);
-        products.put(id, p);
+        Product p = new Product(id, name, createdAt, price);
+        productsById.put(id, p);
         productsByCategory.putIfAbsent(category, new ArrayList<>());
         productsByCategory.computeIfPresent(category, (k, v) -> {
             v.add(p);
             return v;
         });
-
     }
 
     double buyProduct(String id, int quantity) throws ProductNotFoundException {
-        if (!products.containsKey(id)) throw new ProductNotFoundException("");
-        Product p = products.get(id);
-        p.addSold();
-        return p.price * quantity;
-
-
+        if (!productsById.containsKey(id))
+            throw new ProductNotFoundException(String.format("Product with id %s does not exist in the online shop!", id));
+        return productsById.get(id).buy(quantity);
     }
 
     List<List<Product>> listProducts(String category, COMPARATOR_TYPE comparatorType, int pageSize) {
-        List<Product> products1;
-        if (category == null) products1 = new ArrayList<>(products.values());
-        else products1 = productsByCategory.get(category);
-        Comparator<Product> comparator = ComparatorFactory.createComparator(comparatorType);
-        products1.sort(comparator);
+        List<Product> products = (category == null) ? new ArrayList<>(productsById.values()) : productsByCategory.get(category);
+        Comparator<Product> comparator = ProductComparatorFactory.createComparator(comparatorType);
+        products.sort(comparator);
         List<List<Product>> result = new ArrayList<>();
-        if (products1.size() < pageSize) result.add(products1);
-        else {
-            int ratio = (int) Math.ceil(products.size() * 1.0 / pageSize);
+        if (pageSize > products.size()) {
+            result.add(products);
+        } else {
+            int ratio = (int) Math.ceil(products.size()*1.0 / pageSize);
             List<Integer> starts = IntStream.range(0, ratio).map(i -> i * pageSize).boxed().collect(Collectors.toList());
-            starts.forEach(i -> result.add(products1.subList(i, Math.min((i + pageSize), products.size()))));
+            starts.forEach(i -> result.add(products.subList(i, Math.min((i + pageSize), products.size()))));
         }
         return result;
     }
 
-}
-
-class ComparatorFactory {
-    static Comparator<Product> createComparator(COMPARATOR_TYPE comparatorType) {
-        switch (comparatorType) {
-            case NEWEST_FIRST:
-                return Comparator.comparing(Product::getCreatedAt);
-            case OLDEST_FIRST:
-                return Comparator.comparing(Product::getCreatedAt, Comparator.reverseOrder());
-            case MOST_SOLD_FIRST:
-                return Comparator.comparing(Product::getTimesSold, Comparator.reverseOrder());
-            case LEAST_SOLD_FIRST:
-                return Comparator.comparing(Product::getTimesSold);
-            case LOWEST_PRICE_FIRST:
-                return Comparator.comparing(Product::getPrice);
-            case HIGHEST_PRICE_FIRST:
-                return Comparator.comparing(Product::getPrice, Comparator.reverseOrder());
-            default:
-                return null;
-        }
-    }
 }
 
 public class OnlineShopTest {
@@ -165,7 +159,8 @@ public class OnlineShopTest {
                 }
             } else {
                 String category = parts[1];
-                if (category.equalsIgnoreCase("null")) category = null;
+                if (category.equalsIgnoreCase("null"))
+                    category=null;
                 String comparatorString = parts[2];
                 int pageSize = Integer.parseInt(parts[3]);
                 COMPARATOR_TYPE comparatorType = COMPARATOR_TYPE.valueOf(comparatorString);
