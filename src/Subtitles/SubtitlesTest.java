@@ -4,7 +4,10 @@ import java.io.InputStream;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
+import java.time.temporal.TemporalUnit;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class SubtitlesTest {
     public static void main(String[] args) {
@@ -14,84 +17,92 @@ public class SubtitlesTest {
         subtitles.print();
         int shift = n * 37;
         shift = (shift % 2 == 1) ? -shift : shift;
-        System.out.println(String.format("SHIFT FOR %d ms", shift));
+        System.out.printf("SHIFT FOR %d ms%n", shift);
         subtitles.shift(shift);
         System.out.println("+++++ SHIFTED SUBTITLES +++++");
         subtitles.print();
     }
 }
 
-class Titles {
-    LocalTime timeFrom;
-    LocalTime timeTo;
+class Sub {
+    int num;
+    LocalTime start;
+    LocalTime end;
     String text;
-    public int number;
 
-    public Titles(int number, String text, String time) {
+    public Sub(int num, String time, String text) {
+        this.num = num;
         this.text = text;
-        this.number = number;
-        String[] splitter = time.split(" --> ");
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss,SSS");
-        timeFrom = LocalTime.parse(splitter[0], formatter);
-        timeTo=LocalTime.parse(splitter[1],formatter);
-    }
-    public void shift(int ms)
-    {
-        timeFrom=timeFrom.plus(ms,ChronoUnit.MILLIS);
-        timeTo=timeTo.plus(ms,ChronoUnit.MILLIS);
+        String[] splitter = time.split("-->");
+
+        DateTimeFormatter formatter=DateTimeFormatter.ofPattern("HH:mm:ss,SSS");
+        start = LocalTime.parse(splitter[0].trim(),formatter);
+        end = LocalTime.parse(splitter[1].trim(),formatter);
     }
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder=new StringBuilder();
-        String[]splitter=timeFrom.toString().split("\\.");
-        stringBuilder.append(splitter[0]).append(",").append(splitter[1]);
-        splitter=timeTo.toString().split("\\.");
-        stringBuilder.append(" --> ");
-        stringBuilder.append(splitter[0]).append(",").append(splitter[1]);
-        return number+"\n"+stringBuilder.toString()+"\n"+text;
+
+        String st=start.toString();
+        String[] splitter=st.split("\\.");
+        st=splitter[0]+","+splitter[1];
+        splitter=end.toString().split("\\.");
+        String et;
+        if(splitter.length!=1)
+            et=splitter[0]+","+splitter[1];
+        else
+            et=splitter[0]+",000";
+        return num + "\n" + st + " --> " + et+ "\n" + text + "\n";
+
+    }
+    public  void shift(int ms)
+    {
+        start=start.plus(ms, ChronoUnit.MILLIS);
+        end=end.plus(ms,ChronoUnit.MILLIS);
     }
 }
 
 class Subtitles {
-   List<Titles> titles;
 
-    public Subtitles() {
-        titles = new ArrayList<>();
-    }
+    List<Sub>subs;
+    int loadSubtitles(InputStream inputStream) {
+        subs=new ArrayList<>();
+        Scanner scanner=new Scanner(inputStream);
 
-    public int loadSubtitles(InputStream inputStream) {
-    Scanner scanner=new Scanner(inputStream);
-    while (scanner.hasNextLine())
-    {
-        String line=scanner.nextLine();
-        int number=Integer.parseInt(line);
-        String time=scanner.nextLine();
-        StringBuilder text=new StringBuilder();
-        while(true)
+        while (scanner.hasNextLine() )
         {
-            if(!scanner.hasNextLine())
-                break;
-            line=scanner.nextLine();
-            if(line.trim().length()==0)
-                break;
-            text.append(line);
-            text.append("\n");
-        }
-        Titles titles=new Titles(number,text.toString(),time);
-        this.titles.add(titles);
-    }
-    return  titles.size();
+
+            String first=scanner.nextLine();
+            if(first.equals("kraj"))
+                return  subs.size();
+            int num=0;
+            if(!first.isEmpty())
+                 num=Integer.parseInt(first);
+            String time=scanner.nextLine();
+            String line="";
+            while (scanner.hasNextLine())
+            {
+
+                String scan=scanner.nextLine();
+                if(scan.equals("kraj"))
+                    break;
+                if(scan.trim().length()==0)
+                    break;
+                line+=scan+"\n";
+            }
+            Sub sub=new Sub(num,time,line);
+            subs.add(sub);
+
+        }        scanner.close();
+        return subs.size();
     }
 
     public void print() {
-    for(Titles titles1:titles)
-        System.out.println(titles1);
+    subs.forEach(i-> System.out.printf("%s",i.toString()));
+
     }
 
     public void shift(int ms) {
-        for(Titles titles1:titles)
-            titles1.shift(ms);
+    subs.forEach(i->i.shift(ms));
     }
 }
-
