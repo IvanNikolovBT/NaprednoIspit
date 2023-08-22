@@ -1,4 +1,4 @@
-package MoviesList;
+//package MoviesList;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -32,65 +32,69 @@ public class MoviesTest {
         }
     }
 }
+
 class Movie
 {
     String title;
-    int [] ratings;
+    List<Integer> ratings;
 
-    public Movie(String title, int[] ratings) {
+    public Movie(String title, int [] ratings) {
         this.title = title;
-        this.ratings = ratings;
+        this.ratings=new ArrayList<>();
+        toList(ratings);
+
     }
 
-    public double avg()
-    {
-        return  Arrays.stream(ratings).average().orElse(0);
+
+    private void toList(int[] ratings) {
+        for(int i: ratings)
+            this.ratings.add(i);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s (%.2f) of %d ratings",title,avg(),ratings.size());
     }
 
     public String getTitle() {
         return title;
     }
-    @Override
-    public String toString() {
-        return String.format("%s (%.2f) of %d ratings", title, avg(), ratings.length);
+
+    public double avg()
+    {
+        int sum=ratings.stream().mapToInt(i-> i).sum();
+        return (double) sum /ratings.size();
     }
+
 }
 class MoviesList
 {
-    List<Movie> movies;
-
-    public MoviesList( ){
-       movies=new ArrayList<>();
+    List<Movie>movies;
+    int len;
+    public MoviesList() {
+        this.movies = new ArrayList<>();
     }
-    public void addMovie(String title,int[] ratings)
+    public  void addMovie(String title, int[] ratings)
     {
-        Movie movie=new Movie(title,ratings);
-        movies.add(movie);
+        movies.add(new Movie(title,ratings));
     }
     public List<Movie> top10ByAvgRating()
     {
-        return movies.stream().sorted(Comparator.comparing(Movie::avg).reversed().thenComparing(Movie::getTitle)).limit(10).collect(Collectors.toList());
+        return movies.stream().sorted(Comparator.comparing(Movie::avg,Comparator.reverseOrder()).thenComparing(Movie::getTitle)).limit(10).collect(Collectors.toList());
+    }
+
+    private  double calculate(Movie m)
+    {
+        return m.avg()*m.ratings.size()/len;
     }
     public List<Movie> top10ByRatingCoef()
     {
-        int maxRatings=0;
-        for(Movie movie:movies)
-            maxRatings=Math.max(maxRatings,movie.ratings.length);
-        int finalMaxRatings = maxRatings;
-        Comparator<Movie> coef=new Comparator<Movie>() {
-            @Override
-            public int compare(Movie o1, Movie o2) {
-                int ar=Double.compare(o1.avg()*o1.ratings.length/ finalMaxRatings,o2.avg()*o2.ratings.length/finalMaxRatings);
-                if(ar==0)
-                    return o1.title.compareTo(o2.title);
-                return -ar;
-            }
-
-        };
-        Collections.sort(movies,coef);
-        if(movies.size()>=10)
-            return  movies.subList(0,10);
-        return movies;
+        int maxLen=0;
+        for(Movie m:movies)
+            maxLen=Math.max(maxLen,m.ratings.size());
+        len=maxLen;
+        return  movies.stream().sorted(Comparator.comparing(this::calculate,Comparator.reverseOrder()).thenComparing(m->m.title)).limit(10).collect(Collectors.toList());
     }
+
 
 }
