@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/MojDDV/prva" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MoviesList/prva" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LabExercisesTest/LabExercisesTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LabExercisesTest/prva" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/WeatherStationTest/WeatherStationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MojDDV/MojDDVTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MojDDV/MojDDVTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MoviesList/MoviesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MoviesList/MoviesTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +94,7 @@
       <recent name="ApplicantEvaluationTest" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.WeatherStationTest">
     <configuration name="OnlineShopTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="OnlineShop.OnlineShopTest" />
       <module name="NaprednoIspit" />
@@ -121,19 +121,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SubtitlesTest (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Subtitles.SubtitlesTest" />
-      <module name="NaprednoIspit" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Subtitles.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SubtitlesTest (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="SubtitlesTest" />
       <module name="NaprednoIspit" />
@@ -148,13 +135,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="WeatherStationTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WeatherStationTest" />
+      <module name="NaprednoIspit" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.WeatherStationTest" />
         <item itemvalue="Application.OnlineShopTest" />
         <item itemvalue="Application.SubtitlesTest (1)" />
         <item itemvalue="Application.SubtitlesTest (5)" />
         <item itemvalue="Application.SubtitlesTest (4)" />
-        <item itemvalue="Application.SubtitlesTest (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -195,7 +189,8 @@
       <workItem from="1692444323441" duration="27347000" />
       <workItem from="1692619929013" duration="2598000" />
       <workItem from="1692642755959" duration="9881000" />
-      <workItem from="1692717844472" duration="13409000" />
+      <workItem from="1692717844472" duration="19317000" />
+      <workItem from="1692788258871" duration="1918000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -526,7 +521,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692730093547</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="commit">
+      <option name="closed" value="true" />
+      <created>1692736857944</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1692736857944</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -745,6 +748,16 @@
           <line>25</line>
           <option name="timeStamp" value="118" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/MojDDV/MojDDVTest.java</url>
+          <line>166</line>
+          <option name="timeStamp" value="137" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/MojDDV/MojDDVTest.java</url>
+          <line>87</line>
+          <option name="timeStamp" value="139" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/F1Test/F1Test.java</url>
           <line>65</line>
@@ -843,6 +856,15 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="135" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/MojDDV/MojDDVTest.java</url>
+          <line>167</line>
+          <properties class="MojDDV.AmountNotAllowedException" method="&lt;init&gt;">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="138" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />

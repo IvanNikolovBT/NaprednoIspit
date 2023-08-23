@@ -121,7 +121,6 @@ class MojDDV {
             String line = scanner.nextLine();
             String[] splitter = line.split("\\s+");
             String id = splitter[0];
-            Bill bill;
             try {
                 bills.add(new Bill(id,fillBill(splitter)));
             } catch (AmountNotAllowedException e) {
