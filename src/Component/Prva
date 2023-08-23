@@ -1,4 +1,4 @@
-//package Component;
+package Component;
 
 import java.util.*;
 
@@ -31,12 +31,12 @@ public class ComponentTest {
                     int weight = scanner.nextInt();
                     Component component = new Component(color, weight);
                     prev.addComponent(component);
-                } else if (what == 4) {
+                } else if(what == 4) {
                     break;
                 }
 
             } catch (InvalidPositionException e) {
-                System.out.println(e.getMessage());
+                System.out.printf(e.getMessage());
             }
             scanner.nextLine();
         }
@@ -56,94 +56,97 @@ public class ComponentTest {
         System.out.println(window);
     }
 }
-
-class Component implements Comparable<Component> {
+class Component implements Comparable<Component>
+{
     String colour;
     int weight;
-    TreeSet<Component> components;
+    Set<Component> inner;
 
     public Component(String colour, int weight) {
         this.colour = colour;
         this.weight = weight;
-        components = new TreeSet<>();
+        inner=new TreeSet<>();
+    }
+    public void addComponent(Component component)
+    {
+    inner.add(component);
     }
 
-    public void addComponent(Component component) {
-        components.add(component);
+    public void setColour(String colour) {
+        this.colour = colour;
     }
-
-
+    public void changeColor(int weight, String color)
+    {
+        if(this.weight<weight)
+            this.colour=color;
+        for(Component component:inner)
+            change(component,weight,color);
+    }
     @Override
     public int compareTo(Component o) {
-        int val = Integer.compare(weight, o.weight);
-        if (val == 0) return colour.compareTo(o.colour);
+        int val=weight-o.weight;
+        if(val==0)
+            return colour.compareTo(o.colour);
         return val;
     }
-
-    public void setColour(int weight, String colour) {
-        if (this.weight < weight)
-            this.colour = colour;
-        components.forEach(i -> i.setColour(weight, colour));
-
+    static void createString(StringBuilder line, Component component, int val)
+    {
+        for(int i=0;i<val;i++)
+            line.append("---");
+        line.append(String.format("%d:%s\n",component.weight,component.colour));
+        for(Component c:component.inner)
+            createString(line,component,val+1);
     }
-
-    public static void buildString(StringBuilder stringBuilder, Component component, int level) {
-        for (Component c : component.components) {
-            for (int i = 0; i < level; i++)
-                stringBuilder.append("---");
-            stringBuilder.append(String.format("%d:%s\n",c.weight,c.colour));
-            buildString(stringBuilder,c,level+1);
-        }
+    static void change(Component component,int weight,String color)
+    {
+        if(component.weight<weight)
+            component.colour=color;
+        for(Component c:component.inner)
+            change(c,weight,color);
     }
-
 }
-
-class Window {
+class Window
+{
     String name;
-    TreeMap<Integer, Component> components;
-
+    Map<Integer,Component> componentMap;
     public Window(String name) {
         this.name = name;
-        components = new TreeMap<>();
+        componentMap=new TreeMap<Integer, Component>();
     }
-
-    public void addComponent(int position, Component component) throws InvalidPositionException {
-        checkPosition(position);
-        components.put(position, component);
+    void addComponent(int position, Component component) throws InvalidPositionException {
+        if(componentMap.containsKey(position))
+            throw new InvalidPositionException(position);
+        componentMap.put(position,component);
     }
-
-    private void checkPosition(int position) throws InvalidPositionException {
-        if (components.containsKey(position))
-            throw new InvalidPositionException(String.format("Invalid position %d, alredy taken!", position));
+    public void changeColor(int weight,String color)
+    {
+        for(Component c:componentMap.values())
+            c.changeColor(weight,color);
     }
-
-    public void changeColor(int weight, String color) {
-        components.values().forEach(i -> i.setColour(weight, color));
-    }
-
-    public void swichComponents(int pos1, int pos2) {
-        Component c = components.get(pos1);
-        Component c2 = components.get(pos2);
-        components.put(pos1, c2);
-        components.put(pos2, c);
+    public  void  swichComponents(int pos1,int pos2)
+    {
+    Component c1=componentMap.get(pos1);
+    Component c2=componentMap.get(pos2);
+    componentMap.put(pos1,c2);
+    componentMap.put(pos2,c1);
     }
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(String.format("WINDOW %s\n", name));
-        for (Map.Entry<Integer, Component> c : components.entrySet()) {
-            stringBuilder.append(String.format("%d:",c.getKey()));
-            stringBuilder.append(String.format("%d:%s\n",c.getValue().weight,c.getValue().colour));
-            Component.buildString(stringBuilder,c.getValue(),1);
-
+        StringBuilder stringBuilder=new StringBuilder();
+        stringBuilder.append(String.format("WINDOW %s",name));
+        for(Map.Entry<Integer,Component> entry: componentMap.entrySet())
+        {
+            stringBuilder.append(String.format("%d:",entry.getKey()));
+            Component.createString(stringBuilder,entry.getValue(),0);
         }
-        return stringBuilder.toString();
+        return  stringBuilder.toString();
     }
 }
-
-class InvalidPositionException extends Exception {
-    public InvalidPositionException(String msg) {
-        super(msg);
+class InvalidPositionException extends Exception
+{
+    public InvalidPositionException(int pos)
+    {
+        super(String.format("Invalid position ,already taken",pos));
     }
 }
