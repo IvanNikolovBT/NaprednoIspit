@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/EventCalendar/EventCalendarTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PhoneBookTest/PhoneBookTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ApplicantEvaluationTest/prva" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DailyTemperatureTest/prva" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PhonebookTester/PhoneBookTester.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ApplicantEvaluationTest/ApplicantEvaluationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ApplicantEvaluationTest/ApplicantEvaluationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DailyTemperatureTest/DailyTemperatureTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DailyTemperatureTest/DailyTemperatureTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GenericFracgion/GenericFractionTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,34 +95,13 @@
       <recent name="ApplicantEvaluationTest" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.EventCalendarTest (2)">
-    <configuration name="EventCalendarTest (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="EventCalendarTest" />
-      <module name="NaprednoIspit" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EventCalendarTest (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="EventCalendarTest" />
-      <module name="NaprednoIspit" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EventCalendarTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="EventCalendarTest" />
-      <module name="NaprednoIspit" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OnlineShopTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="OnlineShop.OnlineShopTest" />
+  <component name="RunManager" selected="Application.DailyTemperatureTest (1)">
+    <configuration name="ApplicantEvaluationTest (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ApplicantEvaluationTest.ApplicantEvaluationTest" />
       <module name="NaprednoIspit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="OnlineShop.*" />
+          <option name="PATTERN" value="ApplicantEvaluationTest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -128,8 +109,41 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WeatherStationTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="WeatherStationTest" />
+    <configuration name="ApplicantEvaluationTest (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ApplicantEvaluationTest.ApplicantEvaluationTest" />
+      <module name="NaprednoIspit" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ApplicantEvaluationTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ApplicantEvaluationTest (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ApplicantEvaluationTest.ApplicantEvaluationTest" />
+      <module name="NaprednoIspit" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ApplicantEvaluationTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DailyTemperatureTest (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DailyTemperatureTest" />
+      <module name="NaprednoIspit" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DailyTemperatureTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DailyTemperatureTest" />
       <module name="NaprednoIspit" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -137,11 +151,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.EventCalendarTest (2)" />
-        <item itemvalue="Application.EventCalendarTest (1)" />
-        <item itemvalue="Application.EventCalendarTest" />
-        <item itemvalue="Application.WeatherStationTest" />
-        <item itemvalue="Application.OnlineShopTest" />
+        <item itemvalue="Application.DailyTemperatureTest (1)" />
+        <item itemvalue="Application.DailyTemperatureTest" />
+        <item itemvalue="Application.ApplicantEvaluationTest (5)" />
+        <item itemvalue="Application.ApplicantEvaluationTest (4)" />
+        <item itemvalue="Application.ApplicantEvaluationTest (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -183,7 +197,7 @@
       <workItem from="1692619929013" duration="2598000" />
       <workItem from="1692642755959" duration="9881000" />
       <workItem from="1692717844472" duration="19317000" />
-      <workItem from="1692788258871" duration="11593000" />
+      <workItem from="1692788258871" duration="19108000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -538,7 +552,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692798524104</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="commit">
+      <option name="closed" value="true" />
+      <created>1692873027391</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1692873027391</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -590,81 +612,6 @@
           <url>file://$PROJECT_DIR$/src/TimesTest/TimesTest.java</url>
           <line>112</line>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ApplicantEvaluationTest/ApplicantEvaluationTest.java</url>
-          <line>90</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ApplicantEvaluationTest/ApplicantEvaluationTest.java</url>
-          <line>89</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ApplicantEvaluationTest/ApplicantEvaluationTest.java</url>
-          <line>91</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ApplicantEvaluationTest/ApplicantEvaluationTest.java</url>
-          <line>93</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ApplicantEvaluationTest/ApplicantEvaluationTest.java</url>
-          <line>92</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ApplicantEvaluationTest/ApplicantEvaluationTest.java</url>
-          <line>96</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ApplicantEvaluationTest/ApplicantEvaluationTest.java</url>
-          <line>94</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ApplicantEvaluationTest/ApplicantEvaluationTest.java</url>
-          <line>97</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ApplicantEvaluationTest/ApplicantEvaluationTest.java</url>
-          <line>98</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ApplicantEvaluationTest/ApplicantEvaluationTest.java</url>
-          <line>99</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ApplicantEvaluationTest/ApplicantEvaluationTest.java</url>
-          <line>100</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ApplicantEvaluationTest/ApplicantEvaluationTest.java</url>
-          <line>101</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ApplicantEvaluationTest/ApplicantEvaluationTest.java</url>
-          <line>102</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ApplicantEvaluationTest/ApplicantEvaluationTest.java</url>
-          <line>103</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ApplicantEvaluationTest/ApplicantEvaluationTest.java</url>
-          <line>95</line>
-          <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/F1Test/F1Test.java</url>
@@ -766,6 +713,11 @@
           <url>file://$PROJECT_DIR$/src/MojDDV/MojDDVTest.java</url>
           <line>87</line>
           <option name="timeStamp" value="139" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/DailyTemperatureTest/DailyTemperatureTest.java</url>
+          <line>90</line>
+          <option name="timeStamp" value="140" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/F1Test/F1Test.java</url>

@@ -86,75 +86,68 @@ interface Evaluator {
 class EvaluatorBuilder {
     public static Evaluator build(Evaluator.TYPE type) throws InvalidEvaluation {
 
-        switch (type)
+        // вашиот код овде
+        if(type== Evaluator.TYPE.NO_CRIMINAL_RECORD)
         {
-            case NO_CRIMINAL_RECORD :return new CriminalRecord(null);
-            case MORE_EXPERIENCE: return new Experience(null);
-            case MORE_CREDIT_SCORE: return new CreditScore(null);
-            case NO_CRIMINAL_RECORD_AND_MORE_CREDIT_SCORE: return new CreditScore(new CriminalRecord(null));
-            case NO_CRIMINAL_RECORD_AND_MORE_EXPERIENCE:return new Experience(new CriminalRecord(null));
-            case MORE_EXPERIENCE_AND_MORE_CREDIT_SCORE:return new Experience(new CreditScore(null));
-            case INVALID: throw new InvalidEvaluation();
-       }
-
-        return null;
+            return  new CriminalRecord(null);
+        } else if (type== Evaluator.TYPE.MORE_EXPERIENCE) {
+            return new Experience(null);
+        } else if (type== Evaluator.TYPE.MORE_CREDIT_SCORE) {
+            return  new CreditScore(null);
+        } else if (type== Evaluator.TYPE.NO_CRIMINAL_RECORD_AND_MORE_EXPERIENCE) {
+            return  new CriminalRecord(new Experience(null));
+        } else if (type== Evaluator.TYPE.NO_CRIMINAL_RECORD_AND_MORE_CREDIT_SCORE) {
+            return new CriminalRecord(new CreditScore(null));
+        } else if (type== Evaluator.TYPE.MORE_EXPERIENCE_AND_MORE_CREDIT_SCORE) {
+            return  new Experience(new CreditScore(null));
+        }
+        throw  new InvalidEvaluation();
     }
 }
+
+class InvalidEvaluation extends  Exception
+{
+    public InvalidEvaluation() {
+        super();
+    }
+}
+
 
 abstract  class ChainEvaluator implements  Evaluator
 {
-    Evaluator next;
-
-    public ChainEvaluator(Evaluator next) {
-        this.next = next;
-    }
-    public boolean hasNext()
+    private  final Evaluator next;
+    protected  ChainEvaluator(Evaluator next)
     {
-        return next != null;
+        this.next=next;
+    }
+    protected boolean hasNext()
+    {
+        return  next!=null;
     }
 
     @Override
     public boolean evaluate(Applicant applicant) {
-
         return next.evaluate(applicant);
     }
 }
-
-class CriminalRecord extends ChainEvaluator
+class CriminalRecord extends  ChainEvaluator
 {
-    public CriminalRecord(Evaluator next) {
+    protected CriminalRecord(Evaluator next) {
         super(next);
     }
 
     @Override
     public boolean evaluate(Applicant applicant) {
-        if(applicant.hasCriminalRecord())
-            return false;
-            else if(hasNext())
-                next.evaluate(applicant);
-        return true;
+        if (applicant.hasCriminalRecord())
+            return  false;
+        if(hasNext())
+            return super.evaluate(applicant);
+        else  return true;
     }
-}
-class CreditScore extends ChainEvaluator
-{
-    public CreditScore(Evaluator next) {
-        super(next);
-    }
-
-    @Override
-    public boolean evaluate(Applicant applicant) {
-    if(applicant.getCreditScore()<500)
-        return false;
-    else if(hasNext())
-        return next.evaluate(applicant);
-    else
-        return true;
-    }
-
 }
 class Experience extends ChainEvaluator
 {
-    public Experience(Evaluator next) {
+    protected Experience(Evaluator next) {
         super(next);
     }
 
@@ -162,16 +155,25 @@ class Experience extends ChainEvaluator
     public boolean evaluate(Applicant applicant) {
         if(applicant.getEmploymentYears()<10)
             return false;
-        else if(hasNext())
-            return next.evaluate(applicant);
+        if(hasNext())
+            return  super.evaluate(applicant);
         return true;
     }
-
 }
-class InvalidEvaluation extends  Exception
+class CreditScore extends  ChainEvaluator
 {
-    public InvalidEvaluation()
-    {
-        super();
+    protected CreditScore(Evaluator next) {
+        super(next);
+    }
+    @Override
+    public boolean evaluate(Applicant applicant) {
+        if(applicant.getCreditScore()<500)
+            return false;
+        if(hasNext())
+            return  super.evaluate(applicant);
+        return true;
     }
 }
+
+
+
