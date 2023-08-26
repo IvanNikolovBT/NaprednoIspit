@@ -5,16 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/Patterns/Creational/Prototype/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Patterns/Creational/Prototype/BookShop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Patterns/Creational/Prototype/Demo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Patterns/Structural/Composite/CompositeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Patterns/Structural/Composite/ComputerPart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Patterns/Behavioural/Chain/vmetni ja tuka" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Patterns/Behavioural/Observer/vmetni ja tuka" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Patterns/Behavioural/State/LockedState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Patterns/Behavioural/State/OffState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Patterns/Behavioural/State/Phone.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Patterns/Behavioural/State/ReadyState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Patterns/Behavioural/State/State.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Patterns/Behavioural/State/vmetni ja tuka" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Patterns/Creational/Singleton/Singleton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Patterns/AdapterExtra/PilotPen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Patterns/Structural/AdapterExtra/PilotPen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Patterns/Structural/Adapter/AssignmentWork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Patterns/Structural/Adapter/AssignmentWork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Patterns/Structural/Adapter/PenAdaptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Patterns/Structural/Adapter/PenAdaptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Patterns/Structural/Adapter/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Patterns/Structural/Adapter/School.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +176,7 @@
       <workItem from="1692642755959" duration="9881000" />
       <workItem from="1692717844472" duration="19317000" />
       <workItem from="1692788258871" duration="38075000" />
-      <workItem from="1693047056835" duration="7674000" />
+      <workItem from="1693047056835" duration="9957000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -338,14 +338,6 @@
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
       <updated>1690153674851</updated>
-    </task>
-    <task id="LOCAL-00025" summary="commit">
-      <option name="closed" value="true" />
-      <created>1690455860481</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1690455860481</updated>
     </task>
     <task id="LOCAL-00026" summary="commit">
       <option name="closed" value="true" />
@@ -547,7 +539,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693052115957</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="commit">
+      <option name="closed" value="true" />
+      <created>1693066992020</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1693066992020</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
