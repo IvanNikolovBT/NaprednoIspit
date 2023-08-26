@@ -1,12 +1,12 @@
 package ArchiveStore;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.*;
 
 public class ArchiveStoreTest {
     public static void main(String[] args) {
         ArchiveStore store = new ArchiveStore();
-        Date date = new Date(113, 10, 7);
+        LocalDate date = LocalDate.of(2013, 10, 7);
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
         int n = scanner.nextInt();
@@ -16,7 +16,8 @@ public class ArchiveStoreTest {
         for (i = 0; i < n; ++i) {
             int id = scanner.nextInt();
             long days = scanner.nextLong();
-            Date dateToOpen = new Date(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            LocalDate dateToOpen = date.atStartOfDay().plusSeconds(days * 24 * 60 * 60).toLocalDate();
             LockedArchive lockedArchive = new LockedArchive(id, dateToOpen);
             store.archiveItem(lockedArchive, date);
         }
@@ -35,8 +36,6 @@ public class ArchiveStoreTest {
         scanner.nextLine();
         while (scanner.hasNext()) {
             int open = scanner.nextInt();
-            if(open==-1)
-                break;
             try {
                 store.openItem(open, date);
             } catch (NonExistingItemException e) {
@@ -47,102 +46,110 @@ public class ArchiveStoreTest {
     }
 }
 
-interface Archive {
-    public int getId();
+abstract class Archive {
 
-    public String setArchived(Date date);
-
-    public String  open(int id, Date date);
-}
-
-class LockedArchive implements Archive {
     int id;
+    LocalDate dateArchived;
 
-    @Override
-    public String open(int id, Date date) {
-        if (date.after(dateToOpen))
-            return String.format("Item %d opened at %s\n", id, date);
-        else
-            return String.format("Item %d cannot be opened before %s\n", id, dateToOpen);
-    }
-
-    Date dateToOpen;
-    Date archived;
-
-    public LockedArchive(int id, Date dateToOpen) {
+    public Archive(int id) {
         this.id = id;
-        this.dateToOpen = dateToOpen;
-        archived = null;
     }
 
-    @Override
     public int getId() {
         return id;
     }
 
-    public String  setArchived(Date archived) {
-        this.archived = archived;
-        return String.format("Item %d archived at %s\n", id, archived);
+    abstract public String open(LocalDate date);
+
+    public LocalDate getDateArchived() {
+        return dateArchived;
     }
 
+    public void setDateArchived(LocalDate dateArchived) {
+        this.dateArchived = dateArchived;
+    }
 
+    abstract public String error();
 
+    abstract boolean canOpen(LocalDate date);
 }
 
-class SpecialArchive implements Archive {
-    int id;
-    final int maxOpen;
-    Date archived;
-    int timesLeft;
-    @Override
-    public String open(int id, Date date) {
-        if (timesLeft > 0) {
-            timesLeft--;
-            return  String.format("Item %d opened at %s\n", id, date);
-        } else
-            return String.format("Item %d cannot be opened more than %d times\n", id,maxOpen);
+class LockedArchive extends Archive {
+    LocalDate dateToOpen;
+
+    public LockedArchive(int id, LocalDate dateToOpen) {
+        super(id);
+        this.dateToOpen = dateToOpen;
     }
+
+    @Override
+    public String error() {
+        return String.format("Item %d cannot be opened before %s\n", id, dateToOpen);
+    }
+
+    @Override
+    boolean canOpen(LocalDate date) {
+        return date.isAfter(dateToOpen);
+    }
+
+    @Override
+    public String open(LocalDate date) {
+        return String.format("Item %d opened at %s\n", id, date);
+    }
+}
+
+class SpecialArchive extends Archive {
+    int maxOpen;
+    int opened;
 
     public SpecialArchive(int id, int maxOpen) {
-        this.id = id;
+        super(id);
         this.maxOpen = maxOpen;
-        timesLeft=maxOpen;
-        archived = null;
+        opened = 0;
     }
 
     @Override
-    public int getId() {
-        return id;
+    public String error() {
+        return String.format("Item %d cannot be opened more than %d times\n", id, maxOpen);
     }
 
-
-    public String setArchived(Date archived) {
-        this.archived = archived;
-        return String.format("Item %d archived at %s\n", id, archived);
+    @Override
+    boolean canOpen(LocalDate date) {
+        return opened < maxOpen;
     }
 
+    @Override
+    public String open(LocalDate date) {
+        opened++;
+        return String.format("Item %d opened at %s\n", id, date);
+    }
 }
 
 class ArchiveStore {
     StringBuilder stringBuilder;
-    Map<Integer, Archive> archiveMap;
+    TreeMap<Integer, Archive> items;
 
     public ArchiveStore() {
-        archiveMap = new TreeMap<>();
-        stringBuilder=new StringBuilder();
+        items = new TreeMap<>();
+        stringBuilder = new StringBuilder();
     }
 
-    public void archiveItem(Archive item, Date date) {
-        stringBuilder.append(item.setArchived(date));
-        archiveMap.put(item.getId(), item);
+    public void archiveItem(Archive item, LocalDate date) {
+        item.setDateArchived(date);
+        items.put(item.id, item);
+        stringBuilder.append(String.format("Item %d archived at %s\n", item.id, item.dateArchived));
     }
 
-    public void openItem(int id, Date date) throws NonExistingItemException {
+    public void openItem(int id, LocalDate date) throws NonExistingItemException {
+        if (!items.containsKey(id))
+            throw new NonExistingItemException(String.format("Item with id %d doesn't exist", id));
+        Archive archive = items.get(id);
+        if (archive.canOpen(date)) stringBuilder.append(archive.open(date));
+        else stringBuilder.append(archive.error());
 
-        if (!archiveMap.containsKey(id)) throw new NonExistingItemException(id);
-        Archive item = archiveMap.get(id);
-        stringBuilder.append(item.open(id,date));
-      }
+
+    }
+
 
     public String getLog() {
         return stringBuilder.toString();
@@ -150,9 +157,7 @@ class ArchiveStore {
 }
 
 class NonExistingItemException extends Exception {
-    public NonExistingItemException(int id) {
-        super("Item with id " + id + " doesn't exist");
+    public NonExistingItemException(String msg) {
+        super(msg);
     }
 }
-
-

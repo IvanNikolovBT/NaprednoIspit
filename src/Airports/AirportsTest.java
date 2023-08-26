@@ -1,6 +1,6 @@
-package Airports;
-
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 public class AirportsTest {
     public static void main(String[] args) {
@@ -38,92 +38,7 @@ public class AirportsTest {
     }
 }
 
-class Airports {
-
-    Map<String, Airport> airports;
-
-    public Airports() {
-        airports = new TreeMap<>();
-    }
-
-    public void addAirport(String name, String country, String code, int passengers) {
-        airports.put(code, new Airport(name, country, code, passengers));
-    }
-
-    public void addFlights(String from, String to, int time, int duration) {
-        Airport airport = airports.get(from);
-        airport.addFlight(from, to, time, duration);
-    }
-
-    public void showFlightsFromAirport(String code) {
-        Airport airport = airports.get(code);
-        System.out.println(airport);
-        int i = 1;
-        for (String toCode : airport.flights.keySet()) {
-            Set<Flight> flights = airport.flights.get(toCode);
-            for (Flight flight : flights) {
-                System.out.printf("%d. %s\n", i++, flight);
-            }
-        }
-    }
-
-    public void showDirectFlightsFromTo(String from, String to) {
-        Airport fromAirport = airports.get(from);
-        Set<Flight> flights = fromAirport.flights.get(to);
-        if (flights != null) {
-            for (Flight f : flights) {
-                System.out.println(f);
-            }
-        } else {
-            System.out.printf("No flights from %s to %s\n", from, to);
-        }
-    }
-
-    public void showDirectFlightsTo(String to) {
-        Set<Flight> flights = new TreeSet<>();
-        for (Airport airport : airports.values()) {
-            Set<Flight> flightsTo = airport.flights.get(to);
-            if (flightsTo != null) {
-                flights.addAll(flightsTo);
-            }
-        }
-        for (Flight flight : flights) {
-            System.out.println(flight);
-        }
-    }
-}
-
-class Airport {
-    String name;
-    String country;
-    String code;
-    int passengers;
-    Map<String, Set<Flight>> flights;
-
-    public Airport(String name, String country, String code, int passengers) {
-        this.name = name;
-        this.country = country;
-        this.code = code;
-        this.passengers = passengers;
-        flights = new TreeMap<>();
-    }
-
-    public void addFlight(String from, String to, int time, int duration) {
-        Set<Flight> flightsSet = flights.get(to);
-        if (flightsSet == null) {
-            flightsSet = new TreeSet<>();
-            flights.put(to, flightsSet);
-        }
-        flightsSet.add(new Flight(from, to, time, duration));
-    }
-
-    @Override
-    public String toString() {
-        return String.format("%s (%s)\n%s\n%d", name, code, country, passengers);
-    }
-}
-
-class Flight implements Comparable<Flight> {
+class Flight {
     String from;
     String to;
     int time;
@@ -137,20 +52,103 @@ class Flight implements Comparable<Flight> {
     }
 
     @Override
-    public int compareTo(Flight o) {
-        int x = Integer.compare(this.time, o.time);
-        if (x == 0) {
-            return this.from.compareTo(o.from);
-        }
-        return x;
-    }
-
-    @Override
     public String toString() {
         int end = time + duration;
         int plus = end / (24 * 60);
         end %= (24 * 60);
-        return String.format("%s-%s %02d:%02d-%02d:%02d%s %dh%02dm", from, to, time / 60, time % 60,
-                end / 60, end % 60, plus > 0 ? " +1d" : "", duration / 60, duration % 60);
+        return String.format("%s-%s %02d:%02d-%02d:%02d%s %dh%02dm", from, to, time / 60, time % 60, end / 60, end % 60, plus > 0 ? " +1d" : "", duration / 60, duration % 60);
+    }
+
+    public String getTo() {
+        return to;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public int getDuration() {
+
+        return duration;
     }
 }
+
+class Airport {
+    String name;
+    String country;
+    String code;
+    int passengers;
+    List<Flight> flights;
+
+    public Airport(String name, String country, String code, int passengers) {
+        this.name = name;
+        this.country = country;
+        this.code = code;
+        this.passengers = passengers;
+        flights = new ArrayList<>();
+    }
+
+    public void addFlight(Flight f) {
+        flights.add(f);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(name).append(" (" + code + ")").append("\n");
+        stringBuilder.append(country).append("\n");
+        stringBuilder.append(passengers).append("\n");
+        int i = 1;
+        List<Flight> flights1 = flights.stream().sorted(Comparator.comparing(Flight::getTo).thenComparing(Flight::getTime)).collect(Collectors.toList());
+        for (Flight f : flights1)
+            stringBuilder.append(i++).append(". ").append(f).append("\n");
+
+        return stringBuilder.toString();
+    }
+
+}
+
+class Airports {
+    Map<String, Airport> airports;
+
+    public Airports() {
+        airports = new HashMap<>();
+    }
+
+    public void addAirport(String name, String country, String code, int passengers) {
+        Airport airport = new Airport(name, country, code, passengers);
+        airports.put(code, airport);
+    }
+
+    public void addFlights(String from, String to, int time, int duration) {
+        Flight flight = new Flight(from, to, time, duration);
+        Airport airport = airports.get(from);
+        airport.addFlight(flight);
+    }
+
+    public void showFlightsFromAirport(String code) {
+        System.out.printf("%s", airports.get(code));
+    }
+
+    public void showDirectFlightsFromTo(String from, String to) {
+        Airport airport = airports.get(from);
+        List<Flight> flights = airport.flights.stream().filter(i -> i.from.equals(from) && i.to.equals(to)).collect(Collectors.toList());
+        if (flights.isEmpty()) System.out.printf("No flights from %s to %s\n", from, to);
+        else flights.forEach(System.out::println);
+    }
+
+    public void showDirectFlightsTo(String to) {
+        List<Flight> flights = new ArrayList<>();
+
+        for (Airport a : airports.values()) {
+            for (Flight f : a.flights) {
+                if (f.to.equals(to)) flights.add(f);
+            }
+        }
+        if (flights.isEmpty()) System.out.printf("No flights to %s\n", to);
+        else
+            flights.stream().sorted(Comparator.comparing(Flight::getTo).thenComparing(Flight::getTime).thenComparing(Flight::getDuration)).forEach(System.out::println);
+    }
+}
+
+

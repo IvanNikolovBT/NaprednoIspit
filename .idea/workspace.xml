@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/Patterns/Behavioural/Chain/vmetni ja tuka" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Patterns/Behavioural/Observer/vmetni ja tuka" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Patterns/Behavioural/State/LockedState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Patterns/Behavioural/State/OffState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Patterns/Behavioural/State/Phone.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Patterns/Behavioural/State/ReadyState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Patterns/Behavioural/State/State.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Patterns/Behavioural/State/vmetni ja tuka" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Patterns/Creational/Singleton/Singleton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Airports/prva" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ArchiveStore/prva" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BlockContainerTest/prva" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Airports/AirportsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Airports/AirportsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ArchiveStore/ArchiveStoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArchiveStore/ArchiveStoreTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BlockContainerTest/BlockContainerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BlockContainerTest/BlockContainerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +173,7 @@
       <workItem from="1692642755959" duration="9881000" />
       <workItem from="1692717844472" duration="19317000" />
       <workItem from="1692788258871" duration="38075000" />
-      <workItem from="1693047056835" duration="9957000" />
+      <workItem from="1693047056835" duration="18389000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -338,14 +335,6 @@
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
       <updated>1690153674851</updated>
-    </task>
-    <task id="LOCAL-00026" summary="commit">
-      <option name="closed" value="true" />
-      <created>1690731915875</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1690731915875</updated>
     </task>
     <task id="LOCAL-00027" summary="commit">
       <option name="closed" value="true" />
@@ -547,7 +536,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693066992020</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="commit">
+      <option name="closed" value="true" />
+      <created>1693071628555</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1693071628556</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -622,21 +619,6 @@
           <url>file://$PROJECT_DIR$/src/F1Test/F1Test.java</url>
           <line>17</line>
           <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="NONE" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ArchiveStore/ArchiveStoreTest.java</url>
-          <line>83</line>
-          <option name="timeStamp" value="89" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="NONE" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ArchiveStore/ArchiveStoreTest.java</url>
-          <line>84</line>
-          <option name="timeStamp" value="90" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ArchiveStore/ArchiveStoreTest.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Faculty/FacultyTest.java</url>
