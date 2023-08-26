@@ -1,4 +1,5 @@
-package CirclesTest;
+//package CirclesTest;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ enum DIRECTION {
 
 public class CirclesTest {
 
-    public static void main(String[] args) throws MovableObjectNotFittableException {
+    public static void main(String[] args) {
 
         System.out.println("===COLLECTION CONSTRUCTOR AND ADD METHOD TEST===");
         MovablesCollection collection = new MovablesCollection(100, 100);
@@ -28,24 +29,27 @@ public class CirclesTest {
             int y = Integer.parseInt(parts[2]);
             int xSpeed = Integer.parseInt(parts[3]);
             int ySpeed = Integer.parseInt(parts[4]);
-
-            if (Integer.parseInt(parts[0]) == 0) { //point
-                collection.addMovableObject(new MovablePoint(x, y, xSpeed, ySpeed));
-            } else { //circle
-                int radius = Integer.parseInt(parts[5]);
-                collection.addMovableObject(new MovableCircle(radius, new MovablePoint(x, y, xSpeed, ySpeed)));
+            try {
+                if (Integer.parseInt(parts[0]) == 0) { //point
+                    collection.addMovableObject(new MovablePoint(x, y, xSpeed, ySpeed));
+                } else { //circle
+                    int radius = Integer.parseInt(parts[5]);
+                    collection.addMovableObject(new MovableCircle(radius, new MovablePoint(x, y, xSpeed, ySpeed)));
+                }
+            } catch (MovableObjectNotFittableException e) {
+                System.out.println(e.getMessage());
             }
 
         }
-        System.out.println(collection.toString());
+        System.out.println(collection);
 
         System.out.println("MOVE POINTS TO THE LEFT");
         collection.moveObjectsFromTypeWithDirection(TYPE.POINT, DIRECTION.LEFT);
-        System.out.println(collection.toString());
+        System.out.println(collection);
 
         System.out.println("MOVE CIRCLES DOWN");
         collection.moveObjectsFromTypeWithDirection(TYPE.CIRCLE, DIRECTION.DOWN);
-        System.out.println(collection.toString());
+        System.out.println(collection);
 
         System.out.println("CHANGE X_MAX AND Y_MAX");
         MovablesCollection.setxMax(90);
@@ -53,11 +57,11 @@ public class CirclesTest {
 
         System.out.println("MOVE POINTS TO THE RIGHT");
         collection.moveObjectsFromTypeWithDirection(TYPE.POINT, DIRECTION.RIGHT);
-        System.out.println(collection.toString());
+        System.out.println(collection);
 
         System.out.println("MOVE CIRCLES UP");
         collection.moveObjectsFromTypeWithDirection(TYPE.CIRCLE, DIRECTION.UP);
-        System.out.println(collection.toString());
+        System.out.println(collection);
 
 
     }
@@ -66,40 +70,28 @@ public class CirclesTest {
 }
 
 interface Movable {
-    public void moveUp() throws ObjectCanNotBeMovedException;
+    void moveUp() throws ObjectCanNotBeMovedException;
 
-    public void moveLeft() throws ObjectCanNotBeMovedException;
+     void moveLeft() throws ObjectCanNotBeMovedException;
 
-    public void moveRight() throws ObjectCanNotBeMovedException;
+     void moveRight() throws ObjectCanNotBeMovedException;
 
-    public void moveDown() throws ObjectCanNotBeMovedException;
+     void moveDown() throws ObjectCanNotBeMovedException;
 
-    public int getCurrentXPosition();
+     int getCurrentXPosition();
 
-    public int getCurrentYPosition();
+     int getCurrentYPosition();
 
-    public boolean canBeFitted(int xMax, int yMax);
+     TYPE getType();
+     boolean canBeFitted(int x,int y);
+      String exceptionMessage();
 
-    public String exceptionMessage();
-
-    public TYPE getType();
 }
 
 class MovablePoint implements Movable {
     int x;
     int y;
     int xSpeed;
-
-    @Override
-    public boolean canBeFitted(int xMax, int yMax) {
-        return (x >= 0 && x <= xMax && y >= 0 && y <= yMax);
-    }
-
-    @Override
-    public String exceptionMessage() {
-        return String.format("Movable point with coordinates (%d,%d) can not be fitted into the collection", x, y);
-    }
-
     int ySpeed;
 
     public MovablePoint(int x, int y, int xSpeed, int ySpeed) {
@@ -111,25 +103,29 @@ class MovablePoint implements Movable {
 
     @Override
     public void moveUp() throws ObjectCanNotBeMovedException {
-        if (y + ySpeed > MovablesCollection.y_Max) throw new ObjectCanNotBeMovedException(x, y);
+        if (y + ySpeed > MovablesCollection.yMAX)
+            throw new ObjectCanNotBeMovedException(String.format("Point (%d,%d) is out of bounds", x, y + ySpeed));
         y += ySpeed;
     }
 
     @Override
     public void moveLeft() throws ObjectCanNotBeMovedException {
-        if (x - xSpeed < 0) throw new ObjectCanNotBeMovedException(x, y);
+        if (x - xSpeed < 0)
+            throw new ObjectCanNotBeMovedException(String.format("Point (%d,%d) is out of bounds", x - xSpeed, y));
         x -= xSpeed;
     }
 
     @Override
     public void moveRight() throws ObjectCanNotBeMovedException {
-        if (x + xSpeed > MovablesCollection.x_Max) throw new ObjectCanNotBeMovedException(x, y);
+        if (x + xSpeed > MovablesCollection.xMAX)
+            throw new ObjectCanNotBeMovedException(String.format("Point (%d,%d) is out of bounds", x + xSpeed, y));
         x += xSpeed;
     }
 
     @Override
     public void moveDown() throws ObjectCanNotBeMovedException {
-        if (y - ySpeed < 0) throw new ObjectCanNotBeMovedException(x, y);
+        if (y - ySpeed < 0)
+            throw new ObjectCanNotBeMovedException(String.format("Point (%d,%d) is out of bounds", x, y - ySpeed));
         y -= ySpeed;
     }
 
@@ -145,23 +141,26 @@ class MovablePoint implements Movable {
 
     @Override
     public String toString() {
-        return String.format("Movable point with coordinates (%d,%d)", getCurrentXPosition(), getCurrentYPosition());
+        return String.format("Movable point with coordinates (%d,%d)", x, y);
     }
 
     public TYPE getType() {
         return TYPE.POINT;
+    }
+
+    @Override
+    public boolean canBeFitted(int xMax, int yMax) {
+        return (x >= 0&&x <= xMax&&y >= 0 && y <= yMax);
+    }
+    @Override
+    public String exceptionMessage() {
+        return String.format("Movable point with coordinates (%d,%d) can not be fitted into the collection", x, y);
     }
 }
 
 class MovableCircle implements Movable {
     int radius;
     MovablePoint movablePoint;
-
-
-    @Override
-    public String exceptionMessage() {
-        return String.format("Movable circle with center (%d,%d) and radius %d can not be fitted into the collection", movablePoint.x, movablePoint.y, radius);
-    }
 
     public MovableCircle(int radius, MovablePoint movablePoint) {
         this.radius = radius;
@@ -207,88 +206,120 @@ class MovableCircle implements Movable {
         return TYPE.CIRCLE;
     }
 
+
     public boolean canBeFitted(int xMax, int yMax) {
-        return ((movablePoint.x - radius) >= 0) && ((movablePoint.x + radius) <= xMax) && ((movablePoint.y - radius) >= 0) && ((movablePoint.y + radius) < yMax);
+        return ((movablePoint.x - radius) >= 0 && (movablePoint.x + radius) <= xMax && (movablePoint.y + radius) <= yMax && (movablePoint.y - radius) >= 0);
+    }
+
+    @Override
+    public String exceptionMessage() {
+        return String.format("Movable circle with center (%d,%d) and radius %d can not be fitted into the collection", movablePoint.x, movablePoint.y, radius);
     }
 }
 
 class MovablesCollection {
-    List<Movable> movableList;
-    static int x_Max;
-    static int y_Max;
+    List<Movable> movables;
+    static int xMAX;
+    static int yMAX;
 
-    public MovablesCollection(int X_Max, int Y_Max) {
-        movableList = new ArrayList<>();
-        x_Max = X_Max;
-        y_Max = Y_Max;
+    public MovablesCollection(int xMAx, int yMAx) {
+        this.movables = new ArrayList<>();
+        xMAX = xMAx;
+        yMAX = yMAx;
     }
 
     public static void setxMax(int i) {
-        x_Max = i;
+        xMAX = i;
     }
 
     public static void setyMax(int i) {
-        y_Max = i;
+        yMAX = i;
+    }
+
+    public static int getyMax() {
+        return yMAX;
+    }
+
+    public static int getxMAX() {
+        return xMAX;
     }
 
     public void addMovableObject(Movable m) throws MovableObjectNotFittableException {
-        int x = m.getCurrentXPosition();
-        int y = m.getCurrentYPosition();
-        if (!m.canBeFitted(x_Max, y_Max))
-            throw new MovableObjectNotFittableException(m.exceptionMessage());
-        movableList.add(m);
+        checkAdd(m);
+        movables.add(m);
+
     }
 
-    public void moveObjectsFromTypeWithDirection(TYPE type, DIRECTION direction)  {
-        for (Movable m : movableList) {
+    public void moveObjectsFromTypeWithDirection(TYPE type, DIRECTION direction) {
 
-            try {
-                if (m.getType().equals(type)) {
-                    switch (direction) {
-                        case UP:
-                            m.moveUp();
-                            break;
-                        case DOWN:
-                            m.moveDown();
-                            break;
-                        case LEFT:
-                            m.moveLeft();
-                            break;
-                        case RIGHT:
-                            m.moveRight();
-                            break;
+        movables.stream()
+                .filter(movable -> movable.getType().equals(type))
+                .forEach(movable -> {
+                    try {
+                        switch (direction) {
+                            case UP:
+                                movable.moveUp();
+                                break;
+                            case DOWN:
+                                movable.moveDown();
+                                break;
+                            case LEFT:
+                                movable.moveLeft();
+                                break;
+                            case RIGHT:
+                                movable.moveRight();
+                                break;
+                        }
+                    } catch (ObjectCanNotBeMovedException e) {
+                        System.out.println(e.getMessage());
                     }
-                }
-            }
-            catch (ObjectCanNotBeMovedException e)
-            {
-                System.out.println(e.getMessage());
+                });
+
+    }
+
+    private static void move(TYPE type, DIRECTION direction, Movable m) throws ObjectCanNotBeMovedException {
+        if (m.getType().equals(type)) {
+            switch (direction) {
+                case UP:
+                    m.moveUp();
+                case DOWN:
+                    m.moveDown();
+                case LEFT:
+                    m.moveLeft();
+                case RIGHT:
+                    m.moveRight();
+                default:
             }
         }
     }
 
+
+    private void checkAdd(Movable m) throws MovableObjectNotFittableException {
+        if (!m.canBeFitted(xMAX,yMAX))
+            throw new MovableObjectNotFittableException(m.exceptionMessage());
+    }
+
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(String.format("Collection of movable objects with size %d\n", movableList.size()));
-        for (Movable m : movableList)
-            stringBuilder.append(m);
+        StringBuilder stringBuilder=new StringBuilder();
+        stringBuilder.append("Collection of movable objects with size ").append(movables.size()).append(":").append("\n");
+        for(Movable m:movables)
+            stringBuilder.append(m).append("\n");
+
         return stringBuilder.toString();
 
     }
 }
 
-class MovableObjectNotFittableException extends Exception {
-    MovableObjectNotFittableException(String msg) {
+class ObjectCanNotBeMovedException extends Exception {
+    public ObjectCanNotBeMovedException(String msg) {
         super(msg);
     }
-
 }
 
-class ObjectCanNotBeMovedException extends Exception {
+class MovableObjectNotFittableException extends Exception {
 
-
-    ObjectCanNotBeMovedException(int x, int y) {
-        super(String.format("Point (%d,%d) is out of bounds", x, y));
+    public MovableObjectNotFittableException(String msg) {
+        super(msg);
     }
 }

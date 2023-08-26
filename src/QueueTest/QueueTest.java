@@ -1,8 +1,4 @@
-package QueueTest;
-
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 public class QueueTest {
@@ -11,125 +7,132 @@ public class QueueTest {
     public static void main(String[] args) throws EmptyQueueException {
         Scanner jin = new Scanner(System.in);
         int k = jin.nextInt();
-        if (k == 0) { //Simple test case with one int element
+        if ( k == 0 ) { //Simple test case with one int element
             int t = jin.nextInt();
             Queue<Integer> queue = new Queue<Integer>();
-            System.out.println("Queue empty? - " + queue.isEmpty());
-            System.out.println("Queue count? - " + queue.count());
-            System.out.println("Queue enqueue " + t);
+            System.out.println("Queue empty? - "+queue.isEmpty());
+            System.out.println("Queue count? - "+queue.count());
+            System.out.println("Queue enqueue "+t);
             queue.enqueue(t);
-            System.out.println("Queue empty? - " + queue.isEmpty());
-            System.out.println("Queue count? - " + queue.count());
-            System.out.println("Queue dequeue? - " + queue.dequeue());
-            System.out.println("Queue empty? - " + queue.isEmpty());
-            System.out.println("Queue count? - " + queue.count());
+            System.out.println("Queue empty? - "+queue.isEmpty());
+            System.out.println("Queue count? - "+queue.count());
+            System.out.println("Queue dequeue? - "+queue.dequeue());
+            System.out.println("Queue empty? - "+queue.isEmpty());
+            System.out.println("Queue count? - "+queue.count());
         }
-        if (k == 1) { //a more complex test with strings
+        if ( k == 1 ) { //a more complex test with strings
             Queue<String> queue = new Queue<String>();
             int counter = 0;
-            while (jin.hasNextInt()) {
+            while ( jin.hasNextInt() ) {
                 String t = jin.next();
                 queue.enqueue(t);
                 ++counter;
             }
-            for (int i = 0; i < counter; ++i) {
+            for ( int i = 0 ; i < counter ; ++i ) {
                 System.out.println(queue.dequeue());
             }
             queue.enqueue(jin.next());
-            System.out.println("Queue inspect? - " + queue.inspect());
-            System.out.println("Queue peek? - " + queue.peek());
+            System.out.println("Queue inspect? - "+queue.inspect());
+            System.out.println("Queue peek? - "+queue.peek());
             queue.enqueue(queue.dequeue());
             queue.enqueue(jin.next());
-            System.out.println("Queue inspect? - " + queue.inspect());
-            System.out.println("Queue peek? - " + queue.peek());
+            System.out.println("Queue inspect? - "+queue.inspect());
+            System.out.println("Queue peek? - "+queue.peek());
         }
-        if (k == 2) {
+        if ( k == 2 ) {
             Queue<String> queue = new Queue<String>();
             String next = "";
             int counter = 0;
-            while (true) {
+            while ( true ) {
                 next = jin.next();
-                if (next.equals("stop")) break;
+                if ( next.equals("stop") ) break;
                 queue.enqueue(next);
                 ++counter;
             }
-            while (!queue.isEmpty()) {
-                if (queue.count() < counter) System.out.print(" ");
+            while ( !queue.isEmpty() ) {
+                if ( queue.count()<counter) System.out.print(" ");
                 System.out.print(queue.dequeue());
             }
         }
-        if (k == 3) { //random testing
+        if ( k == 3 ) { //random testing
             Queue<Double> queue = new Queue<Double>();
             LinkedList<Double> java_queue = new LinkedList<Double>();
             boolean flag = true;
             int n = jin.nextInt();
-            for (int i = 0; i < n; ++i) {
+            for ( int i = 0 ; i < n ; ++i ) {
                 double q = Math.random();
-                if (q < 0.5) {
+                if ( q < 0.5 ) {
                     double t = Math.random();
                     queue.enqueue(t);
                     java_queue.addFirst(t);
                 }
-                if (q < 0.8 && q >= 0.5) {
-                    if (!java_queue.isEmpty()) {
+                if ( q < 0.8 && q >= 0.5 ) {
+                    if ( ! java_queue.isEmpty() ) {
                         double t1 = java_queue.removeLast();
                         double t2 = queue.dequeue();
-                        flag &= t1 == t2;
-                    } else {
-                        flag &= java_queue.isEmpty() == queue.isEmpty();
+                        flag &= t1==t2;
+                    }
+                    else {
+                        flag &= java_queue.isEmpty()==queue.isEmpty();
                     }
                 }
-                if (q < 0.9 && q >= 0.8) {
-                    if (!java_queue.isEmpty()) {
+                if ( q < 0.9 && q >= 0.8 ) {
+                    if ( ! java_queue.isEmpty() ) {
                         double t1 = java_queue.peekLast();
                         double t2 = queue.peek();
-                        flag &= t1 == t2;
-                    } else {
-                        flag &= java_queue.isEmpty() == queue.isEmpty();
+                        flag &= t1==t2;
+                    }
+                    else {
+                        flag &= java_queue.isEmpty()==queue.isEmpty();
                     }
                 }
-                if (q < 1 && q >= 0.9) {
-                    if (!java_queue.isEmpty()) {
+                if ( q < 1 && q >= 0.9 ) {
+                    if ( ! java_queue.isEmpty() ) {
                         double t1 = java_queue.peekFirst();
                         double t2 = queue.inspect();
-                        flag &= t1 == t2;
-                    } else {
-                        flag &= java_queue.isEmpty() == queue.isEmpty();
+                        flag &= t1==t2;
+                    }
+                    else {
+                        flag &= java_queue.isEmpty()==queue.isEmpty();
                     }
                 }
-                flag &= java_queue.size() == queue.count();
+                flag &= java_queue.size()==queue.count();
             }
-            System.out.println("Compared to the control queue the results were the same? - " + flag);
+            System.out.println("Compared to the control queue the results were the same? - "+flag);
         }
-        if (k == 4) { //performance testing
+        if ( k == 4 ) { //performance testing
             Queue<Double> queue = new Queue<Double>();
             int n = jin.nextInt();
-            for (int i = 0; i < n; ++i) {
-                if (Math.random() < 0.5) {
+            for ( int i = 0 ; i < n ; ++i ) {
+                if ( Math.random() < 0.5 ) {
                     queue.enqueue(Math.random());
-                } else {
-                    if (!queue.isEmpty()) {
+                }
+                else {
+                    if ( ! queue.isEmpty() ) {
                         queue.dequeue();
                     }
                 }
             }
             System.out.println("You implementation finished in less then 3 seconds, well done!");
         }
-        if (k == 5) { //Exceptions testing
+        if ( k == 5 ) { //Exceptions testing
             Queue<String> queue = new Queue<String>();
             try {
                 queue.dequeue();
-            } catch (Exception e) {
+            }
+            catch ( Exception e ) {
                 System.out.println(e.getClass().getSimpleName());
             }
             try {
                 queue.peek();
-            } catch (Exception e) {
+            }
+            catch ( Exception e ) {
                 System.out.println(e.getClass().getSimpleName());
             }
             try {
                 queue.inspect();
-            } catch (Exception e) {
+            }
+            catch ( Exception e ) {
                 System.out.println(e.getClass().getSimpleName());
             }
         }
@@ -137,21 +140,19 @@ public class QueueTest {
 
 }
 
-class Node<T> {
+class Node <T>
+{
     T element;
     Node<T> next;
 
     public Node(T element, Node<T> next) {
+        super();
         this.element = element;
         this.next = next;
     }
 
     public T getElement() {
         return element;
-    }
-
-    public void setElement(T element) {
-        this.element = element;
     }
 
     public Node<T> getNext() {
@@ -162,81 +163,67 @@ class Node<T> {
         this.next = next;
     }
 }
-
-class Queue<T> {
-    private Node<T> head, tail;
-    private int count;
-
-    public Queue() {
-        head = null;
-        tail = null;
-        count = 0;
+class Queue <T>
+{
+    Node<T> first;
+    Node<T> last;
+    int count;
+    public Queue()
+    {
+        first=last=null;
+        count=0;
     }
-
-    public boolean isEmpty() {
-        return count == 0;
+    public boolean isEmpty()
+    {
+        return count==0;
     }
-
-    public void enqueue(T element) {
-        Node<T> node = new Node<T>(element, null);
-        if (isEmpty()) {
-            tail = node;
-            head = node;
-        } else {
-            tail.setNext(node);
-            tail = node;
+    public void enqueue(T element)
+    {
+        Node<T> node=new Node<>(element,null);
+        if(isEmpty())
+        {
+            first=last=node;
         }
+        else
+        {
+            last.setNext(node);
+            last=node;
+        }
+
         count++;
-    }
 
+    }
     public T dequeue() throws EmptyQueueException {
-        checkForError();
-        T value = head.getElement();
-        head = head.getNext();
+        if(isEmpty())
+            throw new EmptyQueueException();
+        T re=first.getElement();
+        first=(first.getNext());
         count--;
-        return value;
+        return re;
     }
-
-    public T peek() throws EmptyQueueException {
-        checkForError();
-        return head.getElement();
+    public T peek()
+    {
+        return first.element;
     }
-
-    public int count() {
+    public T inspect()
+    {
+        return last.getElement();
+    }
+    public int count()
+    {
         return count;
     }
 
-    public T inspect() throws EmptyQueueException {
-        checkForError();
-        return tail.getElement();
-    }
-
-    private void checkForError() throws EmptyQueueException {
-        if (isEmpty())
-            throw new EmptyQueueException();
-    }
-    public  String toString()
-    {
-        StringBuilder stringBuilder=new StringBuilder();
-        Node<T>walker=head;
-        while(walker!=null)
-        {
-            stringBuilder.append(walker.getElement()+" -> ");
-            walker=walker.getNext();
-        }
-        stringBuilder.append("null");
-        return stringBuilder.toString();
-    }
-
 }
-
-class EmptyQueueException extends Exception {
-    public EmptyQueueException() {
-        super("The queue is empty.");
+@SuppressWarnings("serial")
+class EmptyQueueException extends Exception
+{
+    public  EmptyQueueException()
+    {
+        super();
     }
 
-    public EmptyQueueException(String msg) {
-        super(msg);
+    public EmptyQueueException(String s) {
+    super(s);
     }
-
 }

@@ -1,3 +1,5 @@
+package MapSortingTest;
+
 import java.util.*;
 
 public class MapSortingTest {
@@ -6,7 +8,7 @@ public class MapSortingTest {
         int n = scanner.nextInt();
         scanner.nextLine();
         List<String> l = readMapPairs(scanner);
-        if(n==1){
+        if (n == 1) {
             Map<String, Integer> map = new HashMap<>();
             fillStringIntegerMap(l, map);
             SortedSet<Map.Entry<String, Integer>> s = entriesSortedByValues(map);
@@ -26,28 +28,26 @@ public class MapSortingTest {
         return Arrays.asList(entries);
     }
 
-    static void fillStringIntegerMap(List<String> l, Map<String,Integer> map) {
-        l.stream()
-                .forEach(s -> map.put(s.substring(0, s.indexOf(':')), Integer.parseInt(s.substring(s.indexOf(':') + 1))));
+    static void fillStringIntegerMap(List<String> l, Map<String, Integer> map) {
+        l.stream().forEach(s -> map.put(s.substring(0, s.indexOf(':')), Integer.parseInt(s.substring(s.indexOf(':') + 1))));
     }
 
     static void fillIntegerStringMap(List<String> l, Map<Integer, String> map) {
-        l.stream()
-                .forEach(s -> map.put(Integer.parseInt(s.substring(0, s.indexOf(':'))), s.substring(s.indexOf(':') + 1)));
+        l.stream().forEach(s -> map.put(Integer.parseInt(s.substring(0, s.indexOf(':'))), s.substring(s.indexOf(':') + 1)));
     }
-    static <K,V extends Comparable<? super  V>>SortedSet<Map.Entry<K,V>> entriesSortedByValues(Map<K,V> map)
-    {
-        SortedSet<Map.Entry<K,V>> sortedEntries=new TreeSet<>(
 
-                new Comparator<Map.Entry<K, V>>() {
-                    @Override
-                    public int compare(Map.Entry<K, V> o1, Map.Entry<K, V> o2) {
-                        int res=o1.getValue().compareTo(o2.getValue());
-                        return  res !=0?-1:1;
-                    }
-                }
+    //вашиот код овде
+    static <K, V extends Comparable<? super V>> SortedSet<Map.Entry<K, V>> entriesSortedByValues(Map<K,V> map) {
+        SortedSet<Map.Entry<K, V>> sortedSet = new TreeSet<>(new Comparator<Map.Entry<K, V>>() {
+            @Override
+            public int compare(Map.Entry<K, V> o1, Map.Entry<K, V> o2) {
+                int res = o1.getValue().compareTo(o2.getValue());
+                return res != 0 ? -res : 1;
+            }
+        }
+
         );
-          sortedEntries.add((Map.Entry<K, V>) map.entrySet());
-          return sortedEntries;
+        sortedSet.addAll(map.entrySet());
+        return sortedSet;
     }
 }

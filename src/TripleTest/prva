@@ -1,4 +1,9 @@
-import java.util.*;
+package TripleTest;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
 
 public class TripleTest {
     public static void main(String[] args) {
@@ -29,37 +34,48 @@ public class TripleTest {
         System.out.println(tDouble);
     }
 }
-class Triple <T extends  Number>
-{
-    List<T> elements;
 
-    public Triple(T a, T b, T c ) {
+class Triple<T extends Number & Comparable<T>> {
+    List<T> numbers;
 
-        elements=new ArrayList<>();
-        elements.add(a);
-        elements.add(b);
-        elements.add(c);
+    public Triple(T a, T b, T c) {
+        numbers=new ArrayList<>();
+        numbers.add(a);
+        numbers.add(b);
+        numbers.add(c);
     }
-    public  double max()
-    {
-        return elements.stream().mapToDouble(Number::doubleValue).max().orElse(0);
+
+    public double max() {
+        double val=Collections.max(numbers).doubleValue();
+        return val;
+
     }
     public double avarage()
     {
-        return elements.stream().mapToDouble(Number::doubleValue).sum()/elements.size();
+        return sum()/3;
+    }
+    private double sum()
+    {
+        double val=0;
+        for(T v:numbers)
+            val+=v.doubleValue();
+        return val;
     }
     public void sort()
     {
-        elements.sort(Comparator.comparing(Number::doubleValue));
+        Collections.sort(numbers);
     }
 
     @Override
     public String toString() {
         StringBuilder stringBuilder=new StringBuilder();
+        for(T v:numbers)
+        {
+           stringBuilder.append(String.format("%.2f ",v.doubleValue()));
+        }
 
-        for(T t:elements)
-            stringBuilder.append(String.format("%.2f ",t.doubleValue()));
         return  stringBuilder.toString();
     }
 }
+
 

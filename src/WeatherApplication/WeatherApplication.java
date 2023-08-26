@@ -1,4 +1,8 @@
-import java.util.*;
+import java.sql.ClientInfoStatus;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.SimpleTimeZone;
 
 public class WeatherApplication {
 
@@ -10,140 +14,134 @@ public class WeatherApplication {
 
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNext()) {
-            System.out.println();
             String line = scanner.nextLine();
             String[] parts = line.split("\\s+");
             weatherDispatcher.setMeasurements(Float.parseFloat(parts[0]), Float.parseFloat(parts[1]), Float.parseFloat(parts[2]));
-            if(parts.length > 3) {
+            if (parts.length > 3) {
                 int operation = Integer.parseInt(parts[3]);
-                if(operation==1) {
+                if (operation == 1) {
                     weatherDispatcher.remove(forecastDisplay);
+
                 }
-                if(operation==2) {
+                if (operation == 2) {
                     weatherDispatcher.remove(currentConditions);
                 }
-                if(operation==3) {
+                if (operation == 3) {
                     weatherDispatcher.register(forecastDisplay);
                 }
-                if(operation==4) {
+                if (operation == 4) {
                     weatherDispatcher.register(currentConditions);
                 }
-
+               
             }
         }
     }
 }
 
-interface Updatable {
-    public void update(float temp, float humidity, float pressure);
-}
-
-interface Subject {
-    void register(Updatable o);
-    void remove(Updatable o);
-    void notifyUpdatable();
-}
-
-interface Displayable {
-    void display();
-}
-
-class CurrentConditionsDisplay implements Updatable, Displayable {
-    private float temperature;
-    private float humidity;
-    private Subject weatherStation;
-
-    public CurrentConditionsDisplay(Subject weatherStation) {
-        this.weatherStation = weatherStation;
-        weatherStation.register(this);
-    }
-
-    public void update(float temperature, float humidity, float pressure) {
-        this.temperature = temperature;
-        this.humidity = humidity;
-        display();
-    }
-
-    public void display() {
-        System.out.println("Temperature: " + temperature + "F");
-        System.out.println("Humidity: " + humidity + "%");
-    }
-}
-
-class ForecastDisplay implements Updatable, Displayable {
-    private float currentPressure = 0.0f;
-    private float lastPressure;
-    private WeatherDispatcher weatherDispatcher;
-
-    public ForecastDisplay(WeatherDispatcher weatherDispatcher) {
-        this.weatherDispatcher = weatherDispatcher;
-        weatherDispatcher.register(this);
-    }
-
-    public void update(float temp, float humidity, float pressure) {
-        lastPressure = currentPressure;
-        currentPressure = pressure;
-        display();
-    }
-
-    public void display() {
-        System.out.print("Forecast: ");
-        if (currentPressure > lastPressure) {
-            System.out.println("Improving");
-        } else if (currentPressure == lastPressure) {
-            System.out.println("Same");
-        } else if (currentPressure < lastPressure) {
-            System.out.println("Cooler");
-        }
-    }
-}
-
-
-class WeatherDispatcher implements Subject {
-    private Set<Updatable> updatables;
-    private float temperature;
-    private float humidity;
-    private float pressure;
-
+class WeatherDispatcher {
+    float temperature;
+    float humidity;
+    float pressure;
+    List<Display>displays;
     public WeatherDispatcher() {
-        updatables = new HashSet<>();
-    }
-
-    public void register(Updatable o) {
-        updatables.add(o);
-    }
-
-    public void remove(Updatable o) {
-        updatables.remove(o);
-    }
-
-    public void notifyUpdatable() {
-        for (Updatable updatable : updatables) {
-            updatable.update(temperature, humidity, pressure);
-        }
-    }
-
-    public void measurementsChanged() {
-        notifyUpdatable();
+    displays=new ArrayList<>();
     }
 
     public void setMeasurements(float temperature, float humidity, float pressure) {
-        this.temperature = temperature;
-        this.humidity = humidity;
-        this.pressure = pressure;
-        measurementsChanged();
+        setHumidity(humidity);
+        setPressure(pressure);
+        setTemperature(temperature);
     }
 
     public float getTemperature() {
         return temperature;
     }
 
+    public void setTemperature(float temperature) {
+        this.temperature = temperature;
+    }
+
     public float getHumidity() {
         return humidity;
+    }
+
+    public void setHumidity(float humidity) {
+        this.humidity = humidity;
     }
 
     public float getPressure() {
         return pressure;
     }
+
+    public void setPressure(float pressure) {
+        this.pressure = pressure;
+    }
+
+    static float previousPressure;
+
+    public static void setPreviousPressure(float np) {
+        previousPressure = np;
+    }
+    public void register(Display d) {
+        displays.add(d);
+    }
+    public void remove(Display d){
+        displays.remove(d);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder=new StringBuilder();
+        for(Display d:displays)
+            stringBuilder.append(d);
+
+
+        return stringBuilder.toString();
+    }
+}
+
+abstract class Display {
+    WeatherDispatcher wd;
+
+    public Display(WeatherDispatcher wd) {
+        this.wd = wd;
+    }
+
+
+}
+
+class CurrentConditionsDisplay extends Display {
+    public CurrentConditionsDisplay(WeatherDispatcher wd) {
+        super(wd);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append(String.format("Temperature: %.2fF\n", wd.getTemperature()));
+        stringBuilder.append(String.format("Humidity: %.2f%%\n", wd.humidity));
+        return stringBuilder.toString();
+    }
+}
+
+class ForecastDisplay extends Display {
+    public ForecastDisplay(WeatherDispatcher wd) {
+        super(wd);
+    }
+
+    @Override
+    public String toString() {
+        if(wd.pressure<WeatherDispatcher.previousPressure){
+            WeatherDispatcher.setPreviousPressure(wd.pressure);
+            return String.format("Forecast: Improving\n");}
+        else if (wd.pressure==WeatherDispatcher.previousPressure) {
+            return String.format("Forecast: Same\n");}
+        else {
+            WeatherDispatcher.setPreviousPressure(wd.pressure);
+            return String.format("Forecast: Cooler\n");
+        }
+    }
+
 
 }

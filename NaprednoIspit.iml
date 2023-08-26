@@ -12,6 +12,7 @@
       <excludeFolder url="file://$MODULE_DIR$/src/GenericCollection" />
       <excludeFolder url="file://$MODULE_DIR$/src/DoubleMatrix" />
       <excludeFolder url="file://$MODULE_DIR$/src/PhonebookTester" />
+      <excludeFolder url="file://$MODULE_DIR$/src/ResizableArray" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
