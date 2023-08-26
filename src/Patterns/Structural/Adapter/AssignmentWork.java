@@ -5,7 +5,7 @@ public class AssignmentWork {
     private Pen p;
     public  void writeAssignment(String s)
     {
-    p.write(s);
+    p.write(s+"ova e od AssignmentWork ");
     }
 
     public Pen getP() {
