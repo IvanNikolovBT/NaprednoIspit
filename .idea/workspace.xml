@@ -5,13 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/Airports/prva" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ArchiveStore/prva" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BlockContainerTest/prva" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CarTest/prva" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ChatRoom/prva" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/StopCorona/StopCoronaTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TextProcessor/прва" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TimesTest/prva" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/WordVectors/WordVectorsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/WordVectors/prva" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Airports/AirportsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Airports/AirportsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ArchiveStore/ArchiveStoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArchiveStore/ArchiveStoreTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BlockContainerTest/BlockContainerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BlockContainerTest/BlockContainerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CarTest/CarTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarTest/CarTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ChatRoom/ChatSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatRoom/ChatSystemTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TaskManager/TasksManagerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TextProcessor/TextProcessorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TextProcessor/TextProcessorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TimesTest/TimesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TimesTest/TimesTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +106,7 @@
       <recent name="Patterns.Observer" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.StopCoronaTest">
     <configuration name="School" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Patterns.Structural.Adapter.School" />
       <module name="NaprednoIspit" />
@@ -127,8 +133,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="StopCoronaTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="StopCoronaTest" />
+      <module name="NaprednoIspit" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TextProcessorTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TextProcessorTest" />
+      <module name="NaprednoIspit" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.StopCoronaTest" />
+        <item itemvalue="Application.TextProcessorTest" />
         <item itemvalue="Application.School" />
         <item itemvalue="Application.Shop" />
       </list>
@@ -173,7 +195,7 @@
       <workItem from="1692642755959" duration="9881000" />
       <workItem from="1692717844472" duration="19317000" />
       <workItem from="1692788258871" duration="38075000" />
-      <workItem from="1693047056835" duration="18389000" />
+      <workItem from="1693047056835" duration="45194000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -335,14 +357,6 @@
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
       <updated>1690153674851</updated>
-    </task>
-    <task id="LOCAL-00027" summary="commit">
-      <option name="closed" value="true" />
-      <created>1690810146626</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1690810146626</updated>
     </task>
     <task id="LOCAL-00028" summary="commit">
       <option name="closed" value="true" />
@@ -544,7 +558,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693071628556</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="commit">
+      <option name="closed" value="true" />
+      <created>1693088902726</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1693088902727</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,26 +599,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/TimesTest/TimesTest.java</url>
-          <line>109</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/TimesTest/TimesTest.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/TimesTest/TimesTest.java</url>
-          <line>111</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/TimesTest/TimesTest.java</url>
-          <line>112</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/F1Test/F1Test.java</url>
           <line>66</line>
@@ -667,6 +669,21 @@
           <url>file://$PROJECT_DIR$/src/DailyTemperatureTest/DailyTemperatureTest.java</url>
           <line>90</line>
           <option name="timeStamp" value="140" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/TimesTest/TimesTest.java</url>
+          <line>96</line>
+          <option name="timeStamp" value="143" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/TimesTest/TimesTest.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="144" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/StopCorona/StopCoronaTest.java</url>
+          <line>137</line>
+          <option name="timeStamp" value="145" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/F1Test/F1Test.java</url>
@@ -767,6 +784,15 @@
           </properties>
           <option name="timeStamp" value="138" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/TimesTest/TimesTest.java</url>
+          <line>105</line>
+          <properties class="TimesTest.TimeTable" method="getSplit">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="142" />
+        </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="64" />
@@ -781,12 +807,14 @@
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="java.util.HashMap$Node" memberName="key" />
         <PinnedItemInfo parentTag="jdk.internal.loader.ClassLoaders$PlatformClassLoader" memberName="parent" />
         <PinnedItemInfo parentTag="Subtitles" memberName="titles" />
       </pinned-members>
     </pin-to-top-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/NaprednoIspit$ChatSystemTest.ic" NAME="ChatSystemTest Coverage Results" MODIFIED="1693090939176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/NaprednoIspit$ApplicantEvaluationTest.ic" NAME="ApplicantEvaluationTest Coverage Results" MODIFIED="1689880004750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ApplicantEvaluationTest.*</FILTER>
     </SUITE>

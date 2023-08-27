@@ -1,10 +1,13 @@
-package TimesTest;
+package TimesTest;//package TimesTest;
 
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.*;
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Scanner;
 
 public class TimesTest {
 
@@ -28,106 +31,116 @@ public class TimesTest {
 enum TimeFormat {
     FORMAT_24, FORMAT_AMPM
 }
-class UnsupportedFormatException extends Exception
-{
+
+class Times implements  Comparable<Times> {
+    public int hour;
+    public int minute;
+
+    public Times(int hour, int minute) {
+        this.hour = hour;
+        this.minute = minute;
+    }
+
+    public String print24() {
+        return String.format("%2d:%02d", hour, minute);
+
+    }
+
+    public String printAMPM() {
+        int dhour=hour;
+        String part="AM";
+        if (hour == 0)
+            dhour+=12;
+        if (hour >= 1 && hour <= 11)
+            dhour=hour;
+        if (hour == 12) part="PM";
+        if (hour >= 13 && hour <= 23)
+        {
+            dhour-=12;
+            part="PM";
+        }
+        return String.format("%2d:%02d %s", dhour, minute,part);
+    }
+
+    @Override
+    public int compareTo(Times o) {
+        if (hour == o.hour)
+            return minute - o.minute;
+        else
+            return hour - o.hour;
+    }
+}
+
+class TimeTable {
+    List<Times> timesList;
+
+    public TimeTable() {
+        timesList = new ArrayList<>();
+    }
+
+    public void readTimes(InputStream inputStream) throws InvalidTimeException, UnsupportedFormatException {
+        Scanner scanner = new Scanner(inputStream);
+        while (scanner.hasNext()) {
+            String time = scanner.next();
+            Times times;
+            times=createTimes(time);
+            timesList.add(times);
+
+        }
+        scanner.close();
+    }
+
+    private Times createTimes(String time) throws UnsupportedFormatException, InvalidTimeException {
+        Times times;
+        check(time);
+        String split="";
+        split = getSplit(time, split);
+        String[] splitter = time.split(split);
+        int hour = Integer.parseInt(splitter[0]);
+        int minutes = Integer.parseInt(splitter[1]);
+        checkTime(hour, minutes);
+        times = new Times(hour, minutes);
+        return times;
+    }
+
+    private static String getSplit(String time, String split) throws UnsupportedFormatException {
+        if(time.contains(":"))
+            split =":";
+        else if (time.contains("."))
+            split ="\\.";
+        if(split.equals(""))
+            throw new UnsupportedFormatException(time) ;
+        return split;
+    }
+
+    private static void checkTime(int hour, int minutes) throws InvalidTimeException {
+        if (hour < 0 || hour > 23 || minutes < 0 || minutes > 59) throw new InvalidTimeException();
+    }
+
+    private void check(String time) throws UnsupportedFormatException {
+        if(time.contains(":")||time.contains("."))
+            return;
+        throw new UnsupportedFormatException(time);
+    }
+
+    public void writeTimes(OutputStream outputStream, TimeFormat timeFormat) {
+        PrintWriter printWriter = new PrintWriter(outputStream);
+        if (TimeFormat.FORMAT_AMPM.equals(timeFormat))
+            timesList.stream().sorted().forEach(i->printWriter.println(i.printAMPM()));
+        else timesList.stream().sorted().forEach(i->printWriter.println(i.print24()));
+        printWriter.flush();
+    }
+}
+
+class UnsupportedFormatException extends Exception {
     public UnsupportedFormatException(String msg) {
         super(msg);
     }
 }
-class InvalidTimeException extends  Exception
-{
-    public InvalidTimeException(String msg) {
-        super(msg);
-    }
-}
 
-class Time
-{
-    int hour;
-    int minute;
+class InvalidTimeException extends Exception {
 
-    public Time(int hour, int minute) {
-        this.hour = hour;
-        this.minute = minute;
-    }
-    public Time(String time) throws UnsupportedFormatException, InvalidTimeException {
-        String[]splitter=time.split("\\.");
-        if(splitter.length==1)
-            splitter=time.split(":");
-        if(splitter.length==1)
-            throw  new UnsupportedFormatException(time);
-        this.hour=Integer.parseInt(splitter[0]);
-        this.minute=Integer.parseInt(splitter[1]);
-        if(hour<0 || hour >23 || minute<0 || minute>59)
-            throw  new InvalidTimeException(time);
-    }
-
-    public int getHour() {
-        return hour;
-    }
-
-    public int getMinute() {
-        return minute;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("%2d:%02d",hour,minute);
-    }
-    public String  toStringAMPM()
-    {
-        int h=hour;
-        String part="AM";
-        if(h==0)
-        {
-            h+=12;
-        }
-        else if(h==12)
-        {
-            part="PM";
-        }
-        else if(h>12)
-        {
-            h-=12;
-            part="PM";
-        }
-        return  String.format("%2d:%02d %s",h,minute,part);
-    }
-}
-class TimeTable
-{
-    List<Time> timeList;
-
-    public TimeTable() {
-        this.timeList = new ArrayList<>();
-    }
-
-    public void readTimes(InputStream in) throws InvalidTimeException, UnsupportedFormatException {
-        Scanner scanner=new Scanner(new InputStreamReader(in));
-        while(scanner.hasNextLine())
-        {
-            String line=scanner.nextLine();
-            String parts[]=line.split("\\s+");
-            for(String s:parts){
-                Time time=new Time(s);
-                timeList.add(time);
-            }
-
-        }
-    }
-
-    public void writeTimes(PrintStream out, TimeFormat format24) {
-        PrintWriter printWriter=new PrintWriter(out);
-        if(format24.equals(TimeFormat.FORMAT_AMPM))
-        {
-            timeList.stream().sorted(Comparator.comparing(Time::getHour).thenComparing(Time::getMinute)).forEach(time -> printWriter.println(time.toStringAMPM()));
-        }
-        else
-        {
-            timeList.stream().sorted(Comparator.comparing(Time::getHour).thenComparing(Time::getMinute)).forEach(time -> printWriter.println(time.toString()));
-
-        }
-
-        printWriter.flush();
+    public InvalidTimeException() {
+        super();
     }
 }

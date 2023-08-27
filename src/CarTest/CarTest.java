@@ -1,72 +1,5 @@
-//package CarTest;
-
 import java.util.*;
 import java.util.stream.Collectors;
-
-class Car {
-    public String getManufacturer() {
-        return manufacturer;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public float getPower() {
-        return power;
-    }
-
-    String manufacturer;
-    String model;
-    int price;
-    float power;
-
-    public Car(String manufacturer, String model, int price, float power) {
-        this.manufacturer = manufacturer;
-        this.model = model;
-        this.price = price;
-        this.power = power;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("%s %s (%.0fKW) %d", manufacturer, model, power, price);
-    }
-}
-
-class CarCollection {
-    List<Car> cars;
-
-    public CarCollection() {
-        this.cars = new ArrayList<>();
-    }
-
-    public void addCar(Car car) {
-        cars.add(car);
-    }
-
-    public void sortByPrice(boolean ascending) {
-        if (ascending) {
-            cars=cars.stream().sorted(Comparator.comparing(Car::getPrice).thenComparing(Car::getPower)).collect(Collectors.toList());
-        } else {
-            cars=cars.stream().sorted(Comparator.comparing(Car::getPrice).thenComparing(Car::getPower).reversed()).collect(Collectors.toList());
-
-        }
-
-    }
-
-    public List<Car> getList() {
-    return cars;
-    }
-
-    public List<Car> filterByManufacturer(String manufacturer) {
-        return cars.stream().filter(car-> car.manufacturer.equalsIgnoreCase(manufacturer)).sorted(Comparator.comparing(Car::getModel).thenComparing(Car::getPower)).collect(Collectors.toList());
-    }
-}
 
 public class CarTest {
     public static void main(String[] args) {
@@ -95,8 +28,7 @@ public class CarTest {
             String line = scanner.nextLine();
             String[] parts = line.split(" ");
             if (parts.length < 4) return parts[0];
-            Car car = new Car(parts[0], parts[1], Integer.parseInt(parts[2]),
-                    Float.parseFloat(parts[3]));
+            Car car = new Car(parts[0], parts[1], Integer.parseInt(parts[2]), Float.parseFloat(parts[3]));
             cc.addCar(car);
         }
         scanner.close();
@@ -105,4 +37,68 @@ public class CarTest {
 }
 
 
-// vashiot kod ovde
+class Car {
+    String manufacturer;
+    String model;
+    int price;
+    float power;
+
+    public Car(String manufacturer, String model, int price, float power) {
+        this.manufacturer = manufacturer;
+        this.model = model;
+        this.price = price;
+        this.power = power;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public float getPower() {
+        return power;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s %s (%dKW) %d", manufacturer, model, (int) power, price);
+    }
+}
+
+class CarCollection {
+
+    List<Car> cars;
+
+    public CarCollection() {
+        cars = new ArrayList<>();
+    }
+
+    public void addCar(Car car) {
+        cars.add(car);
+    }
+
+    public void sortByPrice(boolean ascending) {
+        if (ascending)
+            cars=cars.stream().sorted(Comparator.comparing(Car::getPrice).thenComparing(Car::getPower)).collect(Collectors.toList());
+        else
+            cars=cars.stream().sorted(Comparator.comparing(Car::getPrice, Comparator.reverseOrder()).thenComparing(Car::getPower,Comparator.reverseOrder())).collect(Collectors.toList());
+
+    }
+
+    public List<Car> filterByManufacturer(String man) {
+        return cars.stream().filter(i -> i.manufacturer.equalsIgnoreCase(man)).sorted(Comparator.comparing(Car::getModel)).collect(Collectors.toList());
+    }
+
+    public List<Car> getList() {
+        return cars;
+    }
+
+
+}

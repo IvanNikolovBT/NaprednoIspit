@@ -1,0 +1,92 @@
+package WordVectors;
+
+import java.io.InputStream;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+/**
+ * Word vectors test
+ */
+public class WordVectorsTest {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        scanner.nextLine();
+        String[] words = new String[n];
+        List<List<Integer>> vectors = new ArrayList<>(n);
+        for (int i = 0; i < n; ++i) {
+            String line = scanner.nextLine();
+            String[] parts = line.split("\\s+");
+            words[i] = parts[0];
+            List<Integer> vector = Arrays.stream(parts[1].split(":")).map(Integer::parseInt).collect(Collectors.toList());
+            vectors.add(vector);
+        }
+        n = scanner.nextInt();
+        scanner.nextLine();
+        List<String> wordsList = new ArrayList<>(n);
+        for (int i = 0; i < n; ++i) {
+            wordsList.add(scanner.nextLine());
+        }
+        WordVectors wordVectors = new WordVectors(words, vectors);
+        wordVectors.readWords(wordsList);
+        n = scanner.nextInt();
+        List<Integer> result = wordVectors.slidingWindow(n);
+        System.out.println(result.stream().map(Object::toString).collect(Collectors.joining(",")));
+        scanner.close();
+    }
+}
+
+class WordVectors {
+    Map<String, Vector> wordVectors;
+    List<Vector>vectors;
+    public WordVectors(String[] words, List<List<Integer>> vectors) {
+        wordVectors = new HashMap<>();
+        vectors=new ArrayList<>();
+        for (int i = 0; i < words.length; i++)
+            wordVectors.put(words[i], new Vector(vectors.get(i)));
+
+    }
+
+    public void readWords(List<String> words) {
+        vectors=words.stream().map(word->wordVectors.getOrDefault(word,new Vector())). collect(Collectors.toList());
+    }
+
+    public List<Integer> slidingWindow(int n) {
+        return IntStream.range(0, wordVectors.size()-n+1).
+                mapToObj(i->vectors.subList(i,i+n).stream().reduce(Vector.IDENTITY,Vector::sum)).map(Vector::max).collect(Collectors.toList());
+    }
+}
+
+class Vector {
+    public static final Vector IDENTITY =new Vector(Arrays.asList(0,0,0,0,0));
+    List<Integer> values;
+
+    public Vector(List<Integer> values) {
+        this.values = values;
+    }
+
+    public Vector() {
+        values = new ArrayList<>();
+        for (int i = 0; i < 5; i++)
+            values.add(5);
+    }
+
+    public int max() {
+        return Collections.max(values);
+    }
+    public int size()
+    {
+        return values.size();
+    }
+    public int at(int i)
+    {
+        return values.get(i);
+    }
+    public Vector sum(Vector vector) {
+    return new Vector(IntStream.range(0,vector.size()).map(i->at(i)+vector.at(i)).boxed().collect(Collectors.toList()));
+    }
+}
+
+
+

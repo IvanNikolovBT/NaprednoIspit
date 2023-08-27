@@ -1,9 +1,5 @@
-//package TextProcessor;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.*;
 
 class CosineSimilarityCalculator {
@@ -31,79 +27,6 @@ class CosineSimilarityCalculator {
     }
 }
 
-class TextProcessor {
-    Map<String, Integer> allWords;
-    List<String> rawText;
-    List<Map<String, Integer>> documents;
-
-    public TextProcessor() {
-        allWords = new TreeMap<>();
-        rawText = new ArrayList<>();
-        documents = new ArrayList<>();
-    }
-
-    public void readText(InputStream is) {
-        Scanner scanner = new Scanner(new InputStreamReader(is));
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            line = line.replaceAll("[^A-Za-z\\s+]", "");
-            line = line.toLowerCase();
-            Map<String, Integer> mapper = new TreeMap<>();
-            rawText.add(line);
-            String[] splitter = line.split("\\s+");
-            for (String s : splitter) {
-                allWords.computeIfPresent(s, (k, v) -> v + 1);
-                allWords.putIfAbsent(s, 1);
-                mapper.computeIfPresent(s, (k, v) -> v + 1);
-                mapper.putIfAbsent(s, 1);
-
-            }
-            documents.add(mapper);
-        }
-
-    }
-
-    public  void printTextsVectors(OutputStream os)
-    {
-        PrintWriter printWriter=new PrintWriter(os);
-        documents.stream().map(Map::values).forEach(printWriter::println);
-        printWriter.flush();
-    }
-    public void printCorpus(OutputStream os,int n,boolean asc)
-    {
-        PrintWriter printWriter=new PrintWriter(os);
-        allWords.entrySet().stream().sorted(asc ? Map.Entry.comparingByValue(Comparator.naturalOrder()):Map.Entry.comparingByValue(Comparator.reverseOrder())).
-        limit(n).forEach(l->printWriter.println(String.format("%s : %d",l.getKey(),l.getValue())));
-                printWriter.flush();
-    }
-    public void mostSimilarTexts(OutputStream os)
-    {
-        PrintWriter printWriter=new PrintWriter(os);
-        double max=0;
-        int maxJ=0,maxI=0;
-        for(int i=0;i< documents.size();i++) {
-            for (int j = 0;j < documents.size(); j++)
-            {
-                if(i!=j)
-                {
-                    double sim=CosineSimilarityCalculator.cosineSimilarity(documents.get(i).values(),documents.get(j).values());
-                    if(sim>max)
-                    {
-                        max=sim;
-                        maxI=i;
-                        maxJ=j;
-                    }
-
-
-
-                }
-            }
-        }
-        printWriter.flush();
-    }
-
-}
-
 public class TextProcessorTest {
 
     public static void main(String[] args) {
@@ -123,4 +46,97 @@ public class TextProcessorTest {
         System.out.println("===MOST SIMILAR TEXTS===");
         textProcessor.mostSimilarTexts(System.out);
     }
+}
+
+class TextProcessor {
+    List<String> rawTexts;
+    List<Map<String, Integer>> vectorsForTexts;
+    Map<String, Integer> allWordsMap;
+
+    public TextProcessor() {
+        rawTexts = new ArrayList<>();
+        vectorsForTexts = new ArrayList<>();
+        allWordsMap = new TreeMap<>();
+    }
+
+    public void readText(InputStream in) {
+        Scanner scanner = new Scanner(in);
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            String[] splitter = line.split("\\s+");
+            Map<String, Integer> wordFrequency = new TreeMap<>();
+            for (String s : splitter) {
+                String word = exctractWord(s);
+                fillMaps(wordFrequency, word);
+            }
+            vectorsForTexts.add(wordFrequency);
+            rawTexts.add(line);
+        }
+
+        for(Map.Entry<String ,Integer> entry :allWordsMap.entrySet())
+        {
+            for(Map<String, Integer> individaul:vectorsForTexts)
+                individaul.putIfAbsent(entry.getKey(),0);
+
+        }
+        scanner.close();
+    }
+
+    private void fillMaps(Map<String, Integer> wordFrequency, String word) {
+        wordFrequency.computeIfPresent(word, (k, v) -> {
+            v++;
+            return v;
+        });
+        wordFrequency.putIfAbsent(word, 1);
+        allWordsMap.computeIfPresent(word, (k, v) -> {
+            v++;
+            return v;
+        });
+        allWordsMap.putIfAbsent(word, 1);
+    }
+
+    public void printTextsVectors(OutputStream os) {
+        PrintWriter printWriter = new PrintWriter(os);
+        vectorsForTexts.stream().map(Map::values).forEach(printWriter::println);
+        printWriter.flush();
+    }
+
+    private String exctractWord(String s) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Character c : s.toCharArray()) {
+            if (Character.isLetter(c)) stringBuilder.append(Character.toLowerCase(c));
+            else return stringBuilder.toString();
+        }
+        return stringBuilder.toString();
+    }
+
+    public void printCorpus(OutputStream os, int n, boolean ascending) {
+        PrintWriter printWriter = new PrintWriter(os);
+        allWordsMap.entrySet().stream().sorted(ascending ? Map.Entry.comparingByValue(Comparator.comparing(Integer::intValue)) : Map.Entry.comparingByValue(Comparator.comparing(Integer::intValue, Comparator.reverseOrder()))).limit(n).forEach(i -> printWriter.println(String.format("%s : %d", i.getKey(), i.getValue())));
+        printWriter.flush();
+    }
+
+    public void mostSimilarTexts(OutputStream os) {
+        PrintWriter printWriter = new PrintWriter(os);
+        int imax = 0, jmax = 0;
+        double max = 0;
+        for (int i = 0; i < rawTexts.size(); i++) {
+            for (int j = 0; j < rawTexts.size(); j++) {
+                if (i != j) {
+                    double val = CosineSimilarityCalculator.cosineSimilarity(vectorsForTexts.get(i).values(), vectorsForTexts.get(j).values());
+                    if (val > max) {
+                        max = val;
+                        imax = i;
+                        jmax = j;
+                    }
+                }
+            }
+        }
+        printWriter.println(rawTexts.get(imax));
+        printWriter.println(rawTexts.get(jmax));
+        printWriter.println(max);
+        printWriter.flush();
+    }
+
+
 }
