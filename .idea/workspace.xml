@@ -5,19 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/CarTest/prva" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ChatRoom/prva" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/StopCorona/StopCoronaTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TextProcessor/прва" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TimesTest/prva" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WordVectors/WordVectorsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WordVectors/prva" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ShapesTest/prva" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/StadiumTest/prva" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarTest/CarTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarTest/CarTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChatRoom/ChatSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatRoom/ChatSystemTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TaskManager/TasksManagerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TextProcessor/TextProcessorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TextProcessor/TextProcessorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TimesTest/TimesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TimesTest/TimesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shapes2Test/Shapes2Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ShapesTest/ShapesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShapesTest/ShapesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StadiumTest/StaduimTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StadiumTest/StaduimTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +99,7 @@
       <recent name="Patterns.Observer" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.StopCoronaTest">
+  <component name="RunManager">
     <configuration name="School" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Patterns.Structural.Adapter.School" />
       <module name="NaprednoIspit" />
@@ -195,7 +188,8 @@
       <workItem from="1692642755959" duration="9881000" />
       <workItem from="1692717844472" duration="19317000" />
       <workItem from="1692788258871" duration="38075000" />
-      <workItem from="1693047056835" duration="45194000" />
+      <workItem from="1693047056835" duration="47216000" />
+      <workItem from="1693167699851" duration="2499000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -357,14 +351,6 @@
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
       <updated>1690153674851</updated>
-    </task>
-    <task id="LOCAL-00028" summary="commit">
-      <option name="closed" value="true" />
-      <created>1690832611042</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1690832611042</updated>
     </task>
     <task id="LOCAL-00029" summary="commit">
       <option name="closed" value="true" />
@@ -566,7 +552,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693088902727</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="commit">
+      <option name="closed" value="true" />
+      <created>1693166166353</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1693166166353</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -821,5 +815,6 @@
     <SUITE FILE_PATH="coverage/NaprednoIspit$SubtitlesTest__1_.ic" NAME="SubtitlesTest (1) Coverage Results" MODIFIED="1692647227833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Subtitles.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/NaprednoIspit$StaduimTest.ic" NAME="StaduimTest Coverage Results" MODIFIED="1693168309493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

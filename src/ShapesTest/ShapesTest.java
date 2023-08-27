@@ -1,13 +1,10 @@
 package ShapesTest;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 enum Color {
     RED, GREEN, BLUE
 }
-
 public class ShapesTest {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -39,144 +36,36 @@ public class ShapesTest {
     }
 }
 
-interface Scalable {
+interface  Scalable
+{
     void scale(float scaleFactor);
 }
-
-interface Stackable {
+interface  Stackable
+{
     float weight();
 }
-
-abstract class Shape implements Scalable, Stackable {
-    String  id;
+abstract class Shape implements Stackable,Scalable
+{
     Color color;
-    public Shape(String id,Color color)
-    {
-        this.id=id;
-        this.color=color;
-    }
-}
-
-class Circle extends Shape {
-    float radius;
-
-    public Circle(String id, Color color, float radius) {
-        super(id,color);
-        this.radius = radius;
-
-    }
-
-    @Override
-    public void scale(float scaleFactor) {
-        radius *= scaleFactor;
-    }
-
-    @Override
-    public float weight() {
-        return (float) (Math.PI * radius * radius);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("C: %-5s%-10s%10.2f\n", id, color, weight());
-    }
-
-    public String getId() {
-        return id;
-    }
-}
-
-class Rectangle extends Shape {
-    float radius;
-    float height;
-
-
-    public String getId() {
-        return id;
-    }
-
-    public Rectangle(String id, Color color, float radius, float height) {
-        super(id,color);
-        this.radius = radius;
-        this.height = height;
-    }
-
-
-    @Override
-    public void scale(float scaleFactor) {
-        radius *= scaleFactor;
-        height *= scaleFactor;
-    }
-
-    @Override
-    public float weight() {
-        return (float) (radius * height);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("R: %-5s%-10s%10.2f\n", id, color, weight());
-    }
+    String id;
 
 }
-
 class Canvas {
+String id;
+Color color;
 
+    void add(String id, Color color, float radius)
+    {
+        //add circle
 
-    List<Shape> shapeList;
-
-    public Canvas() {
-        shapeList = new ArrayList<>();
     }
-    private int findI(float weight) {
-        int i = 0;
-        for (i = 0; i < shapeList.size(); i++) {
-            if (shapeList.get(i).weight() < weight) return i;
-
-        }
-        return shapeList.size();
-    }
-
-
-    void add(String id, Color color, float radius) {
-        Circle circle = new Circle(id, color, radius);
-        float weight = circle.weight();
-        int i = findI(weight);
-        shapeList.add(i, circle);
-    }
-
-
-    void add(String id, Color color, float width, float height) {
-        //pravoagolnik
-        Rectangle rectangle = new Rectangle(id, color, width, height);
-        float weight = rectangle.weight();
-        int i = findI(weight);
-        shapeList.add(i, rectangle);
+    void add(String id, Color color, float width, float height)
+    {
+        //add rectangle
     }
     public void scale(String id,float scaleFactor)
     {
-        Shape s=null;
-        for(int i=shapeList.size()-1;i>=0;i--)
-        {
-            if(shapeList.get(i).id.equals(id))
-            {
-                s=shapeList.get(i);
-                shapeList.remove(i);
-                break;
-            }
-        }
 
-        s.scale(scaleFactor);
-        int index=findI(s.weight());
-        shapeList.add(index,s);
-    }
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (Shape shape : shapeList) {
-            sb.append(shape);
-        }
-        return sb.toString();
     }
 
 }
