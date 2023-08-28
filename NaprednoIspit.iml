@@ -9,7 +9,6 @@
       <excludeFolder url="file://$MODULE_DIR$/src/Lab2/zad1" />
       <excludeFolder url="file://$MODULE_DIR$/src/Log" />
       <excludeFolder url="file://$MODULE_DIR$/src/Aud8" />
-      <excludeFolder url="file://$MODULE_DIR$/src/GenericCollection" />
       <excludeFolder url="file://$MODULE_DIR$/src/DoubleMatrix" />
       <excludeFolder url="file://$MODULE_DIR$/src/PhonebookTester" />
       <excludeFolder url="file://$MODULE_DIR$/src/ResizableArray" />

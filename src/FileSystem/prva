@@ -1,12 +1,94 @@
 package FileSystem;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
 /**
  * Partial exam II 2016/2017
  */
+
+class File implements Comparable<File> {
+    char folder;
+    String name;
+    int size;
+    LocalDateTime createdAt;
+
+    public File(char folder, String name, int size, LocalDateTime createdAt) {
+        this.name = name;
+        this.size = size;
+        this.createdAt = createdAt;
+        this.folder = folder;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    @Override
+    public int compareTo(File o) {
+        Comparator<File> comparator = Comparator.comparing(File::getCreatedAt)
+                .thenComparing(File::getName)
+                .thenComparing(File::getSize);
+        return comparator.compare(this, o);
+    }
+
+    public String getYearAndMonth() {
+        return String.format("%s-%d",createdAt.getMonth().toString(),createdAt.getDayOfMonth());
+    }
+}
+
+class FileSystem {
+    List<File> files = new ArrayList<>();
+
+    FileSystem() {
+
+    }
+
+    public void addFile(char folder, String name, int size, LocalDateTime createdAt) {
+        files.add(new File(folder, name, size, createdAt));
+    }
+
+    public List<File> findAllHiddenFilesWithSizeLessThen(int size) {
+        return files.stream().filter(s -> s.getSize() < size && s.folder == '.').sorted().collect(Collectors.toList());
+    }
+
+    public int totalSizeOfFilesFromFolders(List<Character> folders) {
+        return files.stream().filter(file -> folders.contains(file.folder)).mapToInt(f -> f.getSize()).sum();
+    }
+
+    public Map<Integer, Set<File>> byYear() {
+        return files.stream().collect(Collectors.groupingBy(file -> file.createdAt.getYear(), Collectors.toCollection(TreeSet::new)));
+    }
+
+    public Map<String, Long> sizeByMonthAndDay() {
+    return files.stream().
+            collect(Collectors.groupingBy(file->file.getYearAndMonth(),Collectors.summingLong(File::getSize)));
+
+    }
+}
+
 public class FileSystemTest {
     public static void main(String[] args) {
         FileSystem fileSystem = new FileSystem();
@@ -56,86 +138,5 @@ public class FileSystemTest {
         scanner.close();
     }
 }
-class File implements Comparable<File>
-{
-    String name;
-    int size;
-    LocalDateTime created;
 
-
-    public File(String name, int size, LocalDateTime created) {
-        this.name = name;
-        this.size = size;
-        this.created = created;
-    }
-
-    @Override
-    public int compareTo(File o) {
-        int val=created.compareTo(o.created);
-        if(val==0)
-        {
-            val=name.compareTo(o.name);
-            if(val==0)
-            {
-                val=Integer.compare(size,o.size);
-                return val;
-            }
-            return val;
-        }
-        return val;
-    }
-    public boolean ishidden()
-    {
-        return name.startsWith(".");
-    }
-    @Override
-    public String toString() {
-        return String.format("%-10s %5dB %s",name,size,created);
-    }
-}
-class FileSystem
-{
-
-    Map<Character,Set<File>>foldersToFile;
-
-    public FileSystem()
-    {
-        foldersToFile=new TreeMap<>();
-    }
-    public void addFile(char folder,String name,int size,LocalDateTime createdAt)
-    {
-        File file=new File(name,size,createdAt);
-        foldersToFile.putIfAbsent(folder,new TreeSet<>());
-        foldersToFile.computeIfPresent(folder,(k,v)->{v.add(file);return v;});
-    }
-    public List<File> findAllHiddenFilesWithSizeLessThen(int size)
-    {
-        return foldersToFile.values().stream().flatMap(Collection::stream).filter(i->i.size<size && i.ishidden()).collect(Collectors.toList());
-    }
-    public int totalSizeOfFilesFromFolders(List<Character>folders)
-    {
-        int total=0;
-        for(Character c:folders)
-            total+=foldersToFile.get(c).stream().mapToInt(i->i.size).sum();
-
-        return total;
-    }
-    public Map<Integer,Set<File>>byYear()
-    {
-        return foldersToFile.values().stream().flatMap(Collection::stream).collect(Collectors.groupingBy(i->i.created.getYear(),TreeMap::new,Collectors.toCollection(HashSet::new)));
-    }
-    public Map<String, Long> sizeByMonthAndDay()
-    {
-        Map<String,Long> val=new TreeMap<>();
-        for(Set<File> f :foldersToFile.values())
-        {
-            for(File a:f)
-            {
-                val.computeIfPresent(String.format("%s-%s",a.created.getMonth(),a.created.getDayOfMonth()), (k,v)->{v=v+a.size;return v;});
-                val.putIfAbsent(String.format("%s-%s",a.created.getMonth(),a.created.getDayOfMonth()), (long) a.size);
-
-            }
-        }
-        return val;
-       }
-}
+// Your code here

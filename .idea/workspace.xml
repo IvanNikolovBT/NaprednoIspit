@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/PayrollSystem/15t" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PayrollSystem/PayrollSystemTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PayrollSystem2/PayrollSystemTest2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FileSystem/prva" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MinMax/prva" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NaprednoIspit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/NaprednoIspit.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileSystem/FileSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileSystem/FileSystemTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GenericCollection/GenericCollectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GenericCollection/GenericCollectionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Log/LoggerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MinMax/MinAndMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MinMax/MinAndMax.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +190,7 @@
       <workItem from="1692788258871" duration="38075000" />
       <workItem from="1693047056835" duration="47216000" />
       <workItem from="1693167699851" duration="11351000" />
-      <workItem from="1693216150771" duration="11318000" />
+      <workItem from="1693216150771" duration="18462000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -348,14 +352,6 @@
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
       <updated>1690153674851</updated>
-    </task>
-    <task id="LOCAL-00032" summary="commit">
-      <option name="closed" value="true" />
-      <created>1691680313864</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1691680313864</updated>
     </task>
     <task id="LOCAL-00033" summary="commit">
       <option name="closed" value="true" />
@@ -557,7 +553,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693216170859</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="commit">
+      <option name="closed" value="true" />
+      <created>1693236045605</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1693236045605</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -679,7 +683,7 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/PayrollSystem2/PayrollSystemTest2.java</url>
           <line>246</line>
-          <option name="timeStamp" value="152" />
+          <option name="timeStamp" value="154" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/F1Test/F1Test.java</url>

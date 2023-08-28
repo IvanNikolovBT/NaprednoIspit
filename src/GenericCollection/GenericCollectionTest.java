@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
-
 interface IHasTimestamp {
     LocalDateTime getTimestamp();
 }
@@ -90,38 +89,6 @@ class TwoIntegersElement implements Comparable<TwoIntegersElement>, IHasTimestam
     @Override
     public String toString() {
         return "TwoIntegersElement{" + "value1=" + value1 + ", value2=" + value2 + ", timestamp=" + timestamp + '}';
-    }
-}
-
-class GenericCollection<T extends Comparable<T> & IHasTimestamp> {
-    Map<String, Set<T>> mapByCategory;
-
-    public GenericCollection() {
-        mapByCategory = new HashMap<>();
-    }
-
-    public void addGenericItem(String category, T element) {
-        mapByCategory.putIfAbsent(category, new TreeSet<>());
-        mapByCategory.computeIfPresent(category, (k, v) -> {
-            v.add(element);
-            return v;
-        });
-    }
-
-    public Collection<T> findAllBetween(LocalDateTime from, LocalDateTime to) {
-    return  mapByCategory.values().stream().flatMap(Collection::stream)
-            .filter(t->t.getTimestamp().isAfter(from) && t.getTimestamp().isBefore(to)).
-            collect(Collectors.toCollection(()-> new TreeSet<T>(Comparator.reverseOrder())));
-    }
-
-    public Collection<T> itemsFromCategories(List<String> categories) {
-    return mapByCategory.keySet().stream().filter(categories::contains).
-            flatMap(category->mapByCategory.get(category).stream()).collect(Collectors.toCollection(()-> new TreeSet<T>(Comparator.reverseOrder())));
-    }
-
-    public Map<String, Set<T>> byMonthAndDay() {
-    return mapByCategory.values().stream()
-            .flatMap(Collection::stream).collect(Collectors.groupingBy(element->String.for))
     }
 }
 
@@ -213,8 +180,40 @@ public class GenericCollectionTest {
     }
 
     private static void printResultsFromCountByYear(GenericCollection<?> collection) {
-        collection.countByYear().forEach((key, value) -> {
-            System.out.println(key + " -> " + value);
+        collection.countByYear().forEach((key, value) -> System.out.println(key + " -> " + value));
+    }
+}
+
+class GenericCollection<T extends Comparable<T> & IHasTimestamp> {
+    Map<String, Set<T>> elements;
+
+    public GenericCollection() {
+        elements = new TreeMap<>();
+    }
+
+    public void addGenericItem(String cat, T el) {
+        elements.putIfAbsent(cat, new TreeSet<>());
+        elements.computeIfPresent(cat, (k, v) -> {
+            v.add(el);
+            return v;
         });
+    }
+    Collection<T> findAllBetween(LocalDateTime from,LocalDateTime to)
+    {
+        return elements.values().stream().flatMap(Collection::stream).filter(i->i.getTimestamp().isAfter(from)&&i.getTimestamp().isBefore(to)).collect(Collectors.toList());
+    }
+    Collection<T>itemsFromCategories(List<String> categories)
+    {
+        return elements.entrySet().stream().filter(i->categories.contains(i.getKey())).map(Map.Entry::getValue).flatMap(Collection::stream).collect(Collectors.toList());
+    }
+    public Map<String,Set<T>>byMonthAndDay()
+    {
+        return elements.values().stream()
+                .flatMap(Collection::stream)
+                .collect(Collectors.groupingBy(i->String.format("%02d-%02d",i.getTimestamp().getMonthValue(),i.getTimestamp().getDayOfMonth()),TreeMap::new,Collectors.toCollection(TreeSet::new)));
+    }
+    public Map<Integer, Long> countByYear()
+    {
+        return elements.values().stream().flatMap(Collection::stream).collect(Collectors.groupingBy(i->i.getTimestamp().getYear(),TreeMap::new,Collectors.counting()));
     }
 }
