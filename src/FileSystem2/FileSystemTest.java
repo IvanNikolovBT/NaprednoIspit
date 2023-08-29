@@ -1,171 +1,8 @@
 package FileSystem2;
 
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.OptionalLong;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
-interface IFile  extends  Comparable<File>{
-    public String getFileName();
-
-    public long getFileSize();
-
-    public String getFileInfo(int indent);
-
-    public void sortBySize();
-
-    public long findLargestFile();
-}
-
-class File implements IFile {
-    String name;
-    long size;
-
-    @Override
-    public int compareTo(File o) {
-        return Long.compare(size,o.size);
-    }
-
-    public File(String name, long size) {
-        this.name = name;
-        this.size = size;
-    }
-    public File(String name) {
-        this.name = name;
-        this.size = 0;
-    }
-
-    @Override
-    public String getFileName() {
-        return name;
-    }
-
-    @Override
-    public long getFileSize() {
-        return size;
-    }
-
-    @Override
-    public String getFileInfo(int indent) {
-        //TO DO
-        return String.format("%sFile name: %10s File size: %10d\n",IndentPrinter.printIndentation(indent),getFileName(),getFileSize());
-    }
-
-    @Override
-    public void sortBySize() {
-        return;
-    }
-
-    @Override
-    public long findLargestFile() {
-        return this.size;
-    }
-
-
-}
-class IndentPrinter{
-
-    public  static String printIndentation(int level)
-    {
-        return IntStream.range(0,level).mapToObj(i->"\t").collect(Collectors.joining());
-    }
-}
-class Folder extends File implements IFile {
-
-    List<IFile> list;
-
-
-    public Folder(String name) {
-        super(name);
-        list = new ArrayList<>();
-    }
-    private boolean checkNameExists(String fileName)
-    {
-        return list.stream().
-                map(IFile::getFileName)
-                .anyMatch(name->name.equals(fileName));
-    }
-    public void addFile(IFile file) throws FileNameExistsException {
-
-        if (checkNameExists(file.getFileName()))
-            throw new FileNameExistsException(file.getFileName(),getFileName());
-        list.add(file);
-        this.size+=file.getFileSize();
-        //treba da se azurira spored goleminata
-    }
-
-    @Override
-    public String getFileName() {
-        return name;
-    }
-
-    @Override
-    public long getFileSize() {
-        // treba goleminata na site datoteki
-        return list.stream().mapToLong(IFile::getFileSize).sum();
-    }
-
-
-    @Override
-    public String getFileInfo(int indent) {
-        //TO DO
-        StringBuilder stringBuilder=new StringBuilder();
-        stringBuilder.append(String.format("%sFile name: %10s File size: %10d\n",IndentPrinter.printIndentation(indent),getFileName(),getFileSize()));
-        list.stream().forEach(file-> stringBuilder.append(file.getFileInfo(indent+1)));
-    return stringBuilder.toString();
-    }
-
-    @Override
-    public void sortBySize() {
-        list.stream().sorted().forEach(IFile::sortBySize);
-    }
-
-    @Override
-    public long findLargestFile() {
-        OptionalLong largest = list.stream().mapToLong(IFile::findLargestFile).max();
-        if(largest.isPresent())
-            return largest.getAsLong();
-        return 0;
-    }
-
-
-}
-
-class FileSystem {
-    Folder root;
-
-    public FileSystem() {
-        root=new Folder("root");
-    }
-
-    public void addFile(IFile file) throws FileNameExistsException {
-        root.addFile(file);
-
-    }
-
-    public long findLargestFile() {
-
-    return root.findLargestFile();
-    }
-    public void sortBySize()
-    {
-        root.sortBySize();
-    }
-
-    @Override
-    public String toString() {
-        return this.root.getFileInfo(0);
-    }
-}
-
-class FileNameExistsException extends Exception {
-    public FileNameExistsException(String name, String foldername) {
-        super(String.format("There is already a file named %s in the folder %s",name,foldername));
-    }
-}
 
 public class FileSystemTest {
 
@@ -222,5 +59,160 @@ public class FileSystemTest {
         System.out.println(fileSystem.findLargestFile());
 
 
+    }
+}
+class IndentPrinter
+{
+    public static String printIndent(int indent)
+    {
+        return IntStream.range(0,indent).mapToObj(i->"\t").collect(Collectors.joining());    }
+}
+
+interface IFile {
+    String getFileName();
+
+    long getFileSize();
+
+    String getFileInfo(int indent);
+
+    void sortBySize();
+
+    long findLargestFile();
+}
+
+class File implements IFile, Comparable<IFile> {
+    String name;
+    long size;
+
+    public File(String name, long size) {
+        this.name = name;
+        this.size = size;
+    }
+
+    @Override
+    public String getFileName() {
+        return name;
+    }
+
+    @Override
+    public long getFileSize() {
+        return size;
+    }
+
+    @Override
+    public String getFileInfo(int indent) {
+        return String.format("%sFile name: %10s File size: %10d\n",
+                IndentPrinter.printIndent(indent),
+                getFileName(),
+                getFileSize());
+    }
+
+    @Override
+    public void sortBySize() {
+        return;
+    }
+
+    @Override
+    public long findLargestFile() {
+        return size;
+    }
+
+    @Override
+    public int compareTo(IFile o) {
+        return Long.compare(size, o.getFileSize());
+    }
+}
+
+class Folder implements IFile, Comparable<IFile> {
+    Map<String, IFile> files;
+
+    String name;
+    long size;
+
+    public Folder(String name) {
+        this.name = name;
+        files = new TreeMap<>();
+    }
+
+    @Override
+    public String getFileName() {
+        return name;
+    }
+
+    @Override
+    public long getFileSize() {
+        return files.values().stream().mapToLong(IFile::getFileSize).sum();
+    }
+
+    @Override
+    public String getFileInfo(int indent) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(String.format("%sFolder name: %10s Folder size: %10d\n",
+                IndentPrinter.printIndent(indent),
+                name,
+                this.getFileSize()));
+
+        files.values().forEach(file -> sb.append(file.getFileInfo(indent + 1)));
+
+        return sb.toString();
+    }
+    public static void createString(StringBuilder sb,int level)
+    {
+        for(int i=0;i<level;i++)
+            sb.append("     ");
+
+
+    }
+    @Override
+    public void sortBySize() {
+
+    }
+
+    @Override
+    public long findLargestFile() {
+        Optional<? extends IFile> largestFile = files.values().stream().max(Comparator.comparing(IFile::getFileSize));
+        return largestFile.map(IFile::getFileSize).orElse(0L);
+    }
+
+    @Override
+    public int compareTo(IFile o) {
+        return Long.compare(getFileSize(), o.getFileSize());
+    }
+
+    public void addFile(IFile file) throws FileNameExistsException {
+        if (files.containsKey(file.getFileName())) throw new FileNameExistsException();
+        files.put(file.getFileName(), file);
+    }
+
+
+}
+class FileSystem
+{
+    Folder root;
+
+    public FileSystem() {
+        this.root = new Folder("root");
+    }
+    public  void addFile(IFile file) throws FileNameExistsException {
+        root.addFile(file);
+    }
+    public long findLargestFile()
+    {
+        return root.findLargestFile();
+    }
+    public void sortBySize()
+    {
+        root.sortBySize();
+    }
+
+    @Override
+    public String toString() {
+        return root.getFileInfo(0);
+    }
+}
+class FileNameExistsException extends Exception {
+    public FileNameExistsException() {
+        super();
     }
 }
