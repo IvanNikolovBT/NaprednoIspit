@@ -1,133 +1,174 @@
 package SchedulerTest;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class SchedulerTest {
 
+    static final LocalDateTime TIME = LocalDateTime.of(2016, 10, 25, 10, 15);
 
     public static void main(String[] args) {
         Scanner jin = new Scanner(System.in);
         int k = jin.nextInt();
-        if (k == 0) {
-            Scheduler<String> scheduler = new Scheduler<String>();
-            Date now = new Date();
-            scheduler.add(new Date(now.getTime() - 7200000), jin.next());
-            scheduler.add(new Date(now.getTime() - 3600000), jin.next());
-            scheduler.add(new Date(now.getTime() - 14400000), jin.next());
-            scheduler.add(new Date(now.getTime() + 7200000), jin.next());
-            scheduler.add(new Date(now.getTime() + 14400000), jin.next());
-            scheduler.add(new Date(now.getTime() + 3600000), jin.next());
-            scheduler.add(new Date(now.getTime() + 18000000), jin.next());
-            System.out.println(scheduler.getFirst());
-            System.out.println(scheduler.getLast());
+        if (k == 0) { //test Timestamp with String
+            Timestamp<String> t = new Timestamp<>(TIME, jin.next());
+            System.out.println(t);
+            System.out.println(t.getTime());
+            System.out.println(t.getElement());
+        }
+        if (k == 1) { //test Timestamp with ints
+            Timestamp<Integer> t1 = new Timestamp<>(TIME, jin.nextInt());
+            System.out.println(t1);
+            System.out.println(t1.getTime());
+            System.out.println(t1.getElement());
+            Timestamp<Integer> t2 = new Timestamp<>(TIME.plusDays(10), jin.nextInt());
+            System.out.println(t2);
+            System.out.println(t2.getTime());
+            System.out.println(t2.getElement());
+            System.out.println(t1.compareTo(t2));
+            System.out.println(t2.compareTo(t1));
+            System.out.println(t1.equals(t2));
+            System.out.println(t2.equals(t1));
+        }
+        if (k == 2) {//test Timestamp with String, complex
+            Timestamp<String> t1 = new Timestamp<>(ofEpochMS(jin.nextLong()), jin.next());
+            System.out.println(t1);
+            System.out.println(t1.getTime());
+            System.out.println(t1.getElement());
+            Timestamp<String> t2 = new Timestamp<>(ofEpochMS(jin.nextLong()), jin.next());
+            System.out.println(t2);
+            System.out.println(t2.getTime());
+            System.out.println(t2.getElement());
+            System.out.println(t1.compareTo(t2));
+            System.out.println(t2.compareTo(t1));
+            System.out.println(t1.equals(t2));
+            System.out.println(t2.equals(t1));
         }
         if (k == 3) { //test Scheduler with String
             Scheduler<String> scheduler = new Scheduler<String>();
-            Date now = new Date();
-            scheduler.add(new Date(now.getTime() - 7200000), jin.next());
-            scheduler.add(new Date(now.getTime() - 3600000), jin.next());
-            scheduler.add(new Date(now.getTime() - 14400000), jin.next());
-            scheduler.add(new Date(now.getTime() + 7200000), jin.next());
-            scheduler.add(new Date(now.getTime() + 14400000), jin.next());
-            scheduler.add(new Date(now.getTime() + 3600000), jin.next());
-            scheduler.add(new Date(now.getTime() + 18000000), jin.next());
-            System.out.println(scheduler.next());
-            System.out.println(scheduler.last());
-            ArrayList<String> res = scheduler.getAll(new Date(now.getTime() - 10000000), new Date(now.getTime() + 17000000));
-            Collections.sort(res);
-            for (String t : res) {
-                System.out.print(t + " , ");
-            }
+            LocalDateTime now = LocalDateTime.now();
+            scheduler.add(new Timestamp<>(now.minusHours(2), jin.next()));
+            scheduler.add(new Timestamp<>(now.minusHours(1), jin.next()));
+            scheduler.add(new Timestamp<>(now.minusHours(4), jin.next()));
+            scheduler.add(new Timestamp<>(now.plusHours(2), jin.next()));
+            scheduler.add(new Timestamp<>(now.plusHours(4), jin.next()));
+            scheduler.add(new Timestamp<>(now.plusHours(1), jin.next()));
+            scheduler.add(new Timestamp<>(now.plusHours(5), jin.next()));
+            System.out.println(scheduler.next().getElement());
+            System.out.println(scheduler.last().getElement());
+            List<Timestamp<String>> result = scheduler.getAll(now.minusHours(3), now.plusHours(4).plusMinutes(15));
+            String out = result.stream()
+                    .sorted()
+                    .map(Timestamp::getElement)
+                    .collect(Collectors.joining(", "));
+            System.out.println(out);
         }
         if (k == 4) {//test Scheduler with ints complex
             Scheduler<Integer> scheduler = new Scheduler<Integer>();
             int counter = 0;
-            ArrayList<Date> to_remove = new ArrayList<Date>();
-
+            ArrayList<Timestamp<Integer>> forRemoval = new ArrayList<>();
             while (jin.hasNextLong()) {
-                Date d = new Date(jin.nextLong());
-                int i = jin.nextInt();
+                Timestamp<Integer> ti = new Timestamp<>(ofEpochMS(jin.nextLong()), jin.nextInt());
                 if ((counter & 7) == 0) {
-                    to_remove.add(d);
+                    forRemoval.add(ti);
                 }
-                scheduler.add(d, i);
+                scheduler.add(ti);
                 ++counter;
             }
             jin.next();
 
             while (jin.hasNextLong()) {
-                Date l = new Date(jin.nextLong());
-                Date h = new Date(jin.nextLong());
-                ArrayList<Integer> res = scheduler.getAll(l, h);
+                LocalDateTime left = ofEpochMS(jin.nextLong());
+                LocalDateTime right = ofEpochMS(jin.nextLong());
+                List<Timestamp<Integer>> res = scheduler.getAll(left, right);
                 Collections.sort(res);
-                System.out.println(l + " <: " + print(res) + " >: " + h);
+                System.out.println(left + " <: " + print(res) + " >: " + right);
             }
             System.out.println("test");
-            ArrayList<Integer> res = scheduler.getAll(new Date(0), new Date(Long.MAX_VALUE));
+            List<Timestamp<Integer>> res = scheduler.getAll(ofEpochMS(0), ofEpochMS(Long.MAX_VALUE));
             Collections.sort(res);
             System.out.println(print(res));
-            for (Date d : to_remove) {
-                scheduler.remove(d);
-            }
-            res = scheduler.getAll(new Date(0), new Date(Long.MAX_VALUE));
+            forRemoval.forEach(scheduler::remove);
+            res = scheduler.getAll(ofEpochMS(0), ofEpochMS(Long.MAX_VALUE));
             Collections.sort(res);
             System.out.println(print(res));
         }
     }
 
-    private static <T> String print(ArrayList<T> res) {
+    private static LocalDateTime ofEpochMS(long ms) {
+        return LocalDateTime.ofInstant(Instant.ofEpochMilli(ms), ZoneId.systemDefault());
+    }
+
+    private static <T> String print(List<Timestamp<T>> res) {
         if (res == null || res.size() == 0) return "NONE";
-        StringBuffer sb = new StringBuffer();
-        for (T t : res) {
-            sb.append(t + " , ");
-        }
-        return sb.substring(0, sb.length() - 3);
+        return res.stream()
+                .map(each -> each.getElement().toString())
+                .collect(Collectors.joining(", "));
     }
-
 
 }
 
-class Scheduler<T> {
+class Timestamp<T> implements Comparable<Timestamp<T>> {
+    final LocalDateTime localDateTime;
+    final T element;
 
-    TreeMap<Date,T> map;
+    public Timestamp(LocalDateTime localDateTime, T element) {
+        this.localDateTime = localDateTime;
+        this.element = element;
+    }
 
-    public Scheduler() {
-        this.map = new TreeMap<>();
+    public LocalDateTime getTime() {
+        return localDateTime;
     }
-    public  void add(Date d,T t)
-    {
-        map.put(d,t);
+
+    T getElement() {
+        return element;
     }
-    public boolean remove(Date d)
+    public  int compareTo(Timestamp<T> t)
     {
-        if(map.containsKey(d))
-        {
-            map.remove(d);
-            return true;
-        }
-            else
-                return false;
+        return localDateTime.compareTo(t.localDateTime);
     }
-    public T next()
+    public boolean equals(Timestamp<T> t)
     {
-        return map.higherEntry(new Date()).getValue();
+        return localDateTime.equals(t.localDateTime);
     }
-    public T last()
-    {
-        return  map.floorEntry(new Date()).getValue();
+
+    @Override
+    public String toString() {
+        return String.format("%s %s",localDateTime,element);
     }
-    public ArrayList<T> getAll(Date begin,Date end)
+}
+class Scheduler<T>
+{
+    TreeSet<Timestamp<T>> timestamps;
+
+    public Scheduler()
     {
-        return (ArrayList<T>) map.entrySet().stream().filter(i->i.getKey().after(begin) && i.getKey().before(end)).collect(Collectors.toList());
+        timestamps=new TreeSet<>();
     }
-    public T getFirst()
+    public void add(Timestamp<T>t)
     {
-        return map.firstEntry().getValue();
+        timestamps.add(t);
     }
-    public T getLast()
+    public boolean remove(Timestamp<T> t)
     {
-        return map.lastEntry().getValue();
+        return timestamps.remove(t);
+    }
+    public Timestamp<T> next()
+    {
+        return timestamps.stream().filter(i->i.localDateTime.isAfter(LocalDateTime.now())).findFirst().orElse(null);
+    }
+    public Timestamp<T> last()
+    {
+        return timestamps.stream().filter(i->i.localDateTime.isBefore(LocalDateTime.now())).findFirst().orElse(null);
+    }
+    public List<Timestamp<T>> getAll(LocalDateTime begin,LocalDateTime end)
+    {
+        return timestamps.stream().filter(i->i.localDateTime.isAfter(begin)&&i.localDateTime.isBefore(end)).collect(Collectors.toList());
+
     }
 
 }

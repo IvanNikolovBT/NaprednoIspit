@@ -1,4 +1,4 @@
-//package CanvasTest;
+package CanvasTest;//package CanvasTest;
 
 import java.io.*;
 import java.util.*;
@@ -75,6 +75,7 @@ class Canvas {
         shapesByID.getOrDefault(number, new ArrayList<>() {
         }).forEach(i -> i.scale(v));
     }
+
 
     public void printByUserId(OutputStream out) {
         PrintWriter printWriter = new PrintWriter(out);

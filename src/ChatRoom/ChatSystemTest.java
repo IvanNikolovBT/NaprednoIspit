@@ -1,10 +1,10 @@
-//package ChatRoom;
+package ChatRoom;
 
+import javax.print.CancelablePrintJob;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
 import java.util.TreeSet;
-import java.util.stream.Collectors;
 
 public class ChatSystemTest {
 
@@ -47,9 +47,7 @@ public class ChatSystemTest {
                     if (m.getName().equals(cmd)) {
                         String params[] = new String[m.getParameterTypes().length];
                         for (int i = 0; i < params.length; ++i) params[i] = jin.next();
-
-                        // Cast the params array to Object[] to handle potential varargs
-                        m.invoke(cs, (Object[]) params);
+                        m.invoke(cs, params);
                     }
                 }
             }
@@ -67,105 +65,85 @@ class ChatRoom {
         users = new TreeSet<>();
     }
 
-    public void addUser(String username) {
-        users.add(username);
+    public void addUser(String userName) {
+        users.add(userName);
     }
 
-    public void removeUser(String username) {
-        users.remove(username);
+    public void removeUser(String user) {
+        users.remove(user);
     }
 
-    public boolean hasUser(String username) {
-        return users.contains(username);
+    boolean hasUser(String user) {
+        return users.contains(user);
     }
 
     public int numUsers() {
         return users.size();
     }
 
-    public String getName() {
-        return name;
-    }
-
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(name).append("\n");
-        if (users.isEmpty()) return stringBuilder.append("EMPTY").append("\n").toString();
+        StringBuilder sb = new StringBuilder();
+        if (users.isEmpty()) return "EMPTY";
+        sb.append(name).append("\n");
+        users.forEach(i -> sb.append(i).append("\n"));
+        return sb.toString();
+    }
 
-
-        for (String s : users)
-            stringBuilder.append(s).append("\n");
-
-        return stringBuilder.toString();
+    public String name() {
+        return name;
     }
 }
 
 class ChatSystem {
-    TreeMap<String, ChatRoom> rooms;
-    TreeSet<String> users;
+    Set<String> users;
+    Map<String, ChatRoom> rooms;
 
     public ChatSystem() {
+        users = new HashSet<>();
         rooms = new TreeMap<>();
-        users = new TreeSet<>();
     }
 
-    public void addRoom(String roomname) {
-        ChatRoom chatRoom = new ChatRoom(roomname);
-        rooms.put(roomname, chatRoom);
+    public void addRoom(String rname) {
+        ChatRoom chatRoom = new ChatRoom(rname);
+        rooms.put(rname, chatRoom);
     }
 
-    public void removeRoom(String roomname) {
-        rooms.remove(roomname);
+    public void removeRoom(String rm) {
+        rooms.remove(rm);
     }
 
-    public ChatRoom getRoom(String roomname) throws NoSuchRoomException {
-        noSuchRoom(roomname);
-        return rooms.get(roomname);
+    public ChatRoom getRoom(String rm) throws NoSuchRoomException {
+        if (!rooms.containsKey(rm)) throw new NoSuchRoomException();
+        return rooms.get(rm);
+    }
+    public String getUser(String user) throws NoSuchUserException {
+        if(!users.contains(user))
+            throw new NoSuchUserException();
+        return user;
     }
 
     public void register(String user) {
         users.add(user);
-        LinkedList<ChatRoom> min_rooms = new LinkedList<ChatRoom>();
-        int min = Integer.MAX_VALUE;
-        for (ChatRoom cr : rooms.values()) {
-            if (cr.numUsers() < min) {
-                min_rooms = new LinkedList<ChatRoom>();
-                min = cr.numUsers();
-            }
-            if (cr.numUsers() == min) min_rooms.add(cr);
+        ChatRoom chatRoom = rooms.values().stream().min(Comparator.comparing(ChatRoom::numUsers).thenComparing(ChatRoom::name)).orElse(null);
+        chatRoom.addUser(user);
+    }
+    public void registerAndJoin(String user,String room) throws NoSuchRoomException, NoSuchUserException {
+        users.add(user);
+        joinRoom(user,room);
+    }
+    public void joinRoom(String user,String room) throws NoSuchRoomException, NoSuchUserException {
+        getRoom(room).addUser(getUser(user));
+    }
+    public void leaveRoom(String user,String room) throws NoSuchRoomException, NoSuchUserException {
+        getRoom(room).removeUser(getUser(user));
+    }
+    public void followFriend(String user,String user2) throws NoSuchRoomException, NoSuchUserException {
+        for(Map.Entry<String , ChatRoom> r:rooms.entrySet())
+        {
+            if(r.getValue().hasUser(user))
+                joinRoom(user,r.getKey());
         }
-        if (min_rooms.isEmpty()) return;
-        min_rooms.getFirst().addUser(user);
-    }
-
-    public void registerAndJoin(String userName, String roomname) throws NoSuchRoomException {
-        register(userName);
-        joinRoom(userName,roomname);
-    }
-
-    public void joinRoom(String user, String room) throws NoSuchRoomException {
-        noSuchRoom(room);
-        ChatRoom room1 = rooms.get(room);
-        room1.addUser(user);
-    }
-
-    private void noSuchRoom(String room) throws NoSuchRoomException {
-        if (!rooms.containsKey(room)) throw new NoSuchRoomException();
-    }
-
-    public void leaveRoom(String user, String room) throws NoSuchRoomException, NoSuchUserException {
-        noSuchRoom(room);
-        ChatRoom room1 = rooms.get(room);
-        if (!room1.hasUser(user)) throw new NoSuchUserException(user);
-        room1.removeUser(user);
-    }
-
-    public void followFriend(String username, String friend) throws NoSuchUserException, NoSuchRoomException {
-        List<ChatRoom> rooms1 = rooms.values().stream().filter(i -> i.hasUser(friend)).collect(Collectors.toList());
-        if (rooms1.isEmpty()) throw new NoSuchUserException(username);
-        for (ChatRoom c : rooms1)
-            joinRoom(username,c.name);
     }
 }
 
@@ -173,11 +151,12 @@ class NoSuchRoomException extends Exception {
     public NoSuchRoomException() {
         super();
     }
-}
 
-class NoSuchUserException extends Exception {
-    public NoSuchUserException(String msg) {
-        super(msg);
+}
+class NoSuchUserException  extends  Exception
+{
+    public NoSuchUserException()
+    {
+        super();
     }
 }
-

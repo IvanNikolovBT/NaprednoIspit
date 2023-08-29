@@ -1,10 +1,8 @@
-//package StopCorona;
+package StopCorona;
 
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
 
 interface ILocation {
     double getLongitude();
@@ -12,141 +10,6 @@ interface ILocation {
     double getLatitude();
 
     LocalDateTime getTimestamp();
-}
-
-class User {
-    String id;
-    String name;
-    List<ILocation> iLocations;
-    LocalDateTime localDate;
-    int timesInContact;
-    boolean positive;
-    List<User> directContacts;
-    public User(String id, String name) {
-        this.id = id;
-        iLocations = new ArrayList<>();
-        this.name = name;
-        timesInContact=0;
-        positive=false;
-        directContacts=new ArrayList<>();
-    }
-
-    public void setTimesInContact(int timesInContact) {
-        this.timesInContact = timesInContact;
-    }
-
-    public void addLocations(List<ILocation> iLocations) {
-        this.iLocations = iLocations;
-    }
-
-    public void addTime(LocalDateTime timestamp) {
-        positive=true;
-        localDate = timestamp;
-    }
-
-
-
-    public static int calcuateIfDirect(User a, User b) {
-        List<ILocation> aL = a.iLocations;
-        List<ILocation> bL = b.iLocations;
-        int times=0;
-        for (ILocation iLocation : aL) {
-            for (ILocation location : bL) {
-                if (checkIfSamePlaceSameTime(iLocation, location))
-                    times++;
-            }
-        }
-        a.setTimesInContact(times);
-        b.setTimesInContact(times);
-        return times;
-    }
-
-    public int getTimesInContact() {
-        return timesInContact;
-    }
-
-    private static boolean checkIfSamePlaceSameTime(ILocation iLocation, ILocation location) {
-        return calcualteDistance(iLocation, location) <= 2 && Math.abs(iLocation.getTimestamp().getMinute() - location.getTimestamp().getMinute()) < 5;
-    }
-
-    public static double calcualteDistance(ILocation a, ILocation b) {
-        return Math.sqrt(Math.pow(a.getLatitude() - b.getLatitude(), 2) + Math.pow(a.getLongitude() - b.getLongitude(), 2));
-
-    }
-
-    public User returnUser() {
-    return this;
-    }
-
-    public String hiddenId() {
-    return id.substring(0,4)+"***";
-    }
-    public int directContacts()
-    {
-        return directContacts.size();
-    }
-}
-
-class StopCoronaApp {
-    Map<String, User> users;
-
-    public StopCoronaApp() {
-        users = new HashMap<>();
-    }
-
-    public void addUser(String name, String id) throws UserAlreadyExistException {
-        checkForUser(id);
-        users.put(id, new User(id, name));
-    }
-
-    private void checkForUser(String id) throws UserAlreadyExistException {
-        if (users.containsKey(id))
-            throw new UserAlreadyExistException();
-    }
-
-    void addLocations(String id, List<ILocation> iLocations) {
-        User user = users.get(id);
-        user.addLocations(iLocations);
-    }
-
-    public void detectNewCase(String id, LocalDateTime timestamp) {
-        User user = users.get(id);
-        user.addTime(timestamp);
-    }
-
-    public Map<User, Integer> getDirectContacts (User u) {
-        return users.values().stream().filter(i->User.calcuateIfDirect(i,u)>0).collect(Collectors.toMap(user->user,User::getTimesInContact));
-    }
-    public Collection<User> getIndirectContacts (User u)
-    {
-        Map<User,Integer> direct=getDirectContacts(u);
-        return direct.keySet().stream().filter(integer -> User.calcuateIfDirect(integer, u) > 0).collect(Collectors.toList());
-    }
-    public  void createReport()
-    {
-
-        for(User u:users.values())
-        {
-
-            if(u.positive)
-            {
-                System.out.printf("%s %s %s\n",u.name,u.id,u.localDate);
-                System.out.printf("Direct contacts:\n");
-                Map<User,Integer> directForU=getDirectContacts(u);
-                for(Map.Entry<User,Integer> d:directForU.entrySet())
-                {
-                    System.out.printf("%s %s %d\n",d.getKey().name,d.getKey().hiddenId(),d.getKey().timesInContact);
-                }
-                System.out.printf("Count of direct contacts: %d",directForU.size());
-            }
-        }
-    }
-}
-
-class UserAlreadyExistException extends Exception {
-    public UserAlreadyExistException() {
-        super();
-    }
 }
 
 public class StopCoronaTest {
@@ -162,8 +25,6 @@ public class StopCoronaTest {
 
         while (sc.hasNext()) {
             String line = sc.nextLine();
-            if(line.equals("KRAJ"))
-                break;
             String[] parts = line.split("\\s+");
 
             switch (parts[0]) {
@@ -217,5 +78,105 @@ public class StopCoronaTest {
                 return LocalDateTime.parse(timestamp);
             }
         };
+    }
+}
+class LocationUtils
+{
+    public static double distanceBetween(ILocation loc1,ILocation loc2)
+    {
+        return Math.sqrt(Math.pow(loc1.getLongitude()-loc2.getLongitude(),2)+Math.pow(loc2.getLatitude()-loc1.getLatitude(),2));
+    }
+    public static double getTimeBetween(ILocation loc1,ILocation loc2)
+    {
+        return Math.abs(loc1.getTimestamp().getSecond()-loc2.getTimestamp().getSecond());
+    }
+    public static boolean isDanger(ILocation loc1,ILocation loc2)
+    {
+        return distanceBetween(loc1,loc2)<=2&&getTimeBetween(loc1,loc2)<300;
+    }
+    public static int danger(User u1,User u2)
+    {
+        int count=0;
+        for(ILocation i: u1.locations)
+        {
+            for(ILocation j: u2.locations)
+            {
+                if(isDanger(i,j))
+                    count++;
+            }
+        }
+        return count;
+    }
+
+}
+class User {
+    String id;
+    String name;
+    List<ILocation> locations;
+    LocalDateTime sick;
+
+    public User(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public void addLocations(List<ILocation> locationLIst) {
+        this.locations = locationLIst;
+    }
+
+
+
+    public void addTime(LocalDateTime sick) {
+    this.sick=sick;
+    }
+}
+
+class StopCoronaApp {
+    static Map<String, User> users;
+
+    public StopCoronaApp() {
+        users = new HashMap<>();
+    }
+
+    public void addUser(String name, String id) throws UserAlreadyExistException {
+        //da registrira nov korisnik, ako veke postoi da frli iskluchok
+        //za ova najdobro da ima mapa <id,User>
+        User user = new User(id, name);
+        if(users.containsKey(user.id))
+            throw  new UserAlreadyExistException();
+        users.put(id,user);
+    }
+
+    public void addLocations(String id, List<ILocation> iLocations) {
+        //na ID mu gi dodava lokaciite,znachi go zemame od mapata i samo mu dodavame info
+        User user=users.get(id);
+        user.addLocations(iLocations);
+    }
+
+    public void detectNewCase(String id, LocalDateTime timeStamp) {
+        //zema od mapa i mu klava koga fatil korona
+        User user=users.get(id);
+        user.addTime(timeStamp);
+    }
+
+    public Map<User, Integer> getDirectConacts(User u) {
+        //site bliski kontakti na korisnikot i so sekoj korisnik kolku pati bil vo kontakt
+        // treba da se napraj metoda za sekoj korisnik da presmeta so koj bil vo kontakt
+    }
+
+    public Collection<User> getIndirectContacts(User u) {
+        // site indirektni na u, da se zemat site direktni kontakti na direktnite kontakti
+    }
+
+    public void createReport() {
+        //printot ima vrmee
+    }
+
+}
+class UserAlreadyExistException extends Exception
+{
+    public UserAlreadyExistException()
+    {
+        super();
     }
 }

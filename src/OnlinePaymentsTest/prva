@@ -1,0 +1,156 @@
+package OnlinePaymentsTest;//package OnlinePaymentsTest;
+
+
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.*;
+import java.util.stream.IntStream;
+
+public class OnlinePaymentsTest {
+    public static void main(String[] args) {
+        OnlinePayments onlinePayments = new OnlinePayments();
+
+        onlinePayments.readItems(System.in);
+
+        IntStream.range(151020, 151025).mapToObj(String::valueOf).forEach(id -> onlinePayments.printStudentReport(id, System.out));
+    }
+}
+class Payment
+{
+    String name;
+    int price;
+
+    public Payment(String name, int price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s %d", name,price);
+    }
+    public double tax()
+    {
+        return price * 0.0114;
+    }
+    public int getPrice()
+    {
+        return price;
+    }
+
+    public String getName() {
+    return name;
+    }
+}
+class Student
+{
+   // STUDENT_IDX ITEM_NAME PRICE.
+    String id;
+    Set<Payment> paymentSet=new TreeSet<>(Comparator.comparing(Payment::getPrice,Comparator.reverseOrder()).thenComparing(Payment::getName,Comparator.reverseOrder()));
+    List<Payment>list=new ArrayList<>();
+
+    public Student(String line)
+    {
+        String[]splitter=line.split(";");
+        id=splitter[0];
+        Payment p=new Payment(splitter[1],Integer.parseInt(splitter[2]));
+        paymentSet.add(p);
+        list.add(p);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb=new StringBuilder();
+        int i=1;
+        sb.append(String.format("Student: %s Net: %d Fee: %d Total: %d\n",id,netSum(),feeSum(),totalSum()));
+        sb.append("Items:\n");
+        list.sort(Comparator.comparing(Payment::getPrice, Comparator.reverseOrder()));
+        for(Payment p:paymentSet)
+            sb.append(String.format("%d. %s %d\n",i++,p.name,p.price));
+//        for(Payment p:list)
+//            sb.append(String.format("%d. %s %d\n",i++,p.name,p.price));
+
+
+        return sb.toString();
+
+    }
+
+    public int netSum() {
+//        return list.stream().mapToInt(Payment::getPrice).sum();
+        return paymentSet.stream().mapToInt(Payment::getPrice).sum();
+    }
+
+    public int feeSum() {
+     int val=(int)Math.round(paymentSet.stream().mapToDouble(Payment::tax).sum());
+//        int val=list.stream().mapToInt(Payment::tax).sum();
+        if(val<3)
+            return 3;
+        return Math.min(val, 300);
+    }
+
+    public int totalSum() {
+    return feeSum()+netSum();
+    }
+
+    public void addPayment(Payment p) {
+    paymentSet.add(p);
+    list.add(p);
+    }
+}
+class OnlinePayments
+{
+    Map<String,Student> idToSudent;
+    public OnlinePayments()
+    {
+        idToSudent=new TreeMap<>();
+    }
+    public void readItems(InputStream is)
+    {
+        Scanner scanner=new Scanner(is);
+        while(scanner.hasNextLine())
+        {
+
+            String line=scanner.nextLine();
+            if(line.equals("kraj"))
+                break;
+            String[]splitter=line.split(";");
+            Student s;
+            if(idToSudent.containsKey(splitter[0])) {
+                s = idToSudent.get(splitter[0]);
+                Payment p=new Payment(splitter[1],Integer.parseInt(splitter[2]));
+                s.addPayment(p);
+            }
+                else {
+                s = new Student(line);
+                idToSudent.put(s.id,s);
+            }
+
+        }
+        scanner.close();
+    }
+    void printStudentReport (String index, OutputStream os)
+    {
+        PrintWriter pw=new PrintWriter(os);
+        try{
+            if (!idToSudent.containsKey(index))
+                throw new StudentNotFoundException(String.format("Student %s not found!", index));
+            Student student = idToSudent.get(index);
+            System.out.printf("%s",student);
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+            pw.flush();
+
+    }
+}
+class StudentNotFoundException extends Exception
+{
+    public StudentNotFoundException(String msg)
+    {
+        super(msg);
+    }
+}
