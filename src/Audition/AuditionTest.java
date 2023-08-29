@@ -1,9 +1,28 @@
-package Audition;
-
 import java.util.*;
 
-class Participant
-{
+public class AuditionTest {
+    public static void main(String[] args) {
+        Audition audition = new Audition();
+        List<String> cities = new ArrayList<String>();
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            String[] parts = line.split(";");
+            if (parts.length > 1) {
+                audition.addParticpant(parts[0], parts[1], parts[2], Integer.parseInt(parts[3]));
+            } else {
+                cities.add(line);
+            }
+        }
+        for (String city : cities) {
+            System.out.printf("+++++ %s +++++\n", city);
+            audition.listByCity(city);
+        }
+        scanner.close();
+    }
+}
+
+class Participant {
     String city;
     String code;
     String name;
@@ -16,95 +35,50 @@ class Participant
         this.age = age;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getAge() {
         return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Participant that = (Participant) o;
-        return Objects.equals(code, that.code);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(code);
+    public String toString() {
+        return String.format("%s %s %d", code, name, age);
     }
 }
 
 class Audition {
 
-    Map<String, Set<Participant>> participants;
+    Map<String, Set<Participant>> byCity;
+    Map<String, Set<String>> codesForCity;
 
-    public Audition()
-    {
-        participants=new HashMap<>();
+    public Audition() {
+        byCity = new TreeMap<>();
+        codesForCity = new TreeMap<>();
+    }
 
-    }
-    public void addParticpant(String city, String code, String name, int age)
-    {
-        Participant p=new Participant(city,code,name,age);
-        if(!participants.containsKey(city))
-            participants.put(city,new HashSet<>());
-        participants.get(city).add(p);
-    }
-    public void listByCity(String city)
-    {
-        Set<Participant> sortedSet=new TreeSet<>(Comparator.comparing(Participant::getName).thenComparing(Participant::getAge).thenComparing(Participant::getCode));
-        sortedSet.addAll(participants.get(city));
-        sortedSet.stream().forEach(t-> System.out.printf("%s %s %d%n",t.getCode(),t.getName(),t.getAge()));
-    }
-}
-
-public class AuditionTest {
-    public static void main(String[] args) {
-        Audition audition = new Audition();
-        List<String> cities = new ArrayList<String>();
-        Scanner scanner = new Scanner(System.in);
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            String[] parts = line.split(";");
-            if (parts.length > 1) {
-                audition.addParticpant(parts[0], parts[1], parts[2],
-                        Integer.parseInt(parts[3]));
-            } else {
-                cities.add(line);
-            }
+    public void addParticpant(String city, String code, String name, int age) {
+        Participant p = new Participant(city, code, name, age);
+        byCity.putIfAbsent(city, new HashSet<>());
+        codesForCity.putIfAbsent(city, new TreeSet<>());
+        if (!codesForCity.get(city).contains(code)) {
+            byCity.computeIfPresent(city, (k, v) -> {
+                v.add(p);
+                return v;
+            });
+            codesForCity.computeIfPresent(city, (k, v) -> {
+                v.add(code);
+                return v;
+            });
         }
-        for (String city : cities) {
-            System.out.printf("+++++ %s +++++\n", city);
-            audition.listByCity(city);
-        }
-        scanner.close();
+
     }
+
+    public void listByCity(String city) {
+        byCity.get(city).stream().sorted(Comparator.comparing(Participant::getName).thenComparing(Participant::getAge)).forEach(System.out::println);
+    }
+
+
 }

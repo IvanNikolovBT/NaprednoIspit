@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/Discounts/prva" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FileSystem2/prva" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ShapesApplication/Shapes2Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ShapesApplication/prva" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Audition/prva" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Book/prva" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Discounts/DiscountsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Discounts/DiscountsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FileSystem2/FileSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileSystem2/FileSystemTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShapesApplication/Shapes1Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Audition/AuditionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Audition/AuditionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/BooksTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BooksTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +201,7 @@
       <workItem from="1692788258871" duration="38075000" />
       <workItem from="1693047056835" duration="47216000" />
       <workItem from="1693167699851" duration="11351000" />
-      <workItem from="1693216150771" duration="28279000" />
+      <workItem from="1693216150771" duration="30307000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -366,14 +363,6 @@
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
       <updated>1690153674851</updated>
-    </task>
-    <task id="LOCAL-00034" summary="commit">
-      <option name="closed" value="true" />
-      <created>1691948948043</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1691948948043</updated>
     </task>
     <task id="LOCAL-00035" summary="commit">
       <option name="closed" value="true" />
@@ -575,7 +564,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693258938394</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="commit">
+      <option name="closed" value="true" />
+      <created>1693303835951</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1693303835951</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

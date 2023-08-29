@@ -1,83 +1,7 @@
 package Book;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.stream.Collectors;
-
-
-class Book {
-    String title;
-    String category;
-    float price;
-
-    public Book(String title, String category, float price) {
-        this.title = title;
-        this.category = category;
-        this.price = price;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("%s (%s) %.2f", getTitle(), getCategory(), getPrice());
-    }
-}
-
-class BookCollection {
-    List<Book> bookList;
-
-    public BookCollection() {
-        this.bookList = new ArrayList<>();
-    }
-
-    public void addBook(Book book) {
-        bookList.add(book);
-    }
-
-    public void printByCategory(String category) {
-        bookList.stream().
-                filter(book -> book.getCategory().
-                        equalsIgnoreCase(category)).
-                sorted(Comparator.comparing(Book::getTitle).
-                        thenComparing(Book::getPrice)).forEach(System.out::println);
-    }
-
-    public List<Book> getCheapestN(int n) {
-        if (n > bookList.size())
-            return bookList.stream().sorted(Comparator.comparing(Book::getPrice).thenComparing(Book::getTitle)).collect(Collectors.toList());
-
-        return bookList.stream().sorted(Comparator.comparing(Book::getPrice).thenComparing(Book::getTitle)).limit(n).collect(Collectors.toList());
-
-    }
-}
 
 public class BooksTest {
     public static void main(String[] args) {
@@ -101,7 +25,8 @@ public class BooksTest {
         }
     }
 
-    static TreeSet<String> fillCollection(Scanner scanner, BookCollection collection) {
+    static TreeSet<String> fillCollection(Scanner scanner,
+                                          BookCollection collection) {
         TreeSet<String> categories = new TreeSet<String>();
         while (scanner.hasNext()) {
             String line = scanner.nextLine();
@@ -113,5 +38,54 @@ public class BooksTest {
         return categories;
     }
 }
+class Book
+{
+    String title;
+    String category;
+    float price;
 
-// Вашиот код овде
+    public Book(String title, String category, float price) {
+        this.title = title;
+        this.category = category;
+        this.price = price;
+    }
+
+    public String getTitle() {
+        return title.toLowerCase();
+    }
+
+    public String getCategory() {
+        return category.toLowerCase();
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s (%s) %.2f",title,category,price);
+    }
+}
+class BookCollection
+{
+    Map<String,Set<Book>> books;
+    public BookCollection()
+    {
+        books=new HashMap<>();
+    }
+    public void addBook(Book book)
+    {
+        books.putIfAbsent(book.category,new HashSet<>());
+        books.computeIfPresent(book.category,(k,v)->{v.add(book);return v;});
+    }
+    public void printByCategory(String category)
+    {
+        books.get(category).stream().sorted(Comparator.comparing(Book::getTitle).thenComparing(Book::getPrice)).forEach(System.out::println);
+    }
+    public List<Book> getCheapestN(int n)
+    {
+        return books.values().stream().flatMap(Collection::stream).sorted(Comparator.comparing(Book::getPrice).thenComparing(Book::getTitle)).limit(n).collect(Collectors.toList());
+    }
+
+}
