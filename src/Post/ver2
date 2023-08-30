@@ -114,7 +114,18 @@ class Comment //implements Comparable<Comment>
         return order;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Comment comment = (Comment) o;
+        return order == comment.order && likes == comment.likes && level == comment.level && Objects.equals(comments, comment.comments) && Objects.equals(commentID, comment.commentID) && Objects.equals(content, comment.content) && Objects.equals(user, comment.user);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(order, comments, commentID, content, likes, user, level);
+    }
 
     //    @Override
 //    public int compareTo(Comment o) {
@@ -188,11 +199,11 @@ class Post
         sb.append(String.format("Written by: %s\n",username));
         sb.append("Comments: \n");
         List<Comment> temp=forThisLevel.stream().collect(Collectors.toList());
-//        Collections.sort(temp,Comparator.comparing(Comment::getLikes,Comparator.reverseOrder()).thenComparing(Comment::getOrder));
-//        for(Comment c:temp)
-//           sb.append(c);
-        for(Comment c:forThisLevel)
-            sb.append(c);
+        Collections.sort(temp,Comparator.comparing(Comment::getLikes,Comparator.reverseOrder()).thenComparing(Comment::getOrder));
+        for(Comment c:temp)
+           sb.append(c);
+//        for(Comment c:forThisLevel)
+//            sb.append(c);
         return sb.toString();
     }
 
