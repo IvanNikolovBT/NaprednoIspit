@@ -1,0 +1,318 @@
+package DeliveryApp;
+
+import java.util.*;
+
+/*
+YOUR CODE HERE
+DO NOT MODIFY THE interfaces and classes below!!!
+*/
+
+interface Location {
+    int getX();
+
+    int getY();
+
+    default int distance(Location other) {
+        int xDiff = Math.abs(getX() - other.getX());
+        int yDiff = Math.abs(getY() - other.getY());
+        return xDiff + yDiff;
+    }
+}
+
+class LocationCreator {
+    public static Location create(int x, int y) {
+
+        return new Location() {
+            @Override
+            public int getX() {
+                return x;
+            }
+
+            @Override
+            public int getY() {
+                return y;
+            }
+        };
+    }
+}
+
+public class DeliveryAppTester {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String appName = sc.nextLine();
+        DeliveryApp app = new DeliveryApp(appName);
+        while (sc.hasNextLine()) {
+            String line = sc.nextLine();
+            String[] parts = line.split(" ");
+
+            if (parts[0].equals("addUser")) {
+                String id = parts[1];
+                String name = parts[2];
+                app.addUser(id, name);
+            } else if (parts[0].equals("registerDeliveryPerson")) {
+                String id = parts[1];
+                String name = parts[2];
+                int x = Integer.parseInt(parts[3]);
+                int y = Integer.parseInt(parts[4]);
+                app.registerDeliveryPerson(id, name, LocationCreator.create(x, y));
+            } else if (parts[0].equals("addRestaurant")) {
+                String id = parts[1];
+                String name = parts[2];
+                int x = Integer.parseInt(parts[3]);
+                int y = Integer.parseInt(parts[4]);
+                app.addRestaurant(id, name, LocationCreator.create(x, y));
+            } else if (parts[0].equals("addAddress")) {
+                String id = parts[1];
+                String name = parts[2];
+                int x = Integer.parseInt(parts[3]);
+                int y = Integer.parseInt(parts[4]);
+                app.addAddress(id, name, LocationCreator.create(x, y));
+            } else if (parts[0].equals("orderFood")) {
+                String userId = parts[1];
+                String userAddressName = parts[2];
+                String restaurantId = parts[3];
+                float cost = Float.parseFloat(parts[4]);
+                app.orderFood(userId, userAddressName, restaurantId, cost);
+            } else if (parts[0].equals("printUsers")) {
+                app.printUsers();
+            } else if (parts[0].equals("printRestaurants")) {
+                app.printRestaurants();
+            } else {
+                app.printDeliveryPeople();
+            }
+
+        }
+    }
+}
+
+class User {
+    String id;
+    String name;
+    List<Location> locations;
+    Map<String, Location> idLocations;
+    int amount;
+    List<Double> orders;
+
+    public User(String id, String name) {
+        this.id = id;
+        this.name = name;
+        amount = 0;
+        idLocations = new TreeMap<>();
+        orders=new ArrayList<>();
+    }
+
+    public void addAddress(String addressName, Location location) {
+        //locations.add(location);
+        idLocations.put(addressName, location);
+    }
+
+    public void orderFood(float cost) {
+        orders.add((double) cost);
+    }
+
+    public DoubleSummaryStatistics getStats() {
+        return orders.stream().mapToDouble(Double::doubleValue).summaryStatistics();
+    }
+
+    public double getAvg() {
+        return orders.stream().mapToDouble(i -> i).average().orElse(0);
+    }
+
+    @Override
+    public String toString() {
+        DoubleSummaryStatistics s = getStats();
+        return String.format("ID: %s Name: %s Total orders: %d Total amount spent: %.2f Average amount spent: %.2f", id, name, s.getCount(), s.getSum(), s.getAverage());
+    }
+
+    public Location getLocation(String userAddressName) {
+        return idLocations.get(userAddressName);
+    }
+    public String getID() {
+        return id;
+    }
+
+    public int getCount() {
+        return orders.size();
+    }
+}
+
+class DeliveryPerson implements Comparable<DeliveryPerson> {
+    String id;
+    String name;
+    Location location;
+    List<Integer> cash;
+    Location forSort;
+
+    public DeliveryPerson(String id, String name, Location location) {
+        this.id = id;
+        this.name = name;
+        this.location = location;
+        cash = new ArrayList<>();
+
+    }
+
+    public void changeLocation(Location location, int units) {
+        cash.add(90 + units);
+        this.location = location;
+    }
+
+    public int allCash() {
+        return cash.stream().mapToInt(i -> i).sum();
+    }
+
+    public int getNumberOfOders() {
+        return cash.size();
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public DeliveryPerson addForSort(Location l) {
+        this.forSort = l;
+        return this;
+    }
+
+    public int getDistance() {
+        return location.distance(forSort);
+    }
+
+    public DoubleSummaryStatistics stats() {
+        return cash.stream().mapToDouble(Integer::intValue).summaryStatistics();
+    }
+
+    public double getAvg() {
+        return cash.stream().mapToDouble(i -> i).average().orElse(0);
+    }
+
+    @Override
+    public String toString() {
+        DoubleSummaryStatistics s = stats();
+        return String.format("ID: %s Name: %s Total deliveries: %d Total delivery fee: %.2f Average delivery fee: %.2f", id, name, s.getCount(), s.getSum(), s.getAverage());
+    }
+
+    @Override
+    public int compareTo(DeliveryPerson o) {
+        return Integer.compare(cash.size(), o.cash.size());
+    }
+
+    public String getID() {
+        return id;
+    }
+}
+
+class Restaurant {
+    String id;
+    String name;
+    Location location;
+    List<Double> orders;
+
+    public Restaurant(String id, String name, Location location) {
+        this.id = id;
+        this.name = name;
+        this.location = location;
+        orders=new ArrayList<>();
+    }
+
+    public DoubleSummaryStatistics stats() {
+        return orders.stream().mapToDouble(i -> i).summaryStatistics();
+    }
+
+    public void order(float cost) {
+        orders.add((double) cost);
+    }
+
+    public double getAvg() {
+        return orders.stream().mapToDouble(i -> i).average().orElse(0);
+    }
+
+    @Override
+    public String toString() {
+        DoubleSummaryStatistics s = stats();
+        return String.format("ID: %s Name: %s Total orders: %d Total amount earned: %.2f Average amount earned: %.2f", id, name, s.getCount(), s.getSum(), s.getAverage());
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+    public String getID() {
+        return id;
+    }
+}
+
+class DeliveryApp {
+    String name;
+    Map<String, DeliveryPerson> idDelivery;
+    Map<String, Restaurant> idRestaurant;
+    Map<String, User> idUser;
+
+    public DeliveryApp(String name) {
+        this.name = name;
+        idDelivery = new TreeMap<>();
+        idRestaurant = new TreeMap<>();
+        idUser = new TreeMap<>();
+    }
+
+    void registerDeliveryPerson(String id, String name, Location currentLocation) {
+        //dostavuvac sho saka da raboti
+        //
+        DeliveryPerson dp = new DeliveryPerson(id, name, currentLocation);
+        idDelivery.put(dp.id, dp);
+    }
+
+    public void addRestaurant(String id, String name, Location location) {
+        Restaurant r = new Restaurant(id, name, location);
+        idRestaurant.put(id, r);
+
+    }
+
+    public void addUser(String id, String name) {
+        User u = new User(id, name);
+        idUser.put(u.id, u);
+
+    }
+
+    public void addAddress(String id, String addressName, Location location) {
+        User u = idUser.get(id);
+        u.addAddress(addressName, location);
+    }
+
+    void orderFood(String userId, String userAddressName, String restaurantId, float cost) {
+        User u = idUser.get(userId);
+        Restaurant r = idRestaurant.get(restaurantId);
+
+        Location toTake = u.getLocation(userAddressName);
+        Location toTakeFrom = r.location;
+        DeliveryPerson dp = findClosestDeliveryPerson(r);
+        int units=toTakeFrom.distance(toTake);
+        dp.changeLocation(toTake,units/10);
+        int costToPay=dp.cash.get(dp.cash.size()-1);
+        u.orderFood(cost);
+//        u.orderFood(costToPay+cost);
+        r.order(cost);
+
+    }
+
+
+    public DeliveryPerson findClosestDeliveryPerson(Restaurant r) {
+
+//       List<DeliveryPerson> temp=idDelivery.values().stream().sorted(Comparator.comparing(i->i.location.distance(r.location))).collect(Collectors.toList());
+//       return temp.get(0);
+        return idDelivery.values().stream().map(i -> i.addForSort(r.location)).min(Comparator.comparing(DeliveryPerson::getDistance).thenComparing(DeliveryPerson::getNumberOfOders)).orElse(null);
+
+    }
+
+    public void printUsers() {
+        idUser.values().stream().sorted(Comparator.comparing(User::getCount,Comparator.reverseOrder()).thenComparing(User::getAvg, Comparator.reverseOrder()).thenComparing(User::getID,Comparator.reverseOrder())).forEach(System.out::println);
+    }
+
+    public void printRestaurants() {
+        idRestaurant.values().stream().sorted(Comparator.comparing(Restaurant::getAvg, Comparator.reverseOrder()).thenComparing(Restaurant::getID,Comparator.reverseOrder())).forEach(System.out::println);
+    }
+
+    public void printDeliveryPeople() {
+        idDelivery.values().stream().sorted(Comparator.comparing(DeliveryPerson::getAvg, Comparator.reverseOrder()).thenComparing(DeliveryPerson::getID,Comparator.reverseOrder())).forEach(System.out::println);
+    }
+
+
+}

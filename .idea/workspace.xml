@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/Post/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Post/ver2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Post2/PostTester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DeliveryApp/DeliveryAppTester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DeliveryApp/test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Post/PostTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Post/PostTester.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +213,7 @@
       <workItem from="1692788258871" duration="38075000" />
       <workItem from="1693047056835" duration="47216000" />
       <workItem from="1693167699851" duration="11351000" />
-      <workItem from="1693216150771" duration="67500000" />
+      <workItem from="1693216150771" duration="76694000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -377,14 +375,6 @@
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
       <updated>1690153674851</updated>
-    </task>
-    <task id="LOCAL-00041" summary="commit">
-      <option name="closed" value="true" />
-      <created>1692537657784</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1692537657784</updated>
     </task>
     <task id="LOCAL-00042" summary="commit">
       <option name="closed" value="true" />
@@ -586,7 +576,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693389427589</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="commit">
+      <option name="closed" value="true" />
+      <created>1693393737255</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1693393737255</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -720,6 +718,16 @@
           <line>193</line>
           <option name="timeStamp" value="175" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/DeliveryApp/DeliveryAppTester.java</url>
+          <line>292</line>
+          <option name="timeStamp" value="178" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/DeliveryApp/DeliveryAppTester.java</url>
+          <line>291</line>
+          <option name="timeStamp" value="179" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/F1Test/F1Test.java</url>
           <line>65</line>
@@ -846,6 +854,15 @@
           </properties>
           <option name="timeStamp" value="173" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/DeliveryApp/DeliveryAppTester.java</url>
+          <line>158</line>
+          <properties class="DeliveryApp.DeliveryPerson" method="changeLocation">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="177" />
+        </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="64" />
@@ -865,12 +882,6 @@
         <PinnedItemInfo parentTag="Subtitles" memberName="titles" />
       </pinned-members>
     </pin-to-top-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="forThisLevel.toArray()[2]" />
-        <watch expression="forThisLevel.toArray()[3]" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/NaprednoIspit$ChatSystemTest.ic" NAME="ChatSystemTest Coverage Results" MODIFIED="1693090939176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
