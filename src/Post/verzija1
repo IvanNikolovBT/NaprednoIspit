@@ -1,4 +1,4 @@
-package Post;
+package Post;//package Post;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -38,86 +38,119 @@ public class PostTester {
         }
     }
 }
-interface Commnetable
+interface Commentable
 {
-    void addComment (String username, String commentId, String content, String replyToId);
-    void likeComment (String commentId);
+     int getLikes();
 }
-class Comment implements Commnetable
+class Comment implements Commentable
 {
-    String user;
-    int likes;
-    String content;
+
+    Set<Comment> comments;
     String commentID;
-    Map<String,Set<Comment>>comments;
-    String replyToID;
-
-    public Comment(String user, String content, String commentID,String replyToID) {
-        this.user = user;
-        this.likes = 0;
-        this.content = content;
-        this.commentID = commentID;
-        this.replyToID=replyToID;
-        comments=new HashMap<>();
+    String content;
+    int likes;
+    String user;
+    int level;
+    public Comment(String user,String commentID,String content, int level)
+    {
+        this.user=user;
+        this.commentID=commentID;
+        this.content=content;
+        comments=new TreeSet<>(Comparator.comparing(Comment::getLikes,Comparator.reverseOrder()));
+        likes=0;
+        this.level=level;
     }
-
     @Override
-    public void addComment(String username, String commentId, String content, String replyToId) {
-    Comment c=new Comment(user,content,commentID,replyToId);
-    Set<Comment> toAdd=comments.get(replyToId);
-    toAdd.add(c);
-    }
+    public int getLikes() {
+        return likes;
 
-    @Override
-    public void likeComment(String commentId) {
-
+//        return comments.stream().mapToInt(Comment::getLikes).sum()+likes;
     }
     void addLike()
     {
         likes++;
     }
 
-    public String printInfo(int level) {
+    public void addComment(Comment comment) {
+        comments.add(comment);
+    }
+
+    @Override
+    public String toString() {
         StringBuilder sb=new StringBuilder();
-        sb.append(String.format("%sComment: %s\n",IndentPrinter.print(level),content));
-        sb.append(String.format("%sWritten by: %s",IndentPrinter.print(level),user));
-        sb.append(String.format("%sLikes: %d",IndentPrinter.print(level),likes));
+        sb.append(String.format("%sComment: %s\n",printIndent(),content));
+        sb.append(String.format("%sWritten by: %s\n",printIndent(),user));
+        sb.append(String.format("%sLikes: %d\n",printIndent(),getLikes()));
         for(Comment c:comments)
-            printInfo(level+1);
+            sb.append(c);
         return sb.toString();
     }
+    public String printIndent()
+    {
+        StringBuilder stringBuilder=new StringBuilder();
+        for(int i=0;i<level;i++)
+            stringBuilder.append("    ");
+
+        return stringBuilder.toString();
+    }
+
+    public String  getContent() {
+        return content;
+    }
+    public  boolean
 }
-class Post implements Commnetable
+class Post implements Commentable
 {
     String username;
-    String postContent;
-    String rootID;
-    Map<String,Set<Comment>>comments;
-    Set<Comment>commentSet;
-    public Post(String username, String postContent) {
+    String content;
+    Set<Comment>forThisLevel;//site mozni komentari gi mame tuka
+    Map<String,Comment>idComments;//p
+    String root;
+    public Post(String username, String content) {
         this.username = username;
-        this.postContent = postContent;
-        rootID="root";
-        comments=new HashMap<>();
-        commentSet=new HashSet<>();
+        this.content = content;
+        forThisLevel=new TreeSet<>(Comparator.comparing(Comment::getLikes,Comparator.reverseOrder()).thenComparing(Comment::getContent));
+        idComments=new TreeMap<>();
+        root="root";
     }
-    public void addComment(String userName,String commentID,String content,String replyToID)
-    {
-        if(replyToID==null)
-            comments.put(rootID,new Comment());
-    }
-    public void likeComment(String commentID)
+
+    void addComment (String username, String commentId, String content, String replyToId)
     {
 
+        if(replyToId==null)
+        {
+
+            Comment comment=new Comment(username,commentId,content,2);
+            forThisLevel.add(comment);
+            idComments.put(commentId,comment);
+        }else
+        {
+            Comment toAdd=idComments.get(replyToId);
+            Comment comment=new Comment(username,commentId,content, toAdd.level+1);
+            idComments.put(commentId,comment);
+            toAdd.addComment(comment);
+        }
+
     }
-}
-class IndentPrinter
-{
-    static String print(int level)
+    public int getLikes()
     {
+        return forThisLevel.stream().mapToInt(Comment::getLikes).sum();
+    }
+
+    public void likeComment(String commentID)
+    {
+        Comment comment=idComments.get(commentID);
+        comment.addLike();
+    }
+
+    @Override
+    public String toString() {
         StringBuilder sb=new StringBuilder();
-        for(int i=0;i<level;i++)
-            sb.append("\t");
+        sb.append(String.format("Post: %s\n",content));
+        sb.append(String.format("Written by: %s\n",username));
+        sb.append("Comments: \n");
+        for(Comment c:forThisLevel)
+            sb.append(c);
         return sb.toString();
     }
 }

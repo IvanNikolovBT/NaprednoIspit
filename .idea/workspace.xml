@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/Post/PostTester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Quiz/QuizTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Quiz/verzija1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/QuizProcessorTest/QuizProcessorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Post/PostTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Post/PostTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Post/verzija1" beforeDir="false" afterPath="$PROJECT_DIR$/src/Post/verzija1" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +213,7 @@
       <workItem from="1692788258871" duration="38075000" />
       <workItem from="1693047056835" duration="47216000" />
       <workItem from="1693167699851" duration="11351000" />
-      <workItem from="1693216150771" duration="57333000" />
+      <workItem from="1693216150771" duration="62440000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -377,14 +375,6 @@
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
       <updated>1690153674851</updated>
-    </task>
-    <task id="LOCAL-00038" summary="commit">
-      <option name="closed" value="true" />
-      <created>1692457492678</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1692457492678</updated>
     </task>
     <task id="LOCAL-00039" summary="commit">
       <option name="closed" value="true" />
@@ -586,7 +576,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693347680839</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="commit">
+      <option name="closed" value="true" />
+      <created>1693355246478</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1693355246478</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -831,6 +829,15 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="149" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Post/PostTester.java</url>
+          <line>181</line>
+          <properties class="Post.Post" method="toString">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="173" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
