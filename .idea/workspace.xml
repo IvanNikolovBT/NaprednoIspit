@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Post/PostTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Post/PostTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Post/verzija1" beforeDir="false" afterPath="$PROJECT_DIR$/src/Post/verzija1" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +211,7 @@
       <workItem from="1692788258871" duration="38075000" />
       <workItem from="1693047056835" duration="47216000" />
       <workItem from="1693167699851" duration="11351000" />
-      <workItem from="1693216150771" duration="62440000" />
+      <workItem from="1693216150771" duration="63843000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -375,14 +373,6 @@
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
       <updated>1690153674851</updated>
-    </task>
-    <task id="LOCAL-00039" summary="commit">
-      <option name="closed" value="true" />
-      <created>1692457503280</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1692457503280</updated>
     </task>
     <task id="LOCAL-00040" summary="commit">
       <option name="closed" value="true" />
@@ -584,7 +574,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693355246478</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="commit">
+      <option name="closed" value="true" />
+      <created>1693360111678</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1693360111678</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -712,6 +710,11 @@
           <url>file://$PROJECT_DIR$/src/ShapesApplication/Shapes2Test.java</url>
           <line>116</line>
           <option name="timeStamp" value="157" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Post/PostTester.java</url>
+          <line>187</line>
+          <option name="timeStamp" value="174" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/F1Test/F1Test.java</url>
