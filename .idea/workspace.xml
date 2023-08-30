@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/DeliveryApp/DeliveryAppTester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DeliveryApp/test" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EquationTester/EquationTester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RuleTester/RuleTester.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Rule/RuleTester.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +214,7 @@
       <workItem from="1692788258871" duration="38075000" />
       <workItem from="1693047056835" duration="47216000" />
       <workItem from="1693167699851" duration="11351000" />
-      <workItem from="1693216150771" duration="76694000" />
+      <workItem from="1693216150771" duration="85900000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -375,14 +376,6 @@
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
       <updated>1690153674851</updated>
-    </task>
-    <task id="LOCAL-00042" summary="commit">
-      <option name="closed" value="true" />
-      <created>1692541213804</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1692541213804</updated>
     </task>
     <task id="LOCAL-00043" summary="commit">
       <option name="closed" value="true" />
@@ -584,7 +577,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693393737255</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="commit">
+      <option name="closed" value="true" />
+      <created>1693407407199</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1693407407199</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -720,12 +721,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/DeliveryApp/DeliveryAppTester.java</url>
-          <line>292</line>
+          <line>291</line>
           <option name="timeStamp" value="178" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/DeliveryApp/DeliveryAppTester.java</url>
-          <line>291</line>
+          <line>290</line>
           <option name="timeStamp" value="179" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
@@ -856,7 +857,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/DeliveryApp/DeliveryAppTester.java</url>
-          <line>158</line>
+          <line>157</line>
           <properties class="DeliveryApp.DeliveryPerson" method="changeLocation">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
