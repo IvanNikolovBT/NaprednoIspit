@@ -5,24 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/ChatRoom/vtora" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CirclesTest/vtora" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CourseTest/CourseTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GenericCollection/prva" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/IEvaluator/EvaluatorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OnlinePaymentsTest/OnlinePaymentsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OnlinePaymentsTest/prva" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SchedulerTest/vtora" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/StopCorona/prva" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Post/PostTester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Quiz/QuizTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Quiz/verzija1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/QuizProcessorTest/QuizProcessorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NaprednoIspit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/NaprednoIspit.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CanvasTest/CanvasTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CanvasTest/CanvasTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChatRoom/ChatSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatRoom/ChatSystemTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CirclesTest/CirclesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CirclesTest/CirclesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClusterTest/ClusterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClusterTest/ClusterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GenericCollection/GenericCollectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GenericCollection/GenericCollectionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SchedulerTest/SchedulerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchedulerTest/SchedulerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StopCorona/StopCoronaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StopCorona/StopCoronaTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +98,7 @@
       <recent name="Patterns.Observer" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.OnlinePaymentsTest (1)">
+  <component name="RunManager">
     <configuration name="OnlinePaymentsTest (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="OnlinePaymentsTest.OnlinePaymentsTest" />
       <module name="NaprednoIspit" />
@@ -228,7 +215,7 @@
       <workItem from="1692788258871" duration="38075000" />
       <workItem from="1693047056835" duration="47216000" />
       <workItem from="1693167699851" duration="11351000" />
-      <workItem from="1693216150771" duration="50072000" />
+      <workItem from="1693216150771" duration="57333000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -390,14 +377,6 @@
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
       <updated>1690153674851</updated>
-    </task>
-    <task id="LOCAL-00037" summary="commit">
-      <option name="closed" value="true" />
-      <created>1692373892967</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1692373892967</updated>
     </task>
     <task id="LOCAL-00038" summary="commit">
       <option name="closed" value="true" />
@@ -599,7 +578,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693317010815</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="commit">
+      <option name="closed" value="true" />
+      <created>1693347680838</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1693347680839</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
