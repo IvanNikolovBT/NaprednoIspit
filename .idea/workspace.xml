@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35f2c6-af22-437a-b225-751d87b4eecd" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/EquationTester/EquationTester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RuleTester/RuleTester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LogCollector/LogsTester.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rule/RuleTester.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +95,20 @@
       <recent name="Patterns.Observer" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.LogsTester">
+    <configuration name="LogsTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="LogCollector.LogsTester" />
+      <module name="NaprednoIspit" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="LogCollector.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OnlinePaymentsTest (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="OnlinePaymentsTest.OnlinePaymentsTest" />
       <module name="NaprednoIspit" />
@@ -117,19 +128,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="OnlinePaymentsTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PayrollSystemTest (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="PayrollSystem.PayrollSystemTest" />
-      <module name="NaprednoIspit" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="PayrollSystem.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -165,11 +163,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.LogsTester" />
         <item itemvalue="Application.OnlinePaymentsTest (1)" />
         <item itemvalue="Application.OnlinePaymentsTest" />
         <item itemvalue="Application.Shapes2Test" />
         <item itemvalue="Application.PayrollSystemTest2" />
-        <item itemvalue="Application.PayrollSystemTest (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -214,7 +212,7 @@
       <workItem from="1692788258871" duration="38075000" />
       <workItem from="1693047056835" duration="47216000" />
       <workItem from="1693167699851" duration="11351000" />
-      <workItem from="1693216150771" duration="85900000" />
+      <workItem from="1693216150771" duration="99944000" />
     </task>
     <task id="LOCAL-00001" summary="Prv komit">
       <created>1686656617205</created>
@@ -376,14 +374,6 @@
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
       <updated>1690153674851</updated>
-    </task>
-    <task id="LOCAL-00043" summary="commit">
-      <option name="closed" value="true" />
-      <created>1692643041585</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1692643041585</updated>
     </task>
     <task id="LOCAL-00044" summary="commit">
       <option name="closed" value="true" />
@@ -585,7 +575,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693407407199</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="commit">
+      <option name="closed" value="true" />
+      <created>1693432865913</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1693432865913</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -728,6 +726,11 @@
           <url>file://$PROJECT_DIR$/src/DeliveryApp/DeliveryAppTester.java</url>
           <line>290</line>
           <option name="timeStamp" value="179" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LogCollector/LogsTester.java</url>
+          <line>221</line>
+          <option name="timeStamp" value="184" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/F1Test/F1Test.java</url>
@@ -883,6 +886,12 @@
         <PinnedItemInfo parentTag="Subtitles" memberName="titles" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="forThisLevel.toArray()[2]" language="JAVA" />
+        <watch expression="forThisLevel.toArray()[3]" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/NaprednoIspit$ChatSystemTest.ic" NAME="ChatSystemTest Coverage Results" MODIFIED="1693090939176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
